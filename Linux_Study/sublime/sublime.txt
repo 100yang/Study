@@ -1,0 +1,8 @@
+Ubuntu安装sublime
+1、将文件解压到/Files
+2、编写subl.shell文件	
+	“#!/bin/sh
+		exec /home/yang/Files/sublime_text_3/sublime_text "$@" ”
+3、sudo chmod a+x subl.shell
+4、sudo cp subl.shell /usr/bin/
+4、通过subl.shell 启动

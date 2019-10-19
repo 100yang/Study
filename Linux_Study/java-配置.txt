@@ -1,0 +1,39 @@
+1、jdk的配置
+打开/etc/profile 
+加入一下内容
+“#set Java environment
+export JAVA_HOME=/home/yang/Files/java/jdk-11.0.3
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:%{JAVA_HOME}/lib:%{JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH”
+2、Eclipse的安装
+将安装包解压到/Files下
+执行
+cd /usr/share/applications/
+ sudo vim eclipse.desktop
+加入
+“
+	[Desktop Entry]
+
+Encoding=UTF-8
+
+Name=Eclipse
+
+Comment=Eclipse
+
+Exec=/home/yang/Files/eclipse/eclipse
+
+Icon=/home/yang/Files/eclipse/icon.xpm
+
+Terminal=false
+
+StartupNotify=true
+
+Type=Application
+
+Categories=Application;Development;
+
+”
+sudo chmod u+x eclipse.desktop 
+
+

@@ -1,0 +1,11 @@
+无法切换中文输入的原因是当前下载的QtCreator中没有适配当前输入法框架（ibus、fcitx）的动态库
+解决方法：
+一、安装对应的输入法插件
+1、如果是fcitx：
+ubuntu18.04：sudo apt-get install libfcitx-qt5-dev
+拷贝系统路径上的(/usr/lib/x86_64-linux-gnu/qt5/plugins/platforminputcontexts) libfcitxplatforminputcontextplugin.so
+2、如果是ibus：一般都支持，不支持的话，在上面的一样路径里，把libibusplatforminputcontextplugin.so 拷贝出来，如果没有，用sudo apt-get install qt5-default 把Qt5装一遍，也就有了。
+
+二、安装完毕之后，将对应的动态库拷贝出来，放到当前Qt的安装目录下的两个文件里面：
+1、:~/Qt5.11.2/Tools/QtCreator/lib/Qt/plugins/platforminputcontexts
+2、:~/Qt5.11.2/5.11.2/gcc_64/plugins/platforminputcontexts

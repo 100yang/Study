@@ -1,0 +1,15 @@
+Ubuntu安装sublime
+方法一：
+1、将文件解压到/Files
+2、编写subl.shell文件	
+	“#!/bin/sh
+		exec /home/yang/Files/sublime_text_3/sublime_text "$@" ”
+3、sudo chmod a+x subl.shell
+4、sudo cp subl.shell /usr/bin/
+4、通过subl.shell 启动
+5、安装package control
+	下载 Package Control.sublime-package 放在 install Package 中
+	cd ~/.config/sublime-text-3/Packages/
+	git clone https://github.com/wbond/package_control_channel.git Package\ Control
+方法二：
+通过ｓｕｂｌｉｍｅ的官网提供的方法（网速比较好的话，不然建议采用方法一）

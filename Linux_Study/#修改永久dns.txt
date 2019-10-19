@@ -1,0 +1,10 @@
+#修改永久dns
+sudo vim /etc/resolvconf/resolv.conf.d/head
+#加入一下内容
+nameserver 119.29.29.29
+nameserver 114.114.114.114
+#保存
+执行
+sudo resolvconf -u
+
+# sudo vim /etc/systemd/resolve.conf

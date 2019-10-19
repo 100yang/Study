@@ -1,0 +1,16 @@
+遇到下列问题时
+“Failure to download extra data files
+
+The following packages requested additional data downloads after package installation,
+but the data could not be downloaded or could not be processed.
+
+ttf-mscorefonts-installer
+
+The download will be attempted again later, or you can try the download again now.
+ Running this command requires an active Internet connection.  ”
+
+执行
+sudo apt-get remove --purge ttf-mscorefonts-installer
+sudo apt-get install ubuntu-restricted-extras
+	
+ 
