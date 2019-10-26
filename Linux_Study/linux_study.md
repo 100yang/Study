@@ -169,10 +169,11 @@
 ####Shell
 1. 变量
     * 变量名和等号之间不能有空格 str="Hello"
-    * 输出变量时 建议加上{} 
-    * var = "Hello "   echo "${var} World"
+    * 输出变量时 建议加上\{} 
+    * var = "Hello "   echo "$\{var} World"
 2. source 命令会强制执行脚本文件中的全部命令，而忽略脚本文件的权限。
     * "source  filename" or ". filename"
+    * 命令替换  str=`command` or str=$(command) 建议使用$()
 3. 引号
     *  '' 单引号 
         * 单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；
@@ -180,31 +181,167 @@
     * "" 双引号
         * 双引号里可以有变量
         * 双引号里可以出现转义字符
-4. 字符串
-    * echo ${string:st:ed} # 提取字符串长度
-    * ${#string} 获取字符串长度
-    * `expr index "$init_string" find_string` 查找find_string 里面的字母 那个字母先出现就先计算那个
+4. 字符串  
+    * $\{#string} 获取字符串长度
+    * `expr index "$init_string" find_string` 查找find_string 里面的字母 那个字母先出现就先计算那个      
+    >
+str="www.baidu.com"       
+
+    |格式 | 说明|使用|
+    |:------|:-----|:----|
+    |$\{string: start :length} | 从 string 字符串的左边第 start 个字符开始，向右截取 length 个字符。|echo $\{str:1:2}|
+    |$\{string: start} | 从 string 字符串的左边第 start 个字符开始截取，直到最后。||
+    |$\{string: 0-start :length} | 从 string 字符串的右边第 start 个字符开始，向右截取 length 个字符。|echo $\{str:0-5,3}  -- "u.c"|
+    |$\{string: 0-start} | 从 string 字符串的右边第 start 个字符开始截取，直到最后。||
+    |$\{string#*chars} | 从 string 字符串第一次出现 *chars 的位置开始，截取 *chars 右边的所有字符。|当遇到chars中的任意一个字符就停止了|
+    |$\{string##*chars}| 从 string 字符串最后一次出现 *chars 的位置开始，截取 *chars 右边的所有字符。||
+    |$\{string%*chars}|  从 string 字符串第一次出现 *chars 的位置开始，截取 *chars 左边的所有字符。||
+    |$\{string%%*chars} |从 string 字符串最后一次出现 *chars 的位置开始，截取 *chars 左边的所有字符。||
+
 5. shell数组
     * 定义数组的一般形式
     * 数组名=(值1 值2 ... 值n)
     * 单独定义数组
     >name[0]=var
     * 读取数组
-    > ${name[index]}
-    > echo ${name[@]} #读取数组中的全部元素
-    > len=${name[@]} / len=${name[*]} #读取数组的长度
+    > $\{name[index]}   
+    > echo $\{name[@]} #读取数组中的全部元素    
+    > len=$\{name[@]} / len=$\{name[*]} #读取数组的长度    
+    * 拼接数组的思路是：先利用@或*，将数组扩展成列表，然后再合并到一起
+    >array_new=(${array1[@]}  ${array2[@]})      
+    array_new=(${array1[*]}  ${array2[*]})
+    * 删除数组中的元素 unset
+    > unset array[index] # 删除数组中的元素
+    > unset array #删除整个数组
 6. 多行注释
 >
 :EOF   
 注释内容。。。。    
 <<EOF
 >
-7. 
+7. 参数      
+* 
+注意 传递的参数是从第一个开始的
+$0 表示的是当前执行文件的名称     
+echo "The first parameter $1"      
+    
+    |参数处理|说明|      
+    |:-----|:------|         
+    |$# | 传递到脚本的参数个数|            
+    |$*|  以一个单字符串显示所有向脚本传递的参数。如"$*"用「"」括起来的情况、以"$1 $2 … $n"的形式输出所有参数。即输出一行|          
+    |$$ | 脚本运行的当前进程ID号|       
+    |$!  |后台运行的最后一个进程的ID号|         
+    |$@ | 与$*相同，但是使用时加引号，并在引号中返回每个参数   如"$@"用「"」括起来的情况、以"$1" "$2" … "$n" 的形式输出所有参数。输出多行|          
+    |$- | 显示Shell使用的当前选项，与set命令功能相同。|          
+    |$?|  显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。| 
 
+8. 运算符 var=`expr $a + $b` 
+> 注意两点 1.符号为反引号`` 2. 加上epxr 其他的类似
+> shell 语言中 0 代表 true，0 以外的值代表 false。
+|运算符| 说明 | 举例|
+|:-----|:-----|:------|
+|-eq| 检测两个数是否相等，相等返回 true。|  [ $a -eq $b ] 返回 false。|    
+|-ne| 检测两个数是否不相等，不相等返回 true。|  [ $a -ne $b ] 返回 true。|    
+|-gt| 检测左边的数是否大于右边的，如果是，则返回 true。 |[ $a -gt $b ] 返回 false。|     
+|-lt| 检测左边的数是否小于右边的，如果是，则返回 true。 |[ $a -lt $b ] 返回 true。|     
+|-ge |检测左边的数是否大于等于右边的，如果是，则返回 true。 |[ $a -ge $b ] 返回 false|     
+|-le| 检测左边的数是否小于等于右边的，如果是，则返回 true。 |[ $a -le $b ] 返回 true。|       
+|! |非运算，表达式为 true 则返回 false，否则返回 true。|  [ ! false ] 返回 true。|     
+|-o  |或运算，有一个表达式为 true 则返回 true。|  [ $a -lt 20 -o $b -gt 100 ] 返回 true。|   
+|-a|  与运算，两个表达式都为 true 才返回 true。 | [ $a -lt 20 -a $b -gt 100 ] 返回 false。|
+|-b file |检测文件是否是块设备文件，如果是，则返回 true。|  [ -b $file ] 返回 false。|
+|-c file| 检测文件是否是字符设备文件，如果是，则返回 true。| [ -c $file ] 返回 false。|
+|-d file| 检测文件是否是目录，如果是，则返回 true。| [ -d $file ] 返回 false。|
+|-f file| 检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。|  [ -f $file ] 返回 true。|
+|-g file| 检测文件是否设置了 SGID 位，如果是，则返回 true。|  [ -g $file ] 返回 false。|
+|-k file| 检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true| [ -k $file ] 返回 false。|
+|-p file |检测文件是否是有管道，如果是，则返回 true。| [ -p $file ] 返回 false。|
+|-u file| 检测文件是否设置了 SUID 位，如果是，则返回 true。 | [ -u $file ] 返回 false。|
+|-r file |检测文件是否可读，如果是，则返回 true。 | [ -r $file ] 返回 true。|
+|-w file |检测文件是否可写，如果是，则返回 true。 | [ -w $file ] 返回 true。|
+|-x file |检测文件是否可执行，如果是，则返回 true。| [ -x $file ] 返回 true。|
+|-s file| 检测文件是否为空（文件大小是否大于0），不为空返回 true。| [ -s $file ] 返回 true。|
+|-e file| 检测文件（包括目录）是否存在，如果是，则返回 true。 | [ -e $file ] 返回 true。|
+>
+9. 内置命令
+    * alias 别名
+    > alias name='command' # 创建别名
+    > unalias name #删除别名
+    * echo 输出，默认带有换行
+    > echo -e "ok \n" #开启转义
+    * printf #和c差不多
+    > printf "%s %s %s\n" 1 2 3
+    * test 检查某个条件是否成立 使用的和上述运算符是一样的
+    > \-eq \-nq \-le \-ge \-lt \-gt
+    > \-z str # 字符串的长度为0为真
+    > \-n str # 字符串的长度为0为真
+10. 流程控制     
+>   
+```
+if condition1     
+then    
+    command1   break 
+elif condition2     
+then     
+    command2    continue
+else    
+    commandN    
+fi   
 
+for var in item1,....,itemN     
+do    
+    command1     
+    ...     
+    commandN      
+done  
 
+while condition    
+do    
+    command    
+done  
 
+until condition
+do
+    command
+done
 
+case 值 in
+模式1)
+    command1
+    command2
+    ...
+    commandN
+    ;;
+模式2）
+    command1
+    command2
+    ...
+    commandN
+    ;;
+esac
+```
+>
+11. 函数
+>
+```
+[ function ] funname [()]
+{
+
+    action;
+
+    [return int;]
+}
+
+demofun(){
+    echo "Hello Function"
+}
+```
+* 1、可以带function fun() 定义，也可以直接fun() 定义,不带任何参数。        
+* 2、参数返回，可以显示加：return 返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255
+>
+12. 执行外部shell
+* . filename 
+* source filename
 
 
 
