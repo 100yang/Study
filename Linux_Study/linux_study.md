@@ -165,12 +165,17 @@
 * du ----统计目录或文件所占磁盘空间大小的命令。
 * [mount](http://c.biancheng.net/view/885.html) 挂载linux系统之外的文件
 
-####[Linux正则表达式]()
+####[Linux正则表达式](https://deerchao.cn/tutorials/regex/regex.htm)
 ####Shell
 1. 变量
     * 变量名和等号之间不能有空格 str="Hello"
     * 输出变量时 建议加上\{} 
     * var = "Hello "   echo "$\{var} World"
+2. 数学计算
+    * (()) 整数 
+    * a=10 b=20 c=$(($a+$b)) echo "$c"
+    * 可以不加 $ 可以自动识别变量名
+    * bc 计算小数和整数 
 2. source 命令会强制执行脚本文件中的全部命令，而忽略脚本文件的权限。
     * "source  filename" or ". filename"
     * 命令替换  str=`command` or str=$(command) 建议使用$()
@@ -271,10 +276,38 @@ echo "The first parameter $1"
     > echo -e "ok \n" #开启转义
     * printf #和c差不多
     > printf "%s %s %s\n" 1 2 3
-    * test 检查某个条件是否成立 使用的和上述运算符是一样的
+    * test 检查某个条件是否成立 使用的和上述运算符是一样的 
+    * 一般使用\[\[expressions]] 作用更强 且支持正则表达式
     > \-eq \-nq \-le \-ge \-lt \-gt
     > \-z str # 字符串的长度为0为真
     > \-n str # 字符串的长度为0为真
+    * read 标准输入命令
+    > read [-options] [variables]
+    >
+     |选项 |   说明| 使用|
+|:-----|:------|:-----|
+|-a array   | 把读取的数据赋值给数组 array，从下标 0 开始。| |
+|-d delimiter   用字符串 delimiter |指定读取结束的位置，而不是一个换行符（读取到的数据不包括 delimiter）。||
+|-e  |在获取用户输入的时候，对功能键进行编码转换，不会直接显式功能键对应的字符。||
+|-n num | 读取 num 个字符，而不是整行字符。||
+|-p prompt |  显示提示信息，提示内容为 prompt。||
+|-r | 原样读取（Raw mode），不把反斜杠字符解释为转义字符。||
+|-s | 静默模式（Silent modo\），不会在屏幕上显示输入的字符。当输入密码和其它确认信息的时候，这是很有必要的。
+|-t seconds | 设置超时时间，单位为秒。如果用户没有在指定时间内输入完成，那么 read 将会返回一个非 0 的退出状态，表示读取失败。||
+|-u fd |  使用文件描述符 fd 作为输入源，而不是标准输入，类似于重定向。||
+    * declare 设置变量的属性 declare [+/-]  [选项] [变量名=变量值] # -表示设置属性，+表示取消属性
+    > 
+    |选项 | 含义|
+    |:----|:-----|
+|-f [name] |  列出之前由用户在脚本中定义的函数名称和函数体。|
+|-F [name]  | 仅列出自定义函数名称。|
+|-g name| 在 Shell 函数内部创建全局变量。|
+|-p [name]   |显示指定变量的属性和值。|
+|-a name |声明变量为普通数组。|
+|-A name |声明变量为关联数组（支持索引下标为字符串）。|
+|-i name  |   将变量定义为整数型。|
+|-r name[=value]  |   将变量定义为只读（不可修改和删除），等价于 readonly name。|
+-x name[=value]| 将变量设置为环境变量，等价于 export name[=value]。|
 10. 流程控制     
 >   
 ```
@@ -339,9 +372,9 @@ demofun(){
 * 1、可以带function fun() 定义，也可以直接fun() 定义,不带任何参数。        
 * 2、参数返回，可以显示加：return 返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255
 >
-12. 执行外部shell
-* . filename 
-* source filename
+12. 执行外部shell   
+    * . filename 
+    * source filename
 
 
 
