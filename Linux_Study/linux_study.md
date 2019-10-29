@@ -1,10 +1,15 @@
 #<center>Linux学习</center>
 ##开源协议
 * [开源协议的选择](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
+
   ![image][img1]
+
 ##Linux文件目录
+
 #### [Linux文件目录树状结构图](http://www.pathname.com/fhs/)  
+
    ![image][img2]     
+
    
    |目录|   评论|    
    |:----|:-----|     
