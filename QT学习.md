@@ -48,7 +48,7 @@
 [capture](parameters) mutable ->return-type{statement}
 [capture] : 捕捉列表
 (parameters) : 参数列表
-mutable : 取消常亮性 即可修改
+mutable : 取消常量性 即可修改
 connect (sender,&Signal(), [] (){});
 [](){} -- 相当是是一个函数体 void fun(){};
 
