@@ -23,6 +23,7 @@
 #include <QJsonParseError>
 #include <QEventLoop>
 #include <QStringList>
+#include <QMultiMap>
 namespace Ui {
 class MainWindow;
 }
@@ -48,7 +49,7 @@ public:
      * @param SongId [description]
      */
     /*json 文件 请查看GetUrlById.json*/
-    void GetLinkBySongId(QString SongId);
+    QString GetLinkBySongId(QString SongId);
     /**
      * 通过id获得歌曲的歌词
      * @param SongId [description]
@@ -57,28 +58,37 @@ public:
     void GetLyricBySongId(QString SongId);
     void ShowLyric(QString lyr);
     void Play_Music(int Index);
-    void Add_Music(QString url);
+    void AddMusicInPlayList(QString Song, QString Id);
+    void ShowSuggestion(QString SongName, QString Singer, QString SongId);
     bool Check_Music(QString SongId);
+    void GetSinger();
 signals :
     void AlreadyGetLink();
     void AlreadyGetLyric();
+    void AlreadyGetKeyword ();
+    void AlreadyToPlay();
     void AlreadyGetSuggestion();
 private:
-    int NumInPlayList;
     Ui::MainWindow *ui;
+
+
+    /*网络部分*/
     QNetworkAccessManager Manager;
     QNetworkRequest Request;
     QNetworkReply *SerachReply;
     QNetworkReply *GetLinkReply;
     QNetworkReply *CheckReply;
-    /*获得歌曲歌词*/
     QNetworkReply *LyricReply;
-    /*播放歌曲的链接*/
-    QString song_url;
-    /*得到的歌词*/
-    QString Lyric;
-//    QString
 
+
+    QString SongUrl;
+    QString Keyword;
+    QString Lyric;
+
+    QMultiMap<QString, QString> SuggestInfo;
+    /*音乐播放*/
+    QMap<QString, QString> *WaitToPlay;
+    int NumInPlayList;
     QMediaPlayer *Player;
     QMediaPlaylist *PlayerList;
 };

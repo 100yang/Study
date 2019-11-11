@@ -227,6 +227,7 @@ DIST          = ../Music_Play/Main.qml \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_post.prf \
+		../Music_Play/.qmake.stash \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -430,6 +431,7 @@ Makefile: ../Music_Play/Music_Play.pro ../../../../Qt5.11.1/5.11.1/gcc_64/mkspec
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -625,6 +627,7 @@ Makefile: ../Music_Play/Music_Play.pro ../../../../Qt5.11.1/5.11.1/gcc_64/mkspec
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -1101,6 +1104,9 @@ main.o: ../Music_Play/main.cpp ../Music_Play/mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qjsondocument.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QEventLoop \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
+		../Music_Play/mythread.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QThread \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qthread.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1296,7 +1302,29 @@ mainwindow.o: ../Music_Play/mainwindow.cpp ../Music_Play/mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qjsondocument.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QEventLoop \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QSlider \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Music_Play/mainwindow.cpp
 
 mythread.o: ../Music_Play/mythread.cpp ../Music_Play/mythread.h \

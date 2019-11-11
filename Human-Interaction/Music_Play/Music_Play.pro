@@ -37,3 +37,5 @@ FORMS += \
 
 DISTFILES += \
     Main.qml
+
+RESOURCES +=

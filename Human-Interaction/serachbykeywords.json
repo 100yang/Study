@@ -77,9 +77,13 @@
 					"status":1
 				},
 					"alias":[],
-					"artists":[{"albumSize":0,"alias":[],"id":12292874,"img1v1":0,
+					"artists":[
+						{
+							"albumSize":0,"alias":[],"id":12292874,"img1v1":0,
 					"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-					"name":"刘雨Key","picId":0,"picUrl":null,"trans":null}],"copyrightId":699010,
+					"name":"刘雨Key","picId":0,"picUrl":null,"trans":null}
+				]
+					,"copyrightId":699010,
 					"duration":248685,"fee":8,"ftype":0,"id":1396897991,"mark":0,"mvid":0,
 					"name":"雨幕 (纯净版)","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],
 					"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",

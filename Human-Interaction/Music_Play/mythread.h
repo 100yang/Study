@@ -5,10 +5,10 @@
 class MyThread : public QThread
 {
 public:
-    MyThread();
-    ~MyThread();
+	MyThread();
+	~MyThread();
 protected:
-    void run();
+	void run();
 };
 
 #endif // MYTHREAD_H
