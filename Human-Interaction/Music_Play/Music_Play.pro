@@ -38,4 +38,5 @@ FORMS += \
 DISTFILES += \
     Main.qml
 
-RESOURCES +=
+RESOURCES += \
+    res.qrc

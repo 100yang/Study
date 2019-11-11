@@ -41,12 +41,12 @@ MainWindow::MainWindow(QWidget *parent) :
     GetSuggestionByKeywords (Keyword);
     emit AlreadyGetSuggestion ();
   });
-
+//  connect();
   connect (ui->PlayList, &QListWidget::doubleClicked, [this]()mutable{
     auto NowItem = ui->PlayList->currentItem ();
     auto song = NowItem->text ();
     QList<QString> val = WaitToPlay->value (song);
-    auto id = val.at (0);
+    auto url = val.at (0);
   });
 }
 
@@ -219,10 +219,10 @@ void MainWindow::ShowSuggestion(QString SongName, QString Singer, QString SongId
   QListWidgetItem *Item = new QListWidgetItem;
   QString merge = SongName + Singer;
   Item->setText (merge);
-  ui->PlayList->addItem (Item);
+//  ui->PlayList->addItem (Item);
   SuggestInfo.insert (merge, SongId);
 }
-void MainWindow::Play_Music (int Index) {
+void MainWindow::PlayMusic (int Index) {
   PlayerList->setCurrentIndex (Index);
   Player->play ();
 }

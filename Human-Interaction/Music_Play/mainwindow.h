@@ -57,10 +57,11 @@ public:
     /*json 文件 请查看 GetLyricById.json*/
     void GetLyricBySongId(QString SongId);
     void ShowLyric(QString lyr);
-    void Play_Music(int Index);
+    void PlayMusic(int Index);
     void AddMusicInPlayList(QString Song, QString Id);
+    void ShowPlayList();
     void ShowSuggestion(QString SongName, QString Singer, QString SongId);
-    bool Check_Music(QString SongId);
+    bool CheckMusic(QString SongId);
     void GetSinger();
 signals :
     void AlreadyGetLink();
