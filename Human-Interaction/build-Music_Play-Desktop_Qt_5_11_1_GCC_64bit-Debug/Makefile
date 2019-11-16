@@ -14,7 +14,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I../Music_Play -I. -I../../../../Qt5.11.1/5.11.1/gcc_64/include -I../../../../Qt5.11.1/5.11.1/gcc_64/include/QtMultimedia -I../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets -I../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui -I../../../../Qt5.11.1/5.11.1/gcc_64/include/QtNetwork -I../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/onezero/Qt5.11.1/5.11.1/gcc_64/bin/qmake
 DEL_FILE      = rm -f
@@ -51,11 +51,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Music_Play/main.cpp \
-		../Music_Play/mainwindow.cpp \
-		../Music_Play/mythread.cpp moc_mainwindow.cpp
+		../Music_Play/mainwindow.cpp qrc_res.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		mythread.o \
+		qrc_res.o \
 		moc_mainwindow.o
 DIST          = ../Music_Play/Main.qml \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -247,10 +247,8 @@ DIST          = ../Music_Play/Main.qml \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf \
-		../Music_Play/Music_Play.pro ../Music_Play/mainwindow.h \
-		../Music_Play/mythread.h ../Music_Play/main.cpp \
-		../Music_Play/mainwindow.cpp \
-		../Music_Play/mythread.cpp
+		../Music_Play/Music_Play.pro ../Music_Play/mainwindow.h ../Music_Play/main.cpp \
+		../Music_Play/mainwindow.cpp
 QMAKE_TARGET  = Music_Play
 DESTDIR       = 
 TARGET        = Music_Play
@@ -452,6 +450,7 @@ Makefile: ../Music_Play/Music_Play.pro ../../../../Qt5.11.1/5.11.1/gcc_64/mkspec
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf \
 		../Music_Play/Music_Play.pro \
+		../Music_Play/res.qrc \
 		../../../../Qt5.11.1/5.11.1/gcc_64/lib/libQt5Multimedia.prl \
 		../../../../Qt5.11.1/5.11.1/gcc_64/lib/libQt5Widgets.prl \
 		../../../../Qt5.11.1/5.11.1/gcc_64/lib/libQt5Gui.prl \
@@ -648,6 +647,7 @@ Makefile: ../Music_Play/Music_Play.pro ../../../../Qt5.11.1/5.11.1/gcc_64/mkspec
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf:
 ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf:
 ../Music_Play/Music_Play.pro:
+../Music_Play/res.qrc:
 ../../../../Qt5.11.1/5.11.1/gcc_64/lib/libQt5Multimedia.prl:
 ../../../../Qt5.11.1/5.11.1/gcc_64/lib/libQt5Widgets.prl:
 ../../../../Qt5.11.1/5.11.1/gcc_64/lib/libQt5Gui.prl:
@@ -667,9 +667,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Music_Play/res.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Music_Play/mainwindow.h ../Music_Play/mythread.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Music_Play/main.cpp ../Music_Play/mainwindow.cpp ../Music_Play/mythread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Music_Play/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Music_Play/main.cpp ../Music_Play/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Music_Play/mainwindow.ui $(DISTDIR)/
 
 
@@ -694,13 +695,57 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_res.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_res.cpp
+qrc_res.cpp: ../Music_Play/res.qrc \
+		../../../../Qt5.11.1/5.11.1/gcc_64/bin/rcc \
+		../Music_Play/Images/lyric.png \
+		../Music_Play/Images/mute.png \
+		../Music_Play/Images/play.png \
+		../Music_Play/Images/random.png \
+		../Music_Play/Images/Preious.png \
+		../Music_Play/Images/Next.png \
+		../Music_Play/Images/serach.png \
+		../Music_Play/Images/low_volum.png \
+		../Music_Play/Images/Lyric_dark.png \
+		../Music_Play/Images/high_volum.png \
+		../Music_Play/Images/onesong.png \
+		../Music_Play/Images/loop.png \
+		../Music_Play/Images/pause.png \
+		../Music_Play/image/clear.png \
+		../Music_Play/image/random.png \
+		../Music_Play/image/pause.png \
+		../Music_Play/image/volume-medium-icon.png \
+		../Music_Play/image/logo.ico \
+		../Music_Play/image/shuffle.png \
+		../Music_Play/image/play.png \
+		../Music_Play/image/delete.png \
+		../Music_Play/image/volume-mute-icon.png \
+		../Music_Play/image/update.png \
+		../Music_Play/image/volume-high-icon.png \
+		../Music_Play/image/up.png \
+		../Music_Play/image/add.png \
+		../Music_Play/image/list.png \
+		../Music_Play/image/down.png \
+		../Music_Play/image/previous.png \
+		../Music_Play/image/title.png \
+		../Music_Play/image/close-normal.png \
+		../Music_Play/image/next.png \
+		../Music_Play/image/search.png \
+		../Music_Play/image/right.png \
+		../Music_Play/image/left.png \
+		../Music_Play/image/logo.png \
+		../Music_Play/image/sequence.png \
+		../Music_Play/image/volume-low-icon.png \
+		../Music_Play/image/slider-point.png
+	/home/onezero/Qt5.11.1/5.11.1/gcc_64/bin/rcc -name res ../Music_Play/res.qrc -o qrc_res.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
-	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
+	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../../../Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
@@ -891,6 +936,7 @@ moc_mainwindow.cpp: ../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMainWi
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qjsondocument.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QEventLoop \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QMultiMap \
 		../Music_Play/mainwindow.h \
 		moc_predefs.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/bin/moc
@@ -913,7 +959,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1104,15 +1150,15 @@ main.o: ../Music_Play/main.cpp ../Music_Play/mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qjsondocument.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QEventLoop \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
-		../Music_Play/mythread.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QThread \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qthread.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QMultiMap \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qinputmethod.h
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QProcess \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocess.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Music_Play/main.cpp
 
 mainwindow.o: ../Music_Play/mainwindow.cpp ../Music_Play/mainwindow.h \
@@ -1302,6 +1348,7 @@ mainwindow.o: ../Music_Play/mainwindow.cpp ../Music_Play/mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qjsondocument.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QEventLoop \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QMultiMap \
 		ui_mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
@@ -1316,9 +1363,25 @@ mainwindow.o: ../Music_Play/mainwindow.cpp ../Music_Play/mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QSlider \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QListWidget \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvalidator.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qslider.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QSlider \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QSpacerItem \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QWidget \
@@ -1327,59 +1390,8 @@ mainwindow.o: ../Music_Play/mainwindow.cpp ../Music_Play/mainwindow.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Music_Play/mainwindow.cpp
 
-mythread.o: ../Music_Play/mythread.cpp ../Music_Play/mythread.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/QThread \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qthread.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qchar.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringview.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlist.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiterator.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpair.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregexp.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject_impl.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mythread.o ../Music_Play/mythread.cpp
+qrc_res.o: qrc_res.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

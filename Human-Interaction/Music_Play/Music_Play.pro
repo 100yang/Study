@@ -25,12 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    mythread.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    mythread.h
+        mainwindow.h
 
 FORMS += \
         mainwindow.ui
@@ -40,3 +38,4 @@ DISTFILES += \
 
 RESOURCES += \
     res.qrc
+CONFIG += c++11

@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>image/add.png</file>
+        <file>image/clear.png</file>
         <file>image/close-normal.png</file>
         <file>image/delete.png</file>
         <file>image/down.png</file>
@@ -24,5 +26,18 @@
         <file>image/volume-low-icon.png</file>
         <file>image/volume-medium-icon.png</file>
         <file>image/volume-mute-icon.png</file>
+        <file>Images/Preious.png</file>
+        <file>Images/high_volum.png</file>
+        <file>Images/loop.png</file>
+        <file>Images/low_volum.png</file>
+        <file>Images/mute.png</file>
+        <file>Images/Next.png</file>
+        <file>Images/onesong.png</file>
+        <file>Images/pause.png</file>
+        <file>Images/play.png</file>
+        <file>Images/random.png</file>
+        <file>Images/serach.png</file>
+        <file>Images/lyric.png</file>
+        <file>Images/Lyric_dark.png</file>
     </qresource>
 </RCC>

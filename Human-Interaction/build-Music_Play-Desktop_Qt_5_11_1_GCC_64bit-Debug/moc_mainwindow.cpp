@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[7];
-    char stringdata0[96];
+    QByteArrayData data[21];
+    char stringdata0[264];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,12 +37,31 @@ QT_MOC_LITERAL(2, 26, 0), // ""
 QT_MOC_LITERAL(3, 27, 15), // "AlreadyGetLyric"
 QT_MOC_LITERAL(4, 43, 17), // "AlreadyGetKeyword"
 QT_MOC_LITERAL(5, 61, 13), // "AlreadyToPlay"
-QT_MOC_LITERAL(6, 75, 20) // "AlreadyGetSuggestion"
+QT_MOC_LITERAL(6, 75, 20), // "AlreadyGetSuggestion"
+QT_MOC_LITERAL(7, 96, 9), // "IWantKnow"
+QT_MOC_LITERAL(8, 106, 10), // "Init_Reply"
+QT_MOC_LITERAL(9, 117, 23), // "GetSuggestionByKeywords"
+QT_MOC_LITERAL(10, 141, 7), // "keyword"
+QT_MOC_LITERAL(11, 149, 15), // "GetLinkBySongId"
+QT_MOC_LITERAL(12, 165, 6), // "SongId"
+QT_MOC_LITERAL(13, 172, 16), // "GetLyricBySongId"
+QT_MOC_LITERAL(14, 189, 18), // "AddMusicInPlayList"
+QT_MOC_LITERAL(15, 208, 8), // "SongInfo"
+QT_MOC_LITERAL(16, 217, 14), // "ShowSuggestion"
+QT_MOC_LITERAL(17, 232, 8), // "SongName"
+QT_MOC_LITERAL(18, 241, 6), // "Singer"
+QT_MOC_LITERAL(19, 248, 9), // "GetSinger"
+QT_MOC_LITERAL(20, 258, 5) // "array"
 
     },
     "MainWindow\0AlreadyGetLink\0\0AlreadyGetLyric\0"
     "AlreadyGetKeyword\0AlreadyToPlay\0"
-    "AlreadyGetSuggestion"
+    "AlreadyGetSuggestion\0IWantKnow\0"
+    "Init_Reply\0GetSuggestionByKeywords\0"
+    "keyword\0GetLinkBySongId\0SongId\0"
+    "GetLyricBySongId\0AddMusicInPlayList\0"
+    "SongInfo\0ShowSuggestion\0SongName\0"
+    "Singer\0GetSinger\0array"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,19 +71,29 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06 /* Public */,
-       3,    0,   40,    2, 0x06 /* Public */,
-       4,    0,   41,    2, 0x06 /* Public */,
-       5,    0,   42,    2, 0x06 /* Public */,
-       6,    0,   43,    2, 0x06 /* Public */,
+       1,    0,   79,    2, 0x06 /* Public */,
+       3,    0,   80,    2, 0x06 /* Public */,
+       4,    0,   81,    2, 0x06 /* Public */,
+       5,    0,   82,    2, 0x06 /* Public */,
+       6,    0,   83,    2, 0x06 /* Public */,
+       7,    0,   84,    2, 0x06 /* Public */,
+
+ // methods: name, argc, parameters, tag, flags
+       8,    0,   85,    2, 0x02 /* Public */,
+       9,    1,   86,    2, 0x02 /* Public */,
+      11,    1,   89,    2, 0x02 /* Public */,
+      13,    1,   92,    2, 0x02 /* Public */,
+      14,    2,   95,    2, 0x02 /* Public */,
+      16,    3,  100,    2, 0x02 /* Public */,
+      19,    1,  107,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -72,6 +101,16 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+
+ // methods: parameters
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, QMetaType::QString,   12,
+    QMetaType::Void, QMetaType::QString,   12,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   15,   12,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   17,   18,   12,
+    QMetaType::QString, QMetaType::QJsonArray,   20,
 
        0        // eod
 };
@@ -87,6 +126,15 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->AlreadyGetKeyword(); break;
         case 3: _t->AlreadyToPlay(); break;
         case 4: _t->AlreadyGetSuggestion(); break;
+        case 5: _t->IWantKnow(); break;
+        case 6: _t->Init_Reply(); break;
+        case 7: _t->GetSuggestionByKeywords((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 8: _t->GetLinkBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 9: _t->GetLyricBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 10: _t->AddMusicInPlayList((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 11: _t->ShowSuggestion((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
+        case 12: { QString _r = _t->GetSinger((*reinterpret_cast< QJsonArray(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -126,8 +174,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 return;
             }
         }
+        {
+            using _t = void (MainWindow::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::IWantKnow)) {
+                *result = 5;
+                return;
+            }
+        }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject MainWindow::staticMetaObject = {
@@ -155,13 +209,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 13;
     }
     return _id;
 }
@@ -194,6 +248,12 @@ void MainWindow::AlreadyToPlay()
 void MainWindow::AlreadyGetSuggestion()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void MainWindow::IWantKnow()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

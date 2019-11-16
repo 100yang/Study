@@ -36,51 +36,45 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     /* 初始化*/
-    void Init_Reply();
-    void GetSerachFinished();
+    Q_INVOKABLE void Init_Reply();
     /**
      * 通过关键词搜索，得到歌曲的信息
      * @param keyword [description]
      */
     /*json 文件 请查看serachbykeywords.json*/
-    void GetSuggestionByKeywords(QString keyword);
+    Q_INVOKABLE void GetSuggestionByKeywords(QString keyword);
     /**
      * 通过id 得到歌曲的播放链接
      * @param SongId [description]
      */
     /*json 文件 请查看GetUrlById.json*/
-    QString GetLinkBySongId(QString SongId);
+  Q_INVOKABLE  void GetLinkBySongId(QString SongId);
     /**
      * 通过id获得歌曲的歌词
      * @param SongId [description]
      */
     /*json 文件 请查看 GetLyricById.json*/
-    void GetLyricBySongId(QString SongId);
-    void ShowLyric(QString lyr);
-    void PlayMusic(int Index);
-    void AddMusicInPlayList(QString Song, QString Id);
-    void ShowPlayList();
-    void ShowSuggestion(QString SongName, QString Singer, QString SongId);
-    bool CheckMusic(QString SongId);
-    void GetSinger();
+   Q_INVOKABLE void GetLyricBySongId(QString SongId);
+   Q_INVOKABLE void AddMusicInPlayList(QString SongInfo, QString SongId);
+   Q_INVOKABLE void ShowSuggestion(QString SongName, QString Singer, QString SongId);
+   Q_INVOKABLE QString GetSinger(QJsonArray array);
 signals :
     void AlreadyGetLink();
     void AlreadyGetLyric();
     void AlreadyGetKeyword ();
     void AlreadyToPlay();
     void AlreadyGetSuggestion();
+    void IWantKnow();
 private:
     Ui::MainWindow *ui;
-
+    int PLayClickNum;/*0 Pause 1 Play*/
+    int RandomClickNum;/*点击的次数决定播放方式 循环0 单曲 1 随机 2*/
 
     /*网络部分*/
     QNetworkAccessManager Manager;
-    QNetworkRequest Request;
     QNetworkReply *SerachReply;
     QNetworkReply *GetLinkReply;
-    QNetworkReply *CheckReply;
     QNetworkReply *LyricReply;
-
 
     QString SongUrl;
     QString Keyword;
@@ -88,8 +82,7 @@ private:
 
     QMultiMap<QString, QString> SuggestInfo;
     /*音乐播放*/
-    QMap<QString, QString> *WaitToPlay;
-    int NumInPlayList;
+    QMap<QString, QString> SongInfoList;
     QMediaPlayer *Player;
     QMediaPlaylist *PlayerList;
 };
