@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -20,8 +21,10 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <showplaylist.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -42,15 +45,23 @@ public:
     QHBoxLayout *horizontalLayout;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_2;
-    QListWidget *PlayList;
-    QSpacerItem *verticalSpacer_3;
-    QFrame *line_7;
-    QLabel *imagelabel;
+    ShowPlayList *PlayList;
+    QWidget *widget_5;
+    QGridLayout *gridLayout;
+    QLabel *SongName;
+    QLabel *SingerName;
+    QLabel *SongImage;
+    QFrame *line_2;
+    QFrame *line_3;
     QSpacerItem *horizontalSpacer;
     QFrame *line_6;
     QWidget *widget_4;
     QHBoxLayout *horizontalLayout_4;
-    QListWidget *suggestionlistWidget;
+    QStackedWidget *stackedWidget;
+    QWidget *serachpage;
+    QHBoxLayout *horizontalLayout_5;
+    QListWidget *SerachList;
+    QWidget *lyricpage;
     QSpacerItem *verticalSpacer;
     QFrame *line;
     QWidget *widget;
@@ -70,19 +81,23 @@ public:
     QPushButton *volum;
     QSpacerItem *horizontalSpacer_9;
     QSlider *volum_slider;
+    QSpacerItem *horizontalSpacer_11;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(730, 417);
+        MainWindow->setWindowModality(Qt::ApplicationModal);
+        MainWindow->resize(907, 482);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
         MainWindow->setSizePolicy(sizePolicy);
-        MainWindow->setMinimumSize(QSize(730, 417));
-        MainWindow->setMaximumSize(QSize(730, 417));
+        MainWindow->setMinimumSize(QSize(907, 482));
+        MainWindow->setMaximumSize(QSize(907, 482));
+        MainWindow->setAutoFillBackground(true);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -148,7 +163,7 @@ public:
         verticalLayout->addWidget(line_5);
 
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
+        horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(-1, 0, -1, 0);
         widget_2 = new QWidget(centralWidget);
@@ -158,43 +173,63 @@ public:
         sizePolicy3.setVerticalStretch(10);
         sizePolicy3.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
         widget_2->setSizePolicy(sizePolicy3);
+        widget_2->setAutoFillBackground(true);
         verticalLayout_2 = new QVBoxLayout(widget_2);
-        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setSpacing(0);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        PlayList = new QListWidget(widget_2);
+        PlayList = new ShowPlayList(widget_2);
         PlayList->setObjectName(QStringLiteral("PlayList"));
+        PlayList->setLineWidth(0);
 
         verticalLayout_2->addWidget(PlayList);
 
-        verticalSpacer_3 = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        widget_5 = new QWidget(widget_2);
+        widget_5->setObjectName(QStringLiteral("widget_5"));
+        widget_5->setMinimumSize(QSize(0, 80));
+        gridLayout = new QGridLayout(widget_5);
+        gridLayout->setSpacing(0);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        SongName = new QLabel(widget_5);
+        SongName->setObjectName(QStringLiteral("SongName"));
 
-        verticalLayout_2->addItem(verticalSpacer_3);
+        gridLayout->addWidget(SongName, 0, 2, 1, 1);
 
-        line_7 = new QFrame(widget_2);
-        line_7->setObjectName(QStringLiteral("line_7"));
-        line_7->setFrameShape(QFrame::HLine);
-        line_7->setFrameShadow(QFrame::Sunken);
+        SingerName = new QLabel(widget_5);
+        SingerName->setObjectName(QStringLiteral("SingerName"));
 
-        verticalLayout_2->addWidget(line_7);
+        gridLayout->addWidget(SingerName, 1, 2, 1, 1);
 
-        imagelabel = new QLabel(widget_2);
-        imagelabel->setObjectName(QStringLiteral("imagelabel"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(imagelabel->sizePolicy().hasHeightForWidth());
-        imagelabel->setSizePolicy(sizePolicy4);
-        imagelabel->setMinimumSize(QSize(0, 40));
-        imagelabel->setMaximumSize(QSize(16777215, 50));
+        SongImage = new QLabel(widget_5);
+        SongImage->setObjectName(QStringLiteral("SongImage"));
+        SongImage->setScaledContents(true);
 
-        verticalLayout_2->addWidget(imagelabel);
+        gridLayout->addWidget(SongImage, 0, 0, 2, 1);
+
+        line_2 = new QFrame(widget_5);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line_2, 0, 1, 1, 1);
+
+        line_3 = new QFrame(widget_5);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line_3, 1, 1, 1, 1);
+
+
+        verticalLayout_2->addWidget(widget_5);
 
 
         horizontalLayout->addWidget(widget_2);
 
-        horizontalSpacer = new QSpacerItem(0, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(13, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
@@ -207,21 +242,38 @@ public:
 
         widget_4 = new QWidget(centralWidget);
         widget_4->setObjectName(QStringLiteral("widget_4"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(39);
-        sizePolicy5.setVerticalStretch(10);
-        sizePolicy5.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
-        widget_4->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(39);
+        sizePolicy4.setVerticalStretch(10);
+        sizePolicy4.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
+        widget_4->setSizePolicy(sizePolicy4);
         widget_4->setAutoFillBackground(true);
         horizontalLayout_4 = new QHBoxLayout(widget_4);
-        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setSpacing(0);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        suggestionlistWidget = new QListWidget(widget_4);
-        suggestionlistWidget->setObjectName(QStringLiteral("suggestionlistWidget"));
-        suggestionlistWidget->setAutoFillBackground(true);
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        stackedWidget = new QStackedWidget(widget_4);
+        stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
+        serachpage = new QWidget();
+        serachpage->setObjectName(QStringLiteral("serachpage"));
+        horizontalLayout_5 = new QHBoxLayout(serachpage);
+        horizontalLayout_5->setSpacing(0);
+        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        SerachList = new QListWidget(serachpage);
+        SerachList->setObjectName(QStringLiteral("SerachList"));
+        SerachList->setLineWidth(0);
 
-        horizontalLayout_4->addWidget(suggestionlistWidget);
+        horizontalLayout_5->addWidget(SerachList);
+
+        stackedWidget->addWidget(serachpage);
+        lyricpage = new QWidget();
+        lyricpage->setObjectName(QStringLiteral("lyricpage"));
+        stackedWidget->addWidget(lyricpage);
+
+        horizontalLayout_4->addWidget(stackedWidget);
 
 
         horizontalLayout->addWidget(widget_4);
@@ -242,11 +294,11 @@ public:
 
         widget = new QWidget(centralWidget);
         widget->setObjectName(QStringLiteral("widget"));
-        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy6.setHorizontalStretch(50);
-        sizePolicy6.setVerticalStretch(10);
-        sizePolicy6.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(50);
+        sizePolicy5.setVerticalStretch(10);
+        sizePolicy5.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy5);
         widget->setMinimumSize(QSize(0, 10));
         widget->setMaximumSize(QSize(16777215, 60));
         widget->setAutoFillBackground(true);
@@ -254,6 +306,7 @@ public:
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         PreviousButton = new QPushButton(widget);
         PreviousButton->setObjectName(QStringLiteral("PreviousButton"));
         PreviousButton->setStyleSheet(QLatin1String("border-image:url(:/Images/Preious.png);\n"
@@ -280,6 +333,7 @@ public:
 
         timeSlider = new QSlider(widget);
         timeSlider->setObjectName(QStringLiteral("timeSlider"));
+        timeSlider->setStyleSheet(QStringLiteral("color:rgb(239, 41, 41);"));
         timeSlider->setOrientation(Qt::Horizontal);
 
         horizontalLayout_2->addWidget(timeSlider);
@@ -334,12 +388,29 @@ public:
 
         horizontalLayout_2->addWidget(volum_slider);
 
+        horizontalSpacer_11 = new QSpacerItem(0, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_11);
+
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setAutoFillBackground(true);
+        pushButton->setStyleSheet(QStringLiteral("border-image:url(:/Images/PlayList.png);"));
+        pushButton->setAutoDefault(true);
+        pushButton->setFlat(true);
+
+        horizontalLayout_2->addWidget(pushButton);
+
 
         verticalLayout->addWidget(widget);
 
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
+
+        stackedWidget->setCurrentIndex(0);
+        pushButton->setDefault(true);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -348,7 +419,9 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Music Player", nullptr));
         label_3->setText(QString());
-        imagelabel->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        SongName->setText(QApplication::translate("MainWindow", "SongName", nullptr));
+        SingerName->setText(QApplication::translate("MainWindow", "SingerName", nullptr));
+        SongImage->setText(QApplication::translate("MainWindow", "SongImage", nullptr));
         PreviousButton->setText(QString());
         PlayButton->setText(QString());
         NextButton->setText(QString());
@@ -356,6 +429,7 @@ public:
         loop_one_random->setText(QString());
         LyricPushButton->setText(QString());
         volum->setText(QString());
+        pushButton->setText(QString());
     } // retranslateUi
 
 };

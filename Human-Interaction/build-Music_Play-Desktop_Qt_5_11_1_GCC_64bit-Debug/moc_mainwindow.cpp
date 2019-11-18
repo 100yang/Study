@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[26];
-    char stringdata0[320];
+    QByteArrayData data[27];
+    char stringdata0[339];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,37 +38,38 @@ QT_MOC_LITERAL(3, 27, 15), // "AlreadyGetLyric"
 QT_MOC_LITERAL(4, 43, 17), // "AlreadyGetKeyword"
 QT_MOC_LITERAL(5, 61, 13), // "AlreadyToPlay"
 QT_MOC_LITERAL(6, 75, 20), // "AlreadyGetSuggestion"
-QT_MOC_LITERAL(7, 96, 9), // "IWantKnow"
-QT_MOC_LITERAL(8, 106, 10), // "Init_Reply"
-QT_MOC_LITERAL(9, 117, 23), // "GetSuggestionByKeywords"
-QT_MOC_LITERAL(10, 141, 7), // "keyword"
-QT_MOC_LITERAL(11, 149, 15), // "GetLinkBySongId"
-QT_MOC_LITERAL(12, 165, 6), // "SongId"
-QT_MOC_LITERAL(13, 172, 16), // "GetLyricBySongId"
-QT_MOC_LITERAL(14, 189, 18), // "AddMusicInPlayList"
-QT_MOC_LITERAL(15, 208, 8), // "SongInfo"
-QT_MOC_LITERAL(16, 217, 14), // "ShowSuggestion"
-QT_MOC_LITERAL(17, 232, 8), // "SongName"
-QT_MOC_LITERAL(18, 241, 10), // "SingerInfo"
-QT_MOC_LITERAL(19, 252, 13), // "GetSingerInfo"
-QT_MOC_LITERAL(20, 266, 5), // "array"
-QT_MOC_LITERAL(21, 272, 11), // "resolve_lrc"
-QT_MOC_LITERAL(22, 284, 2), // "ly"
-QT_MOC_LITERAL(23, 287, 10), // "UpdateTime"
-QT_MOC_LITERAL(24, 298, 4), // "time"
-QT_MOC_LITERAL(25, 303, 16) // "total_time_value"
+QT_MOC_LITERAL(7, 96, 10), // "Init_Reply"
+QT_MOC_LITERAL(8, 107, 19), // "GetSerachByKeywords"
+QT_MOC_LITERAL(9, 127, 7), // "keyword"
+QT_MOC_LITERAL(10, 135, 15), // "GetLinkBySongId"
+QT_MOC_LITERAL(11, 151, 6), // "SongId"
+QT_MOC_LITERAL(12, 158, 16), // "GetLyricBySongId"
+QT_MOC_LITERAL(13, 175, 18), // "AddMusicInPlayList"
+QT_MOC_LITERAL(14, 194, 8), // "SongInfo"
+QT_MOC_LITERAL(15, 203, 14), // "ShowSuggestion"
+QT_MOC_LITERAL(16, 218, 8), // "SongName"
+QT_MOC_LITERAL(17, 227, 22), // "QPair<QString,QString>"
+QT_MOC_LITERAL(18, 250, 10), // "SingerInfo"
+QT_MOC_LITERAL(19, 261, 13), // "GetSingerInfo"
+QT_MOC_LITERAL(20, 275, 5), // "array"
+QT_MOC_LITERAL(21, 281, 11), // "resolve_lrc"
+QT_MOC_LITERAL(22, 293, 2), // "ly"
+QT_MOC_LITERAL(23, 296, 10), // "UpdateTime"
+QT_MOC_LITERAL(24, 307, 4), // "time"
+QT_MOC_LITERAL(25, 312, 16), // "total_time_value"
+QT_MOC_LITERAL(26, 329, 9) // "ShowLyric"
 
     },
     "MainWindow\0AlreadyGetLink\0\0AlreadyGetLyric\0"
     "AlreadyGetKeyword\0AlreadyToPlay\0"
-    "AlreadyGetSuggestion\0IWantKnow\0"
-    "Init_Reply\0GetSuggestionByKeywords\0"
-    "keyword\0GetLinkBySongId\0SongId\0"
-    "GetLyricBySongId\0AddMusicInPlayList\0"
+    "AlreadyGetSuggestion\0Init_Reply\0"
+    "GetSerachByKeywords\0keyword\0GetLinkBySongId\0"
+    "SongId\0GetLyricBySongId\0AddMusicInPlayList\0"
     "SongInfo\0ShowSuggestion\0SongName\0"
-    "SingerInfo\0GetSingerInfo\0array\0"
-    "resolve_lrc\0ly\0UpdateTime\0time\0"
-    "total_time_value"
+    "QPair<QString,QString>\0SingerInfo\0"
+    "GetSingerInfo\0array\0resolve_lrc\0ly\0"
+    "UpdateTime\0time\0total_time_value\0"
+    "ShowLyric"
 };
 #undef QT_MOC_LITERAL
 
@@ -83,7 +84,7 @@ static const uint qt_meta_data_MainWindow[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       6,       // signalCount
+       5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   89,    2, 0x06 /* Public */,
@@ -91,21 +92,20 @@ static const uint qt_meta_data_MainWindow[] = {
        4,    0,   91,    2, 0x06 /* Public */,
        5,    0,   92,    2, 0x06 /* Public */,
        6,    0,   93,    2, 0x06 /* Public */,
-       7,    0,   94,    2, 0x06 /* Public */,
 
  // methods: name, argc, parameters, tag, flags
-       8,    0,   95,    2, 0x02 /* Public */,
-       9,    1,   96,    2, 0x02 /* Public */,
-      11,    1,   99,    2, 0x02 /* Public */,
-      13,    1,  102,    2, 0x02 /* Public */,
-      14,    2,  105,    2, 0x02 /* Public */,
-      16,    3,  110,    2, 0x02 /* Public */,
-      19,    1,  117,    2, 0x02 /* Public */,
-      21,    1,  120,    2, 0x02 /* Public */,
-      23,    2,  123,    2, 0x02 /* Public */,
+       7,    0,   94,    2, 0x02 /* Public */,
+       8,    1,   95,    2, 0x02 /* Public */,
+      10,    1,   98,    2, 0x02 /* Public */,
+      12,    1,  101,    2, 0x02 /* Public */,
+      13,    2,  104,    2, 0x02 /* Public */,
+      15,    3,  109,    2, 0x02 /* Public */,
+      19,    1,  116,    2, 0x02 /* Public */,
+      21,    1,  119,    2, 0x02 /* Public */,
+      23,    2,  122,    2, 0x02 /* Public */,
+      26,    0,  127,    2, 0x02 /* Public */,
 
  // signals: parameters
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -114,14 +114,15 @@ static const uint qt_meta_data_MainWindow[] = {
 
  // methods: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   10,
-    QMetaType::Void, QMetaType::QString,   12,
-    QMetaType::Void, QMetaType::QString,   12,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   15,   12,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,   17,   18,   12,
-    QMetaType::QString, QMetaType::QJsonArray,   20,
+    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void, QMetaType::QString,   11,
+    QMetaType::Void, QMetaType::QString,   11,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   14,   11,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 17, QMetaType::QString,   16,   18,   11,
+    0x80000000 | 17, QMetaType::QJsonArray,   20,
     QMetaType::Void, QMetaType::QString,   22,
     QMetaType::Void, QMetaType::LongLong, QMetaType::LongLong,   24,   25,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -137,17 +138,17 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->AlreadyGetKeyword(); break;
         case 3: _t->AlreadyToPlay(); break;
         case 4: _t->AlreadyGetSuggestion(); break;
-        case 5: _t->IWantKnow(); break;
-        case 6: _t->Init_Reply(); break;
-        case 7: _t->GetSuggestionByKeywords((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 8: _t->GetLinkBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 9: _t->GetLyricBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 10: _t->AddMusicInPlayList((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 11: _t->ShowSuggestion((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
-        case 12: { QString _r = _t->GetSingerInfo((*reinterpret_cast< QJsonArray(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
-        case 13: _t->resolve_lrc((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 14: _t->UpdateTime((*reinterpret_cast< qint64(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 5: _t->Init_Reply(); break;
+        case 6: _t->GetSerachByKeywords((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 7: _t->GetLinkBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 8: _t->GetLyricBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 9: _t->AddMusicInPlayList((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 10: _t->ShowSuggestion((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QPair<QString,QString>(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
+        case 11: { QPair<QString,QString> _r = _t->GetSingerInfo((*reinterpret_cast< QJsonArray(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QPair<QString,QString>*>(_a[0]) = std::move(_r); }  break;
+        case 12: _t->resolve_lrc((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 13: _t->UpdateTime((*reinterpret_cast< qint64(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 14: _t->ShowLyric(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -184,13 +185,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             using _t = void (MainWindow::*)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::AlreadyGetSuggestion)) {
                 *result = 4;
-                return;
-            }
-        }
-        {
-            using _t = void (MainWindow::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::IWantKnow)) {
-                *result = 5;
                 return;
             }
         }
@@ -261,12 +255,6 @@ void MainWindow::AlreadyToPlay()
 void MainWindow::AlreadyGetSuggestion()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
-}
-
-// SIGNAL 5
-void MainWindow::IWantKnow()
-{
-    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

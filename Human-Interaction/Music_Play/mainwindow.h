@@ -43,7 +43,7 @@ public:
      * @param keyword [description]
      */
     /*json 文件 请查看serachbykeywords.json*/
-    Q_INVOKABLE void GetSuggestionByKeywords(QString keyword);
+    Q_INVOKABLE void GetSerachByKeywords(QString keyword);
     /**
      * 通过id 得到歌曲的播放链接
      * @param SongId [description]
@@ -57,18 +57,22 @@ public:
     /*json 文件 请查看 GetLyricById.json*/
     Q_INVOKABLE void GetLyricBySongId(QString SongId);
     Q_INVOKABLE void AddMusicInPlayList(QString SongInfo, QString SongId);
-    Q_INVOKABLE void ShowSuggestion(QString SongName, QString SingerInfo, QString SongId);
-    Q_INVOKABLE QString GetSingerInfo(QJsonArray array);
+    Q_INVOKABLE void ShowSuggestion(QString SongName, QPair<QString,QString> SingerInfo, QString SongId);
+//    Q_INVOKABLE void ShowSuggestion(QString SongName, QString SingerInfo, QString SongId);
+    Q_INVOKABLE QPair<QString, QString> GetSingerInfo(QJsonArray array);
     Q_INVOKABLE void resolve_lrc(QString ly);
     Q_INVOKABLE void UpdateTime(qint64 time,qint64 total_time_value);
-//    Q_INVOKABLE QString GetSingerImage(QJsonArray array);
+    Q_INVOKABLE void ShowLyric();
+    void Test(QString SongId);
 signals :
     void AlreadyGetLink();
     void AlreadyGetLyric();
     void AlreadyGetKeyword ();
     void AlreadyToPlay();
     void AlreadyGetSuggestion();
-    void IWantKnow();
+//    void GetLinkAndLyric();
+public slots:
+//    void GetLinkReplyFinished(QNetworkReply *);
 private:
     Ui::MainWindow *ui;
     int PLayClickNum;/*0 Pause 1 Play*/
@@ -85,13 +89,16 @@ private:
     QString LyricString;
 
     QMultiMap<QString, QString> SuggestInfo;
-    /*音乐播放*/
+    /*歌词显示*/
     MyLyric *lrc;
+    /*歌曲和ID的映射*/
+    QMap<QString,QString> SongAndId;
     /*歌词和时间*/
     QMap<qint64,QString> LyricMap;
     /*歌曲ID对应的歌词*/
     QMap<QString,QString> SongLyric;
-    QMap<QString, QString> SongInfoList;
+    /*播放队列中的歌曲的信息  歌曲链接--歌曲名称 歌手 歌手图片*/
+    QMultiMap<QString, QString> SongInfoList;
     QMediaPlayer *Player;
     QMediaPlaylist *PlayerList;
 };

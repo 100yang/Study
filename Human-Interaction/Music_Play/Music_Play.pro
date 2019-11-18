@@ -26,14 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    MyLyric.cpp
+    MyLyric.cpp \
+    showplaylist.cpp
 
 HEADERS += \
         mainwindow.h \
-    MyLyric.h
+    MyLyric.h \
+    showplaylist.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    displaylyric.ui
 
 DISTFILES += \
     Main.qml

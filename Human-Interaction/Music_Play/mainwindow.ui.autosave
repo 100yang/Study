@@ -310,7 +310,7 @@
         <property name="autoFillBackground">
          <bool>true</bool>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <property name="spacing">
           <number>0</number>
          </property>

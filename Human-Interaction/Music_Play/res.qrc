@@ -39,5 +39,6 @@
         <file>Images/serach.png</file>
         <file>Images/lyric.png</file>
         <file>Images/Lyric_dark.png</file>
+        <file>Images/PlayList.png</file>
     </qresource>
 </RCC>

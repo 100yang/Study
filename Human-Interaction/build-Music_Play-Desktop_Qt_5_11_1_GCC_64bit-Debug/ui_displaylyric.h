@@ -12,47 +12,45 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
+#include "mylyric.h"
 
 QT_BEGIN_NAMESPACE
 
-class Ui_DisplayLyric
+class Ui_Form
 {
 public:
     QHBoxLayout *horizontalLayout;
-    QLabel *LyricLabel;
+    MyLyric *label;
 
-    void setupUi(QWidget *DisplayLyric)
+    void setupUi(QWidget *Form)
     {
-        if (DisplayLyric->objectName().isEmpty())
-            DisplayLyric->setObjectName(QStringLiteral("DisplayLyric"));
-        DisplayLyric->resize(527, 74);
-        DisplayLyric->setMinimumSize(QSize(527, 74));
-        DisplayLyric->setMaximumSize(QSize(527, 74));
-        horizontalLayout = new QHBoxLayout(DisplayLyric);
+        if (Form->objectName().isEmpty())
+            Form->setObjectName(QStringLiteral("Form"));
+        Form->resize(570, 112);
+        horizontalLayout = new QHBoxLayout(Form);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        LyricLabel = new QLabel(DisplayLyric);
-        LyricLabel->setObjectName(QStringLiteral("LyricLabel"));
+        label = new MyLyric(Form);
+        label->setObjectName(QStringLiteral("label"));
 
-        horizontalLayout->addWidget(LyricLabel);
+        horizontalLayout->addWidget(label);
 
 
-        retranslateUi(DisplayLyric);
+        retranslateUi(Form);
 
-        QMetaObject::connectSlotsByName(DisplayLyric);
+        QMetaObject::connectSlotsByName(Form);
     } // setupUi
 
-    void retranslateUi(QWidget *DisplayLyric)
+    void retranslateUi(QWidget *Form)
     {
-        DisplayLyric->setWindowTitle(QApplication::translate("DisplayLyric", "Form", nullptr));
-        LyricLabel->setText(QString());
+        Form->setWindowTitle(QApplication::translate("Form", "Form", nullptr));
+        label->setText(QApplication::translate("Form", "TextLabel", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class DisplayLyric: public Ui_DisplayLyric {};
+    class Form: public Ui_Form {};
 } // namespace Ui
 
 QT_END_NAMESPACE

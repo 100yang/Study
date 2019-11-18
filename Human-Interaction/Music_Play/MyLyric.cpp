@@ -12,7 +12,7 @@ MyLyric::MyLyric(QWidget *parent) :
 	//FramelessWindowHint为无边界的窗口
 	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
-	setText(tr("简易音乐播放器"));
+    setText(tr("你没有用我"));
 	// 固定显示区域大小
 	setMaximumSize(800, 60);
 	setMinimumSize(800, 60);

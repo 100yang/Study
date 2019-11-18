@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 	MainWindow w;
 	w.show();
 	a.exec ();
+//    SongAndId.clear();
 //	pro->close ();
 	return 0;
 }
