@@ -329,7 +329,7 @@
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="serachpage">
             <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -349,7 +349,7 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QListWidget" name="SerachList">
+              <widget class="ShowPlayList" name="SerachList">
                <property name="lineWidth">
                 <number>0</number>
                </property>

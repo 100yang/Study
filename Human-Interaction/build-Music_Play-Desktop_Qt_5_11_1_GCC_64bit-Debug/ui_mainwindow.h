@@ -56,7 +56,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QFrame *line_6;
     QWidget *widget_4;
-    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout_3;
     QStackedWidget *stackedWidget;
     QWidget *serachpage;
     QHBoxLayout *horizontalLayout_5;
@@ -248,11 +248,11 @@ public:
         sizePolicy4.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
         widget_4->setSizePolicy(sizePolicy4);
         widget_4->setAutoFillBackground(true);
-        horizontalLayout_4 = new QHBoxLayout(widget_4);
-        horizontalLayout_4->setSpacing(0);
-        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_3 = new QVBoxLayout(widget_4);
+        verticalLayout_3->setSpacing(0);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(widget_4);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         serachpage = new QWidget();
@@ -273,7 +273,7 @@ public:
         lyricpage->setObjectName(QStringLiteral("lyricpage"));
         stackedWidget->addWidget(lyricpage);
 
-        horizontalLayout_4->addWidget(stackedWidget);
+        verticalLayout_3->addWidget(stackedWidget);
 
 
         horizontalLayout->addWidget(widget_4);

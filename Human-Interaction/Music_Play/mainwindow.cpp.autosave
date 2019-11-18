@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	Init_Reply ();
     ui->setupUi(this);s
 	setWindowTitle ("Music Player");
-
+    
 	/*输入关键词进行搜索 并显示得到的搜索*/
 	connect (ui->serach_edit, &QLineEdit::editingFinished, [this]()mutable{
 		Keyword = ui->serach_edit->text ();

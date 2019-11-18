@@ -158,6 +158,9 @@
       <property name="styleSheet">
        <string notr="true">clor:rgb(0, 0, 0);</string>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -286,7 +289,7 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>13</width>
+          <width>0</width>
           <height>20</height>
          </size>
         </property>
@@ -310,7 +313,7 @@
         <property name="autoFillBackground">
          <bool>true</bool>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -328,8 +331,11 @@
          </property>
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
-           <property name="currentIndex">
+           <property name="lineWidth">
             <number>0</number>
+           </property>
+           <property name="currentIndex">
+            <number>1</number>
            </property>
            <widget class="QWidget" name="serachpage">
             <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -349,7 +355,7 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QListWidget" name="SerachList">
+              <widget class="ShowPlayList" name="SerachList">
                <property name="lineWidth">
                 <number>0</number>
                </property>
@@ -383,6 +389,9 @@
     </item>
     <item>
      <widget class="Line" name="line">
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
