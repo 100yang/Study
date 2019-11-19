@@ -13,7 +13,7 @@ public:
     void stop_lrc_mask();
 protected:
     void paintEvent(QPaintEvent *);
-    void mousePressEvent(QMouseEvent *ev);
+//    void mousePressEvent(QMouseEvent *ev);
     void mouseMoveEvent(QMouseEvent *ev);
 //    void contextMenuEvent(QContextMenuEvent *ev);
 

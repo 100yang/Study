@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "MyLyric.h"
+#include "playlistwidget.h"
 #include <QMainWindow>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
@@ -22,9 +23,11 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QJsonParseError>
+#include <QListWidget>
 #include <QEventLoop>
 #include <QStringList>
 #include <QMultiMap>
+#include <QListWidget>
 namespace Ui {
 class MainWindow;
 }
@@ -56,7 +59,8 @@ public:
      */
     /*json 文件 请查看 GetLyricById.json*/
     Q_INVOKABLE void GetLyricBySongId(QString SongId);
-    Q_INVOKABLE void AddMusicInPlayList(QString SongInfo, QString SongId);
+    Q_INVOKABLE void AddMusicInPlayList (QString SongInfo, QString SongId);
+//    Q_INVOKABLE void AddMusicInPlayList(QString SongInfo, QString SongId);
     Q_INVOKABLE void ShowSuggestion(QString SongName, QPair<QString,QString> SingerInfo, QString SongId);
 //    Q_INVOKABLE void ShowSuggestion(QString SongName, QString SingerInfo, QString SongId);
     Q_INVOKABLE QPair<QString, QString> GetSingerInfo(QJsonArray array);
@@ -64,6 +68,8 @@ public:
     Q_INVOKABLE void UpdateTime(qint64 time,qint64 total_time_value);
     Q_INVOKABLE void ShowLyric();
     void Test(QString SongId);
+    void StyleOption();
+//    Q_INVOKABLE void ShowPlayList();
 signals :
     void AlreadyGetLink();
     void AlreadyGetLyric();
@@ -78,6 +84,8 @@ private:
     int PLayClickNum;/*0 Pause 1 Play*/
     int RandomClickNum;/*点击的次数决定播放方式 循环0 单曲 1 随机 2*/
     int LyricNum;
+    int ListButtonClickNum = 0;
+    QListWidget *ListWidget;
     /*网络部分*/
     QNetworkAccessManager Manager;
     QNetworkReply *SerachReply;
@@ -91,6 +99,7 @@ private:
     QMultiMap<QString, QString> SuggestInfo;
     /*歌词显示*/
     MyLyric *lrc;
+    PlayListWidget *playlistwidget;
     /*歌曲和ID的映射*/
     QMap<QString,QString> SongAndId;
     /*歌词和时间*/

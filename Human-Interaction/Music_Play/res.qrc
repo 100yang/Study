@@ -40,5 +40,6 @@
         <file>Images/lyric.png</file>
         <file>Images/Lyric_dark.png</file>
         <file>Images/PlayList.png</file>
+        <file>Images/back1.jpg</file>
     </qresource>
 </RCC>

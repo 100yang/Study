@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "playlistwidget.h"
 #include "MyLyric.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
@@ -35,9 +36,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	/*变量的初始化以及界面的一些设置*/
 	Init_Reply ();
-    ui->setupUi(this);s
-	setWindowTitle ("Music Player");
-
+    ui->setupUi(this);
+    ListWidget = new QListWidget(playlistwidget);
+    QHBoxLayout *layout = new QHBoxLayout(playlistwidget);
+    layout->addWidget (ListWidget);
+    StyleOption ();
 	/*输入关键词进行搜索 并显示得到的搜索*/
 	connect (ui->serach_edit, &QLineEdit::editingFinished, [this]()mutable{
 		Keyword = ui->serach_edit->text ();
@@ -47,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->serachpage->show ();
 		GetSerachByKeywords (Keyword);
 	});
-	connect(ui->SerachList, &QListWidget::itemDoubleClicked, [this]()mutable{
+    connect(ui->SerachList, &QListWidget::itemDoubleClicked, [this]()mutable{
 		auto SongInfo = ui->SerachList->currentItem ()->text ();
 		auto row = SuggestInfo.find (SongInfo);
 		QString SongId = "" ;
@@ -58,8 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
 			SingerInfo.append (SongId);
 			row++;
 		}
-//        qDebug() << SongInfo << "   SongId== :" << SingerInfo.at (0);
-		AddMusicInPlayList (SongInfo, SingerInfo.at (0));
+        AddMusicInPlayList (SongInfo, SingerInfo.at (0));
 	});
 
 	/*将搜索得到的歌曲加入到播放队列*/
@@ -69,16 +71,33 @@ MainWindow::MainWindow(QWidget *parent) :
 		PlayerList->addMedia (QUrl(SongUrl));
 	});
 	connect(this, &MainWindow::AlreadyGetLyric, [this]()mutable{
-//		if (SongUrl == "") SongUrl = "11";
 		SongLyric.insert (SongUrl, LyricString);
 		qDebug() << "  歌曲链接：" << SongUrl;
 	});
     connect(Player,&QMediaPlayer::currentMediaChanged,[this]()mutable{
         ShowLyric ();
     });
-	/*将正在播放的歌曲的歌词进行匹配(时间)*/
-	/*当播放的歌曲改变时 进行新的歌词匹配*/
+    /*播放指定的歌曲*/
+    connect(ListWidget,&QListWidget::itemDoubleClicked,[this]()mutable{
+        auto NowIndex = ListWidget->currentIndex ().row ();
+        PlayerList->setCurrentIndex (NowIndex);
+        Player->play ();
+    });
 	/*各种图标的显示、变化*/
+
+    connect(ui->listButton,&QPushButton::clicked,[this]()mutable{
+        ListButtonClickNum = (ListButtonClickNum + 1)%2;
+        if(ListButtonClickNum & 1){
+//            playlistwidget = new PlayListWidget(this);
+//            ListWidget = new QListWidget(playlistwidget);
+//            QHBoxLayout *layout = new QHBoxLayout(playlistwidget);
+//            layout->addWidget (ListWidget);
+            playlistwidget->setModal (false);
+            playlistwidget->show ();
+        }
+        else
+            playlistwidget->hide ();
+    });
 	connect (Player, &QMediaPlayer::positionChanged, [this]()mutable{
 		qint64 tot = Player->duration ();
 		qint64 now = Player->position ();
@@ -193,8 +212,9 @@ void MainWindow::Init_Reply () {
 	SerachReply = nullptr;
 	GetLinkReply = nullptr;
 	LyricReply = nullptr;
+    ListWidget = nullptr;
 	Player = new QMediaPlayer;
-	PlayerList = new QMediaPlaylist;
+    PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;
 	PLayClickNum = 0;
 	LyricNum = 0;
@@ -202,6 +222,23 @@ void MainWindow::Init_Reply () {
 	SongUrl = "";
 	Keyword = "";
 	lrc = new MyLyric(this);
+    playlistwidget = new PlayListWidget(this);
+}
+void MainWindow::StyleOption (){
+    setWindowTitle ("Music Player");
+    QPalette pal(ui->centralWidget->palette());
+    //设置背景红色
+    pal.setColor(QPalette::Background, QColor(246, 32, 32));
+    ui->centralWidget->setAutoFillBackground(true);
+    ui->centralWidget->setPalette(pal);
+    ui->centralWidget->show();
+    ui->timeSlider->setStyleSheet (" QSlider::add-page:horizontal {"
+                                        "background: white;"
+                                    "}"
+
+                                    "QSlider::sub-page:horizontal {"
+                                        "background: pink;"
+                                    "}");
 }
 void MainWindow::ShowLyric () {
 	qDebug() << "进行歌词的匹配与显示";
@@ -343,6 +380,7 @@ void MainWindow::ShowSuggestion(QString SongName, QPair<QString, QString> Singer
 	auto SongInfo = SongName + "  " + SingerInfo.first;
 	Item->setText (SongInfo);
 	ui->SerachList->addItem (Item);
+
 	//SingerInfo -- SongId,SingerImage
 	/*这样SongId会在第一个*/
 	SuggestInfo.insert (SongInfo, SingerInfo.second);
@@ -350,30 +388,34 @@ void MainWindow::ShowSuggestion(QString SongName, QPair<QString, QString> Singer
 //	qDebug() << SongInfo << "  " << SongId;
 }
 void MainWindow::AddMusicInPlayList (QString SongInfo, QString SongId) {
-	qDebug() << "AddMusicInPlayList";
-	QListWidgetItem *item = new QListWidgetItem;
-	item->setText (SongInfo);
-	ui->PlayList->addItem (item);
-	auto val = SongInfo.split ("  ");
-//    qDebug()<<"加入的信息";
-	foreach (QString var, val) {
-		SongInfoList.insert (SongId, var);
-//        qDebug()<<var;//嚣张 en
-	}
-	auto row = SuggestInfo.find(SongInfo);
-	QStringList SingerInfo;
-	SingerInfo.clear ();
-	while (row != SuggestInfo.end () && row.key () == SongInfo) {
-		auto val = row.value ();
-		SingerInfo.append (val);
-		row++;
-	}
-	/*歌曲的Id -- 歌手图片 歌手信息 歌名*/
-	SongInfoList.insert (SongId, SingerInfo.at (1));
-	Test(SongId);
-	GetLinkBySongId (SongId);
+    qDebug() << "AddMusicInPlayList";
+//    QListWidgetItem *item = new QListWidgetItem;
+//    item->setText (SongInfo);
+//    ui->PlayList->addItem (item);
+    QListWidgetItem *item1 = new QListWidgetItem;
+    item1->setText (SongInfo);
+    ListWidget->addItem (item1);
 
-	GetLyricBySongId (SongId);
+
+    auto val = SongInfo.split ("  ");
+//    qDebug()<<"加入的信息";
+    foreach (QString var, val) {
+        SongInfoList.insert (SongId, var);
+//        qDebug()<<var;//嚣张 en
+    }
+    auto row = SuggestInfo.find(SongInfo);
+    QStringList SingerInfo;
+    SingerInfo.clear ();
+    while (row != SuggestInfo.end () && row.key () == SongInfo) {
+        auto val = row.value ();
+        SingerInfo.append (val);
+        row++;
+    }
+    /*歌曲的Id -- 歌手图片 歌手信息 歌名*/
+    SongInfoList.insert (SongId, SingerInfo.at (1));
+    Test(SongId);
+    GetLinkBySongId (SongId);
+    GetLyricBySongId (SongId);
 }
 void MainWindow::resolve_lrc(QString ly) {
 	LyricMap.clear();

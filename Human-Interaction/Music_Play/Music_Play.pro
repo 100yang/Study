@@ -27,16 +27,19 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     MyLyric.cpp \
-    showplaylist.cpp
+    showplaylist.cpp \
+    playlistwidget.cpp
 
 HEADERS += \
         mainwindow.h \
     MyLyric.h \
-    showplaylist.h
+    showplaylist.h \
+    playlistwidget.h
 
 FORMS += \
         mainwindow.ui \
-    displaylyric.ui
+    displaylyric.ui \
+    playlistwidget.ui
 
 DISTFILES += \
     Main.qml
