@@ -34,6 +34,10 @@
   <property name="windowTitle">
    <string>Music Player</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/Images/s.jpg</normaloff>:/Images/s.jpg</iconset>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
@@ -193,6 +197,9 @@
        <number>0</number>
       </property>
       <item>
+       <widget class="QWidget" name="widget" native="true"/>
+      </item>
+      <item>
        <widget class="QWidget" name="widget_2" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -228,33 +235,36 @@
             </size>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
             <item>
              <widget class="QLabel" name="label">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>推荐</string>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+             <widget class="QPushButton" name="pushButton">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
               </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>56</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>TextLabel</string>
+               <string>      发现音乐</string>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/Images/music.png</normaloff>:/Images/music.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -263,18 +273,37 @@
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
-                <height>56</height>
+                <height>0</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>       发现视频</string>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/Images/mv.png</normaloff>:/Images/mv.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="autoRepeat">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -283,23 +312,49 @@
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
-                <height>56</height>
+                <height>0</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="label_2">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>我的音乐</string>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_6">
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="text">
+               <string>我喜欢的音乐</string>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/Images/lovemusic.png</normaloff>:/Images/lovemusic.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -308,14 +363,34 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>0</width>
+                <width>20</width>
                 <height>0</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="text">
+               <string>     本地音乐</string>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/Images/localmusic.png</normaloff>:/Images/localmusic.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
              <layout class="QGridLayout" name="gridLayout">
+              <property name="topMargin">
+               <number>0</number>
+              </property>
               <property name="spacing">
                <number>0</number>
               </property>
@@ -344,6 +419,22 @@
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>

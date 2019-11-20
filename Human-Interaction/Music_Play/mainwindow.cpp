@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	/*变量的初始化以及界面的一些设置*/
 	Init_Reply ();
     ui->setupUi(this);
+//    setWindowIcon (":/Images/s.jpg");
     ListWidget = new QListWidget(playlistwidget);
     QHBoxLayout *layout = new QHBoxLayout(playlistwidget);
     layout->addWidget (ListWidget);
@@ -52,16 +53,17 @@ MainWindow::MainWindow(QWidget *parent) :
 	});
     connect(ui->SerachList, &QListWidget::itemDoubleClicked, [this]()mutable{
 		auto SongInfo = ui->SerachList->currentItem ()->text ();
-		auto row = SuggestInfo.find (SongInfo);
-		QString SongId = "" ;
-		QStringList SingerInfo;
-		SingerInfo.clear ();
-		while (row != SuggestInfo.end () && row.key () == SongInfo) {
-			SongId = row.value ();
-			SingerInfo.append (SongId);
-			row++;
-		}
-        AddMusicInPlayList (SongInfo, SingerInfo.at (0));
+        auto row = SuggestInfo.value (SongInfo);
+
+//		QString SongId = "" ;
+//		QStringList SingerInfo;
+//		SingerInfo.clear ();
+//		while (row != SuggestInfo.end () && row.key () == SongInfo) {
+//			SongId = row.value ();
+//			SingerInfo.append (SongId);
+//			row++;
+//		}
+        AddMusicInPlayList (SongInfo, row.at (0));
 	});
 
 	/*将搜索得到的歌曲加入到播放队列*/
@@ -250,27 +252,27 @@ void MainWindow::ShowLyric () {
 	resolve_lrc (LyricStr);
 	auto SongId = SongAndId.value (NowUrlStr);
 	if (SongId != "") {
-		auto Val = SongInfoList.find(SongId);
-		QStringList List;
-		List.clear ();
-		while (Val != SongInfoList.end () && Val.key () == SongId) {
-			List.append (Val.value ());
-			++Val;
-		}
-		ui->SongName->setText (List.at (2));
-		ui->SingerName->setText (List.at (1));
+        auto Val = SongInfoList.value(SongId);
+//		QStringList List;
+//		List.clear ();
+//		while (Val != SongInfoList.end () && Val.key () == SongId) {
+//			List.append (Val.value ());
+//			++Val;
+//		}
+        ui->SongName->setText (Val.at (0));
+        ui->SingerName->setText (Val.at (1));
 //		QPixmap p;
 //		p.load (List.at (0));
-        QUrl url = QUrl(List.at (0));
-        QEventLoop loop;
-        QNetworkAccessManager *manager = new QNetworkAccessManager;;
-        QNetworkReply *reply = manager->get(QNetworkRequest(url));
-        connect (reply,&QNetworkReply::finished,&loop,&QEventLoop::quit);
-        loop.exec ();
-        auto array = reply->readAll ();
-        QPixmap p;
-        p.loadFromData (array);
-        ui->SongImage->setPixmap (p);
+//        QUrl url = QUrl(List.at (0));
+//        QEventLoop loop;
+//        QNetworkAccessManager *manager = new QNetworkAccessManager;;
+//        QNetworkReply *reply = manager->get(QNetworkRequest(url));
+//        connect (reply,&QNetworkReply::finished,&loop,&QEventLoop::quit);
+//        loop.exec ();
+//        auto array = reply->readAll ();
+//        QPixmap p;
+//        p.loadFromData (array);
+//        ui->SongImage->setPixmap (p);
 	}
 }
 QPair<QString, QString> MainWindow::GetSingerInfo(QJsonArray array) {
@@ -383,8 +385,13 @@ void MainWindow::ShowSuggestion(QString SongName, QPair<QString, QString> Singer
 
 	//SingerInfo -- SongId,SingerImage
 	/*这样SongId会在第一个*/
-	SuggestInfo.insert (SongInfo, SingerInfo.second);
-	SuggestInfo.insert (SongInfo, SongId);
+    QVector<QString> v;
+    v.clear ();
+    v.push_back (SongId);
+    v.push_back (SingerInfo.second);
+    SuggestInfo.insert (SongInfo,v);
+//	SuggestInfo.insert (SongInfo, SingerInfo.second);
+//	SuggestInfo.insert (SongInfo, SongId);
 //	qDebug() << SongInfo << "  " << SongId;
 }
 void MainWindow::AddMusicInPlayList (QString SongInfo, QString SongId) {
@@ -395,24 +402,29 @@ void MainWindow::AddMusicInPlayList (QString SongInfo, QString SongId) {
     QListWidgetItem *item1 = new QListWidgetItem;
     item1->setText (SongInfo);
     ListWidget->addItem (item1);
-
-
+    QVector<QString> v;
+    v.clear ();
     auto val = SongInfo.split ("  ");
 //    qDebug()<<"加入的信息";
     foreach (QString var, val) {
-        SongInfoList.insert (SongId, var);
+        v.push_back (var);
+//        SongInfoList.insert (SongId, var);
 //        qDebug()<<var;//嚣张 en
     }
-    auto row = SuggestInfo.find(SongInfo);
-    QStringList SingerInfo;
-    SingerInfo.clear ();
-    while (row != SuggestInfo.end () && row.key () == SongInfo) {
-        auto val = row.value ();
-        SingerInfo.append (val);
-        row++;
-    }
+    auto val1 = SuggestInfo.value(SongInfo);
+    v.push_back (val1.at (1));
+//    QStringList SingerInfo;
+//    SingerInfo.clear ();
+//    while (row != SuggestInfo.end () && row.key () == SongInfo) {
+//        auto val = row.value ();
+//        SingerInfo.append (val);
+//        row++;
+//    }
     /*歌曲的Id -- 歌手图片 歌手信息 歌名*/
-    SongInfoList.insert (SongId, SingerInfo.at (1));
+    SongInfoList.insert (SongId,v);
+    for(int i = 0; i < v.size (); ++i){
+        qDebug()<<v.at (i);
+    }
     Test(SongId);
     GetLinkBySongId (SongId);
     GetLyricBySongId (SongId);
@@ -539,10 +551,9 @@ void MainWindow::UpdateTime(qint64 time, qint64 total_time_value) {
 	}
 }
 void MainWindow::Test (QString SongId) {
-	auto it = SongInfoList.find(SongId);
+    auto it = SongInfoList.value (SongId);
 	qDebug() << "当前歌曲的ID" << SongId;
-	while (it != SongInfoList.end () && it.key () == SongId) {
-		qDebug() << it.value ();
-		++it;
-	}
+    for(int i = 0; i < it.size (); ++i){
+        qDebug()<<it.at (i);
+    }
 }

@@ -41,5 +41,12 @@
         <file>Images/Lyric_dark.png</file>
         <file>Images/PlayList.png</file>
         <file>Images/back1.jpg</file>
+        <file>Images/s.jpg</file>
+        <file>Images/mv.png</file>
+        <file>Images/music.png</file>
+        <file>Images/nextpage.png</file>
+        <file>Images/prepage.png</file>
+        <file>Images/lovemusic.png</file>
+        <file>Images/localmusic.png</file>
     </qresource>
 </RCC>

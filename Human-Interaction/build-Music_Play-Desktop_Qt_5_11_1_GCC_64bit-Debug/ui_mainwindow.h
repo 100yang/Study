@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
@@ -42,16 +43,31 @@ public:
     QSpacerItem *verticalSpacer_2;
     QFrame *line_5;
     QHBoxLayout *horizontalLayout;
+    QWidget *widget;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_2;
-    ShowPlayList *PlayList;
     QWidget *widget_5;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *findimage;
+    QLabel *findtext;
+    QSpacerItem *verticalSpacer_3;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_2;
+    QLabel *label;
+    QSpacerItem *verticalSpacer_4;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *label_8;
+    QLabel *label_9;
+    QSpacerItem *verticalSpacer_5;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *label_10;
+    QLabel *label_11;
+    QSpacerItem *verticalSpacer_6;
     QGridLayout *gridLayout;
-    QLabel *SongName;
-    QLabel *SingerName;
     QLabel *SongImage;
-    QFrame *line_2;
-    QFrame *line_3;
+    QLabel *SingerName;
+    QLabel *SongName;
     QSpacerItem *horizontalSpacer;
     QFrame *line_6;
     QWidget *widget_4;
@@ -96,6 +112,9 @@ public:
         MainWindow->setSizePolicy(sizePolicy);
         MainWindow->setMinimumSize(QSize(907, 482));
         MainWindow->setMaximumSize(QSize(907, 482));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/Images/s.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         MainWindow->setAutoFillBackground(false);
         MainWindow->setStyleSheet(QStringLiteral("border-color:rgb(204, 0, 0);"));
         centralWidget = new QWidget(MainWindow);
@@ -167,6 +186,11 @@ public:
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(-1, 0, -1, 0);
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+
+        horizontalLayout->addWidget(widget);
+
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -180,49 +204,123 @@ public:
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        PlayList = new ShowPlayList(widget_2);
-        PlayList->setObjectName(QStringLiteral("PlayList"));
-        PlayList->setLineWidth(0);
-
-        verticalLayout_2->addWidget(PlayList);
-
         widget_5 = new QWidget(widget_2);
         widget_5->setObjectName(QStringLiteral("widget_5"));
         widget_5->setMinimumSize(QSize(0, 80));
-        gridLayout = new QGridLayout(widget_5);
+        verticalLayout_3 = new QVBoxLayout(widget_5);
+        verticalLayout_3->setSpacing(0);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        findimage = new QLabel(widget_5);
+        findimage->setObjectName(QStringLiteral("findimage"));
+        findimage->setMinimumSize(QSize(79, 38));
+        findimage->setMaximumSize(QSize(79, 38));
+        findimage->setAutoFillBackground(true);
+        findimage->setStyleSheet(QStringLiteral(""));
+        findimage->setPixmap(QPixmap(QString::fromUtf8(":/Images/music.png")));
+        findimage->setScaledContents(true);
+
+        horizontalLayout_6->addWidget(findimage);
+
+        findtext = new QLabel(widget_5);
+        findtext->setObjectName(QStringLiteral("findtext"));
+
+        horizontalLayout_6->addWidget(findtext);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_6);
+
+        verticalSpacer_3 = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_3->addItem(verticalSpacer_3);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        label_2 = new QLabel(widget_5);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/Images/mv.png")));
+        label_2->setScaledContents(true);
+
+        horizontalLayout_7->addWidget(label_2);
+
+        label = new QLabel(widget_5);
+        label->setObjectName(QStringLiteral("label"));
+
+        horizontalLayout_7->addWidget(label);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_7);
+
+        verticalSpacer_4 = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_3->addItem(verticalSpacer_4);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        label_8 = new QLabel(widget_5);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        horizontalLayout_8->addWidget(label_8);
+
+        label_9 = new QLabel(widget_5);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        horizontalLayout_8->addWidget(label_9);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_8);
+
+        verticalSpacer_5 = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_3->addItem(verticalSpacer_5);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        label_10 = new QLabel(widget_5);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        horizontalLayout_9->addWidget(label_10);
+
+        label_11 = new QLabel(widget_5);
+        label_11->setObjectName(QStringLiteral("label_11"));
+
+        horizontalLayout_9->addWidget(label_11);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_9);
+
+        verticalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_3->addItem(verticalSpacer_6);
+
+        gridLayout = new QGridLayout();
         gridLayout->setSpacing(0);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        SongName = new QLabel(widget_5);
-        SongName->setObjectName(QStringLiteral("SongName"));
-
-        gridLayout->addWidget(SongName, 0, 2, 1, 1);
-
-        SingerName = new QLabel(widget_5);
-        SingerName->setObjectName(QStringLiteral("SingerName"));
-
-        gridLayout->addWidget(SingerName, 1, 2, 1, 1);
-
         SongImage = new QLabel(widget_5);
         SongImage->setObjectName(QStringLiteral("SongImage"));
         SongImage->setScaledContents(true);
 
-        gridLayout->addWidget(SongImage, 0, 0, 2, 1);
+        gridLayout->addWidget(SongImage, 0, 0, 3, 1);
 
-        line_2 = new QFrame(widget_5);
-        line_2->setObjectName(QStringLiteral("line_2"));
-        line_2->setFrameShape(QFrame::VLine);
-        line_2->setFrameShadow(QFrame::Sunken);
+        SingerName = new QLabel(widget_5);
+        SingerName->setObjectName(QStringLiteral("SingerName"));
 
-        gridLayout->addWidget(line_2, 0, 1, 1, 1);
+        gridLayout->addWidget(SingerName, 2, 1, 1, 1);
 
-        line_3 = new QFrame(widget_5);
-        line_3->setObjectName(QStringLiteral("line_3"));
-        line_3->setFrameShape(QFrame::VLine);
-        line_3->setFrameShadow(QFrame::Sunken);
+        SongName = new QLabel(widget_5);
+        SongName->setObjectName(QStringLiteral("SongName"));
 
-        gridLayout->addWidget(line_3, 1, 1, 1, 1);
+        gridLayout->addWidget(SongName, 0, 1, 1, 1);
+
+
+        verticalLayout_3->addLayout(gridLayout);
 
 
         verticalLayout_2->addWidget(widget_5);
@@ -424,9 +522,17 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Music Player", nullptr));
         label_3->setText(QString());
-        SongName->setText(QApplication::translate("MainWindow", "SongName", nullptr));
-        SingerName->setText(QApplication::translate("MainWindow", "SingerName", nullptr));
+        findimage->setText(QString());
+        findtext->setText(QApplication::translate("MainWindow", "\345\217\221\347\216\260\351\237\263\344\271\220", nullptr));
+        label_2->setText(QString());
+        label->setText(QApplication::translate("MainWindow", "mv", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_9->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_11->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         SongImage->setText(QApplication::translate("MainWindow", "SongImage", nullptr));
+        SingerName->setText(QApplication::translate("MainWindow", "SingerName", nullptr));
+        SongName->setText(QApplication::translate("MainWindow", "SongName", nullptr));
         PreviousButton->setText(QString());
         PlayButton->setText(QString());
         NextButton->setText(QString());

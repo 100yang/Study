@@ -28,21 +28,25 @@ SOURCES += \
         mainwindow.cpp \
     MyLyric.cpp \
     showplaylist.cpp \
-    playlistwidget.cpp
+    playlistwidget.cpp \
+    displayresult.cpp
 
 HEADERS += \
         mainwindow.h \
     MyLyric.h \
     showplaylist.h \
-    playlistwidget.h
+    playlistwidget.h \
+    displayresult.h
 
 FORMS += \
         mainwindow.ui \
     displaylyric.ui \
-    playlistwidget.ui
+    playlistwidget.ui \
+    displayresult.ui
 
 DISTFILES += \
-    Main.qml
+    Main.qml \
+    style.qss
 
 RESOURCES += \
     res.qrc

@@ -95,8 +95,8 @@ private:
     QString SongUrl;
     QString Keyword;
     QString LyricString;
-
-    QMultiMap<QString, QString> SuggestInfo;
+    QMap<QString,QVector<QString> > SuggestInfo;
+//    QMultiMap<QString, QString> SuggestInfo;
     /*歌词显示*/
     MyLyric *lrc;
     PlayListWidget *playlistwidget;
@@ -107,7 +107,8 @@ private:
     /*歌曲ID对应的歌词*/
     QMap<QString,QString> SongLyric;
     /*播放队列中的歌曲的信息  歌曲链接--歌曲名称 歌手 歌手图片*/
-    QMultiMap<QString, QString> SongInfoList;
+    QMap<QString,QVector<QString> > SongInfoList;
+//    QMultiMap<QString, QString> SongInfoList;
     QMediaPlayer *Player;
     QMediaPlaylist *PlayerList;
 };
