@@ -14,7 +14,7 @@ class LocalMusicWidget : public QWidget
 public:
     explicit LocalMusicWidget(QWidget *parent = 0);
     ~LocalMusicWidget();
-
+    void Add (QVector<QString> v);
 private:
     Ui::LocalMusicWidget *ui;
 };

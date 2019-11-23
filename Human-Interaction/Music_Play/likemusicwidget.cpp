@@ -9,6 +9,7 @@ LikeMusicWidget::LikeMusicWidget(QWidget *parent) :
     /*整行选择*/
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//只读
+
 }
 
 LikeMusicWidget::~LikeMusicWidget()
