@@ -48,5 +48,9 @@
         <file>Images/prepage.png</file>
         <file>Images/lovemusic.png</file>
         <file>Images/localmusic.png</file>
+        <file>Images/close.png</file>
+        <file>Images/minsize.png</file>
+        <file>Images/download.png</file>
+        <file>Images/fulllove.png</file>
     </qresource>
 </RCC>

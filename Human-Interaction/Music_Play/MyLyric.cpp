@@ -85,11 +85,11 @@ void MyLyric::paintEvent(QPaintEvent *)
 }
 
 //左击操作
-//void MyLyric::mousePressEvent(QMouseEvent *event)
-//{
-//	if (event->button() == Qt::LeftButton)
-//		offset = event->globalPos() - frameGeometry().topLeft();
-//}
+void MyLyric::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton)
+        offset = event->globalPos() - frameGeometry().topLeft();
+}
 
 
 void MyLyric::mouseMoveEvent(QMouseEvent *event)
@@ -100,7 +100,7 @@ void MyLyric::mouseMoveEvent(QMouseEvent *event)
 	if (event->buttons() & Qt::LeftButton) {
 		setCursor(Qt::PointingHandCursor);
 		//实现移动操作
-		move(event->globalPos() - offset);
+        move(event->globalPos()-offset);
 	}
 }
 

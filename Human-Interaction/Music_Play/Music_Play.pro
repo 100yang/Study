@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network multimedia
+QT       += core gui network multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,20 +29,28 @@ SOURCES += \
     MyLyric.cpp \
     showplaylist.cpp \
     playlistwidget.cpp \
-    displayresult.cpp
+    displayresult.cpp \
+    videoplay.cpp \
+    likemusicwidget.cpp \
+    localmusicwidget.cpp
 
 HEADERS += \
         mainwindow.h \
     MyLyric.h \
     showplaylist.h \
     playlistwidget.h \
-    displayresult.h
+    displayresult.h \
+    videoplay.h \
+    likemusicwidget.h \
+    localmusicwidget.h
 
 FORMS += \
         mainwindow.ui \
-    displaylyric.ui \
+    displayresult.ui \
+    videoplay.ui \
     playlistwidget.ui \
-    displayresult.ui
+    likemusicwidget.ui \
+    localmusicwidget.ui
 
 DISTFILES += \
     Main.qml \

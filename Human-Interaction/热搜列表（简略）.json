@@ -1,0 +1,18 @@
+{	"code":200,
+	"result":
+	{
+		"hots":
+		[
+			{"first":"Love poem","second":1,"third":null,"iconType":1},
+			{"first":"尤长靖连名带姓","second":1,"third":null,"iconType":1},
+			{"first":"Taylor Swift新歌","second":1,"third":null,"iconType":1},
+			{"first":"董又霖比较幸福","second":1,"third":null,"iconType":0},
+			{"first":"重生","second":1,"third":null,"iconType":1},
+			{"first":"吴青峰新歌","second":1,"third":null,"iconType":1},
+			{"first":"华晨宇新歌","second":1,"third":null,"iconType":1},
+			{"first":"单身快乐","second":1,"third":null,"iconType":1},
+			{"first":"徐秉龙我可以","second":1,"third":null,"iconType":0},
+			{"first":"外婆桥","second":1,"third":null,"iconType":0}
+		]
+	}
+}

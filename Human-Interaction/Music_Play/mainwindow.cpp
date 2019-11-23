@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "playlistwidget.h"
+#include "likemusicwidget.h"
+#include "localmusicwidget.h"
 #include "MyLyric.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
@@ -25,49 +27,61 @@
 #include <QEventLoop>
 #include <QStringList>
 #include <QTextEdit>
+#include <QEvent>
 #include <QDialog>
-const QString ApiOfSerachByKeyword = "http://localhost:3000/search?keywords=%1&type=1&limit=30";
+#include <QTableWidget>
+#include <QHeaderView>
+const QString ApiOfSerachByKeyword = "http://localhost:3000/search?keywords=%1&offset=%2";
 const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 const QString ApiOfGetLyricById = "http://localhost:3000/lyric?id=%1";
 const QString ApiOfCheckMusic = "http://localhost:3000/check/music?id=%1";
+const QString APiOfGetHotSerach = "http://localhost:3000/search/hot";
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
 {
 	/*变量的初始化以及界面的一些设置*/
-	Init_Reply ();
-    ui->setupUi(this);
-//    setWindowIcon (":/Images/s.jpg");
-    ListWidget = new QListWidget(playlistwidget);
-    QHBoxLayout *layout = new QHBoxLayout(playlistwidget);
-    layout->addWidget (ListWidget);
-    StyleOption ();
+	ui->setupUi(this);
+    Init_Reply ();
+
+    AddListen ();/*加入监听*/
+    /*QDialog的一个播放列表*/
+	ListWidget = new QListWidget(playlistwidget);
+	QHBoxLayout *layout = new QHBoxLayout(playlistwidget);
+	layout->addWidget (ListWidget);
+	StyleOption ();
+
 	/*输入关键词进行搜索 并显示得到的搜索*/
 	connect (ui->serach_edit, &QLineEdit::editingFinished, [this]()mutable{
 		Keyword = ui->serach_edit->text ();
-		emit AlreadyGetKeyword ();
+        emit AlreadyGetKeyword ();
+        /*最好是按两次搜索*/
+        qDebug()<<"AlreadyGetKeyword";
 	});
 	connect (this, &MainWindow::AlreadyGetKeyword, [this]()mutable{
-        ui->serachpage->show ();
-		GetSerachByKeywords (Keyword);
+		if (Keyword != "") {
+            ui->stackedWidget->show();
+            ui->ToPageWidget->show ();
+            if(!SerachResultInfo.isEmpty ()) SerachResultInfo.clear ();
+            for(int i = 0; i < 3; ++i){
+                GetSerachByKeywords (Keyword,i);
+            }
+		} else{
+
+		}
 	});
-    connect(ui->SerachList, &QListWidget::itemDoubleClicked, [this]()mutable{
-		auto SongInfo = ui->SerachList->currentItem ()->text ();
-        auto row = SuggestInfo.value (SongInfo);
-
-//		QString SongId = "" ;
-//		QStringList SingerInfo;
-//		SingerInfo.clear ();
-//		while (row != SuggestInfo.end () && row.key () == SongInfo) {
-//			SongId = row.value ();
-//			SingerInfo.append (SongId);
-//			row++;
-//		}
-        AddMusicInPlayList (SongInfo, row.at (0));
-	});
-
-	/*将搜索得到的歌曲加入到播放队列*/
-
+    connect(ui->page0,&DisplayResult::AlreadGetSongId,[this]()mutable{
+        auto SongInfo = ui->page0->SongName + "  "+ ui->page0->SingerName;
+        AddMusicInPlayList (SongInfo,ui->page0->SongId);
+    });
+    connect(ui->page1,&DisplayResult::AlreadGetSongId,[this]()mutable{
+        auto SongInfo = ui->page1->SongName + "  "+ ui->page1->SingerName;
+        AddMusicInPlayList (SongInfo,ui->page1->SongId);
+    });
+    connect(ui->page2,&DisplayResult::AlreadGetSongId,[this]()mutable{
+        auto SongInfo = ui->page2->SongName + "  "+ ui->page2->SingerName;
+        AddMusicInPlayList (SongInfo,ui->page2->SongId);
+    });
 	connect (this, &MainWindow::AlreadyGetLink, [this]()mutable{
 		qDebug() << "加入播放队列的歌曲的链接：" << SongUrl;
 		PlayerList->addMedia (QUrl(SongUrl));
@@ -76,36 +90,71 @@ MainWindow::MainWindow(QWidget *parent) :
 		SongLyric.insert (SongUrl, LyricString);
 		qDebug() << "  歌曲链接：" << SongUrl;
 	});
-    connect(Player,&QMediaPlayer::currentMediaChanged,[this]()mutable{
+    connect(ui->likemusic,&QPushButton::clicked,[this]()mutable{
+        ui->stackedWidget->hide();
+        ui->ToPageWidget->hide ();
+        LikeMusicWidget *w = new LikeMusicWidget(ui->SerachResultBase);
+        w->show ();
+    });
+    connect(ui->localmusic,&QPushButton::clicked,[this]()mutable{
+        ui->ToPageWidget->hide ();
+        ui->stackedWidget->hide ();
+        LocalMusicWidget *w = new LocalMusicWidget;
+    });
+
+	/*播放指定的歌曲*/
+	connect(ListWidget, &QListWidget::itemDoubleClicked, [this]()mutable{
+		auto NowIndex = ListWidget->currentIndex ().row ();
+		PlayerList->setCurrentIndex (NowIndex);
+		Player->play ();
+	});
+    connect(Player, &QMediaPlayer::currentMediaChanged, [this]()mutable{
         ShowLyric ();
     });
-    /*播放指定的歌曲*/
-    connect(ListWidget,&QListWidget::itemDoubleClicked,[this]()mutable{
-        auto NowIndex = ListWidget->currentIndex ().row ();
-        PlayerList->setCurrentIndex (NowIndex);
-        Player->play ();
-    });
 	/*各种图标的显示、变化*/
-
-    connect(ui->listButton,&QPushButton::clicked,[this]()mutable{
-        ListButtonClickNum = (ListButtonClickNum + 1)%2;
-        if(ListButtonClickNum & 1){
-//            playlistwidget = new PlayListWidget(this);
-//            ListWidget = new QListWidget(playlistwidget);
-//            QHBoxLayout *layout = new QHBoxLayout(playlistwidget);
-//            layout->addWidget (ListWidget);
-            playlistwidget->setModal (false);
-            playlistwidget->show ();
+	connect(ui->nextpagebtn, &QPushButton::clicked, [this]()mutable{
+        auto NowIndex = ui->stackedWidget->currentIndex ();
+        NowIndex = (NowIndex >= ui->stackedWidget->count () - 1) ? ui->stackedWidget->count ()-1 : NowIndex + 1;
+        ui->stackedWidget->setCurrentIndex (NowIndex);
+        if(NowIndex == ui->stackedWidget->count ()-1){
+            ui->nextpagebtn->setDisabled (true);
         }
-        else
-            playlistwidget->hide ();
+        qDebug()<<"总页面"<<ui->stackedWidget->count ();
+        qDebug() << "当前的页面为:" << NowIndex+1;
+        ui->pagelabel->setText (QString::number (NowIndex+1));
     });
+	connect(ui->prepagebtn, &QPushButton::clicked, [this]()mutable{
+		auto NowIndex = ui->stackedWidget->currentIndex ();
+        NowIndex = (NowIndex  <= 0) ? 0 : NowIndex - 1;
+		ui->stackedWidget->setCurrentIndex (NowIndex);
+        if(NowIndex == 0){
+            ui->prepagebtn->setDisabled (true);
+        }
+        qDebug()<<"总页面"<<ui->stackedWidget->count ();
+        qDebug() << "当前的页面为:" << NowIndex+1;
+        ui->pagelabel->setText (QString::number (NowIndex+1));
+	});
+	connect(ui->listButton, &QPushButton::clicked, [this]()mutable{
+		ListButtonClickNum = (ListButtonClickNum + 1) % 2;
+		if (ListButtonClickNum & 1) {
+			playlistwidget->setModal (false);
+			playlistwidget->show ();
+		}
+		else
+			playlistwidget->hide ();
+	});
 	connect (Player, &QMediaPlayer::positionChanged, [this]()mutable{
 		qint64 tot = Player->duration ();
 		qint64 now = Player->position ();
 		ui->timeSlider->setMaximum (tot);
 		ui->timeSlider->setValue (now);
 		UpdateTime (now, tot);
+        if(now == tot){
+            ui->PlayButton->setStyleSheet ("QPushButton{"
+            "border-image:url(:/Images/play.png);"
+            "}");
+            Player->pause ();
+        }
 	});
 	connect(ui->timeSlider, &QSlider::sliderMoved, [this]()mutable{
 		qint64 tot = Player->duration ();
@@ -148,7 +197,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	});
 	connect (ui->NextButton, &QPushButton::clicked, [this]()mutable{
 		PlayerList->setCurrentIndex (PlayerList->nextIndex ());
-        Player->play ();
+		Player->play ();
 		ui->PlayButton->setStyleSheet ("QPushButton{"
 		"border-image:url(:/Images/pause.png);"
 		"}");
@@ -200,47 +249,48 @@ MainWindow::MainWindow(QWidget *parent) :
 			"}");
 		}
 	});
+	connect (ui->closebtn, &QPushButton::clicked, [this]()mutable{
+		close ();
+	});
+	connect (ui->minbtn, &QPushButton::clicked, [this]()mutable{
+		setWindowState(Qt::WindowMinimized);
+	});
 	Player->setPlaylist (PlayerList);
-	ui->volum_slider->setValue (Player->volume ());
+    ui->volum_slider->setValue (50);
 }
 MainWindow::~MainWindow()
 {
 	SongAndId.clear ();
 	SongInfoList.clear ();
 	SongLyric.clear ();
+    SerachResultInfo.clear ();
 	delete ui;
+}
+void MainWindow::AddListen () {
+	ui->centralWidget->installEventFilter (this);
+    ui->stackedWidget->installEventFilter (this);
 }
 void MainWindow::Init_Reply () {
 	SerachReply = nullptr;
 	GetLinkReply = nullptr;
 	LyricReply = nullptr;
-    ListWidget = nullptr;
+	ListWidget = nullptr;
 	Player = new QMediaPlayer;
-    PlayerList = new QMediaPlaylist;
+	PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;
 	PLayClickNum = 0;
 	LyricNum = 0;
+    ListButtonClickNum = 0;
+    ReplyNum = 0;
 	LyricString = "";
 	SongUrl = "";
 	Keyword = "";
 	lrc = new MyLyric(this);
-    playlistwidget = new PlayListWidget(this);
+	playlistwidget = new PlayListWidget(this);
 }
-void MainWindow::StyleOption (){
-    setWindowTitle ("Music Player");
-    QPalette pal(ui->centralWidget->palette());
-    //设置背景红色
-    pal.setColor(QPalette::Background, QColor(246, 32, 32));
-    ui->centralWidget->setAutoFillBackground(true);
-    ui->centralWidget->setPalette(pal);
-    ui->centralWidget->show();
-    ui->timeSlider->setStyleSheet (" QSlider::add-page:horizontal {"
-                                        "background: white;"
-                                    "}"
-
-                                    "QSlider::sub-page:horizontal {"
-                                        "background: pink;"
-                                    "}");
+void MainWindow::StyleOption () {
+	setWindowTitle ("Music Player");
+	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 }
 void MainWindow::ShowLyric () {
 	qDebug() << "进行歌词的匹配与显示";
@@ -252,27 +302,9 @@ void MainWindow::ShowLyric () {
 	resolve_lrc (LyricStr);
 	auto SongId = SongAndId.value (NowUrlStr);
 	if (SongId != "") {
-        auto Val = SongInfoList.value(SongId);
-//		QStringList List;
-//		List.clear ();
-//		while (Val != SongInfoList.end () && Val.key () == SongId) {
-//			List.append (Val.value ());
-//			++Val;
-//		}
-        ui->SongName->setText (Val.at (0));
-        ui->SingerName->setText (Val.at (1));
-//		QPixmap p;
-//		p.load (List.at (0));
-//        QUrl url = QUrl(List.at (0));
-//        QEventLoop loop;
-//        QNetworkAccessManager *manager = new QNetworkAccessManager;;
-//        QNetworkReply *reply = manager->get(QNetworkRequest(url));
-//        connect (reply,&QNetworkReply::finished,&loop,&QEventLoop::quit);
-//        loop.exec ();
-//        auto array = reply->readAll ();
-//        QPixmap p;
-//        p.loadFromData (array);
-//        ui->SongImage->setPixmap (p);
+		auto Val = SongInfoList.value(SongId);
+		ui->SongName->setText (Val.at (0));
+		ui->SingerName->setText (Val.at (1));
 	}
 }
 QPair<QString, QString> MainWindow::GetSingerInfo(QJsonArray array) {
@@ -294,7 +326,7 @@ void MainWindow::GetLinkBySongId (QString SongId) {
 	GetLinkReply = Manager.get (QNetworkRequest(url));
 	QEventLoop loop;
 	connect (GetLinkReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec ();
+	loop.exec ();
 	if (GetLinkReply->error () == QNetworkReply::NoError) {
 		QByteArray Array = GetLinkReply->readAll ();
 		QJsonParseError JsonError;
@@ -316,116 +348,120 @@ void MainWindow::GetLinkBySongId (QString SongId) {
 	else {qDebug() << "GetLinkReply Error" << GetLinkReply->errorString ();}
 	emit AlreadyGetLink ();
 }
-void MainWindow::GetSerachByKeywords (QString keyword) {
-	if (SuggestInfo.isEmpty () == false) {
-		SuggestInfo.clear ();/*每次清空搜索*/
-	}
-	ui->SerachList->clear ();
-	QUrl url = QUrl(ApiOfSerachByKeyword.arg (keyword));
+void MainWindow::GetHotSerach () {
+
+}
+void MainWindow::GetSerachByKeywords (QString keyword,int page) {
+//	if (SerachResultInfo.isEmpty () == false) {
+//		SerachResultInfo.clear ();/*每次清空搜索*/
+//	}
+    qDebug()<<"    Replynum    "<<ReplyNum;
+    if(ReplyNum % 2 == 1) {
+        ReplyNum  = ((ReplyNum + 1)%2);
+        return ;
+    }
+    ReplyNum=((ReplyNum + 1)%2);
+    if(SerachReply){SerachReply->deleteLater ();}
+    QUrl url = QUrl(ApiOfSerachByKeyword.arg (keyword).arg (page));
+    qDebug()<<"Url == "<<url.toString ();
 	SerachReply = Manager.get (QNetworkRequest(url));
-	connect (SerachReply, &QNetworkReply::finished, [ this ]()mutable{
-		if (SerachReply->error () == QNetworkReply::NoError) {
-			QByteArray array = SerachReply->readAll ();
-			QJsonParseError jsonError;
-			QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
-			if (jsonError.error != QJsonParseError::NoError) {qDebug() << "ERROR" << jsonError.errorString ();}
-			if (json.isObject ()) {
-				QJsonObject obj = json.object ();
-				if (obj.contains ("result")) {
-					QJsonValue result = obj.value ("result");
-					QJsonObject obj1_1 = result.toObject ();
-					result = obj1_1.value ("songs");
-					QJsonArray json_array = obj1_1["songs"].toArray ();
-					for (int row = 0; row < json_array.size (); ++row) {
-						QJsonObject jobj = json_array[row].toObject();
-						auto SongName = jobj["name"].toString ();
-						auto SongId = QString::number (jobj["id"].toInt ());
-						QJsonArray Artists = jobj["artists"].toArray ();
-						auto Singer = GetSingerInfo (Artists);
-						ShowSuggestion (SongName, Singer, SongId);
-					}
-				}
-			}
-		}
-		else {qDebug() << "Error" << SerachReply->errorString ();}
-		emit AlreadyGetSuggestion();
-	});
+    QEventLoop loop;
+    connect (SerachReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec ();
+    if (SerachReply->error () == QNetworkReply::NoError) {
+        QByteArray array = SerachReply->readAll ();
+        QJsonParseError jsonError;
+        QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
+        if (jsonError.error != QJsonParseError::NoError) {qDebug() << "ERROR" << jsonError.errorString ();}
+        if (json.isObject ()) {
+            QJsonObject obj = json.object ();
+            if (obj.contains ("result")) {
+                QJsonValue result = obj.value ("result");
+                QJsonObject obj1_1 = result.toObject ();
+                result = obj1_1.value ("songs");
+                QJsonArray json_array = obj1_1["songs"].toArray ();
+                for (int row = 0; row < json_array.size (); ++row) {
+                    QJsonObject jobj = json_array[row].toObject();
+                    auto SongName = jobj["name"].toString ();
+                    auto SongId = QString::number (jobj["id"].toInt ());
+                    QJsonArray Artists = jobj["artists"].toArray ();
+                    auto Singer = GetSingerInfo (Artists);
+                    QJsonObject album = jobj["album"].toObject ();
+                    auto albumName = album["name"].toString ();
+                    auto SongInfo = SongName + "  " + Singer.first;
+                    qDebug()<<"SongInfo == "<<SongInfo;
+                    //SingerInfo -- SongId,SingerImage
+                    /*这样SongId会在第一个*/
+                    QVector<QString> v;
+                    v.clear ();
+                    v.push_back (SongId);
+                    v.push_back (Singer.second);
+                    v.push_back (albumName);
+                    v.push_back (SongName);
+                    v.push_back (Singer.first);
+                    SerachResultInfo.insert (SongInfo, v);
+                    if(page == 0){
+                        ui->page0->Add (v);
+                    }
+                    else if(page == 1){
+                        ui->page1->Add(v);
+                    }
+                    else ui->page2->Add (v);
+                }
+            }
+        }
+    }
+    else {qDebug() << "Error" << SerachReply->errorString ();}
+    emit AlreadyGetSuggestion();
 }
 void MainWindow::GetLyricBySongId (QString SongId) {
 	QUrl url = QUrl(ApiOfGetLyricById.arg (SongId));
 	LyricReply = Manager.get (QNetworkRequest(url));
-	connect (LyricReply, &QNetworkReply::finished, [ this]()mutable{
-		if (LyricReply->error () == QNetworkReply::NoError) {
-			QByteArray array = LyricReply->readAll ();
-			QJsonParseError jsonError;
-			QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
-			if (jsonError.error != QJsonParseError::NoError) {
-				qDebug() << "ERROR" << jsonError.errorString ();
-			}
-			else {
-				if (json.isObject ()) {
-					QJsonObject obj = json.object ();
-					QJsonValue val = obj.value ("lrc");
-					QJsonObject jobj = val.toObject ();
-					LyricString = jobj["lyric"].toString ();
-				}
-			}
-		}
-		else{
-			qDebug() << "Error" << LyricReply->errorString ();
-		}
-		emit AlreadyGetLyric ();
-	});
-}
-void MainWindow::ShowSuggestion(QString SongName, QPair<QString, QString> SingerInfo, QString SongId) {
-	QListWidgetItem *Item = new QListWidgetItem;
-	auto SongInfo = SongName + "  " + SingerInfo.first;
-	Item->setText (SongInfo);
-	ui->SerachList->addItem (Item);
-
-	//SingerInfo -- SongId,SingerImage
-	/*这样SongId会在第一个*/
-    QVector<QString> v;
-    v.clear ();
-    v.push_back (SongId);
-    v.push_back (SingerInfo.second);
-    SuggestInfo.insert (SongInfo,v);
-//	SuggestInfo.insert (SongInfo, SingerInfo.second);
-//	SuggestInfo.insert (SongInfo, SongId);
-//	qDebug() << SongInfo << "  " << SongId;
+    QEventLoop loop;
+    connect (LyricReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec ();
+    if (LyricReply->error () == QNetworkReply::NoError) {
+        QByteArray array = LyricReply->readAll ();
+        QJsonParseError jsonError;
+        QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
+        if (jsonError.error != QJsonParseError::NoError) {
+            qDebug() << "ERROR" << jsonError.errorString ();
+        }
+        else {
+            if (json.isObject ()) {
+                QJsonObject obj = json.object ();
+                QJsonValue val = obj.value ("lrc");
+                QJsonObject jobj = val.toObject ();
+                LyricString = jobj["lyric"].toString ();
+            }
+        }
+    }
+    else{
+        qDebug() << "Error" << LyricReply->errorString ();
+    }
+    emit AlreadyGetLyric ();
 }
 void MainWindow::AddMusicInPlayList (QString SongInfo, QString SongId) {
-    qDebug() << "AddMusicInPlayList";
-//    QListWidgetItem *item = new QListWidgetItem;
-//    item->setText (SongInfo);
-//    ui->PlayList->addItem (item);
-    QListWidgetItem *item1 = new QListWidgetItem;
-    item1->setText (SongInfo);
-    ListWidget->addItem (item1);
-    QVector<QString> v;
-    v.clear ();
-    auto val = SongInfo.split ("  ");
-//    qDebug()<<"加入的信息";
-    foreach (QString var, val) {
-        v.push_back (var);
-//        SongInfoList.insert (SongId, var);
+	qDebug() << "AddMusicInPlayList";
+	QListWidgetItem *item1 = new QListWidgetItem;
+	item1->setText (SongInfo);
+	ListWidget->addItem (item1);
+	QVector<QString> v;
+	v.clear ();
+	auto val = SongInfo.split ("  ");
+	foreach (QString var, val) {
+		v.push_back (var);
 //        qDebug()<<var;//嚣张 en
+	}
+    if(SerachResultInfo.isEmpty ()){
+        qDebug()<<"你是我大哥";
+        return ;
     }
-    auto val1 = SuggestInfo.value(SongInfo);
+    auto val1 = SerachResultInfo.value(SongInfo);
+    qDebug()<<val1.size ();
     v.push_back (val1.at (1));
-//    QStringList SingerInfo;
-//    SingerInfo.clear ();
-//    while (row != SuggestInfo.end () && row.key () == SongInfo) {
-//        auto val = row.value ();
-//        SingerInfo.append (val);
-//        row++;
-//    }
-    /*歌曲的Id -- 歌手图片 歌手信息 歌名*/
-    SongInfoList.insert (SongId,v);
-    for(int i = 0; i < v.size (); ++i){
-        qDebug()<<v.at (i);
-    }
-    Test(SongId);
+	/*歌曲的Id -- 歌名 歌手 歌手图片*/
+    SongInfoList.insert (SongId, v);
     GetLinkBySongId (SongId);
     GetLyricBySongId (SongId);
 }
@@ -536,24 +572,34 @@ void MainWindow::UpdateTime(qint64 time, qint64 total_time_value) {
 
 		// 获取当前时间所对应的歌词内容
 		QString current_lrc = LyricMap.value(previous);
-
-//        // 没有内容时
-//        if(current_lrc.length() < 2)
-//            current_lrc = tr("简易音乐播放器");
-
 		// 如果是新的一行歌词，那么重新开始显示歌词遮罩
 		if (current_lrc != lrc->text()) {
 			lrc->setText(current_lrc);
-//            top_label->setText(current_lrc);
 			qint64 interval_time = later - previous;
 			lrc->start_lrc_mask(interval_time);
 		}
 	}
 }
 void MainWindow::Test (QString SongId) {
-    auto it = SongInfoList.value (SongId);
+	auto it = SongInfoList.value (SongId);
 	qDebug() << "当前歌曲的ID" << SongId;
-    for(int i = 0; i < it.size (); ++i){
-        qDebug()<<it.at (i);
-    }
+	for (int i = 0; i < it.size (); ++i) {
+		qDebug() << it.at (i);
+	}
+}
+bool MainWindow::eventFilter (QObject *watched, QEvent *ev) {
+	QMouseEvent *mouse = static_cast<QMouseEvent*>(ev);
+	if (watched == ui->centralWidget) {
+		if (ev->type () == QEvent::MouseButtonPress) {
+			offset = mouse->globalPos();
+			return true;//需要该事件继续被传递和被处理，返回true。
+		}
+		if (ev->type () == QEvent::MouseMove) {
+			if (mouse->buttons () & Qt::LeftButton) {
+				move(mouse->globalPos () - offset);
+			}
+			return true;
+		}
+	}
+    return QObject::eventFilter (watched, ev); /*返回默认*/
 }
