@@ -110,7 +110,7 @@ void DisplayResult::Add (QVector<QString> v) {
             SongInfo.push_back (ui->tableWidget->item(index, 2)->text ()); //song
             SongInfo.push_back (ui->tableWidget->item(index, 3)->text ()); //singer
             SongInfo.push_back (ui->tableWidget->item(index, 4)->text ()); //ablum
-            SongInfo.push_back (ui->tableWidget->item(index,5)->text ());
+            SongInfo.push_back (ui->tableWidget->item(index, 5)->text ());
             emit AlreadyAddLikeMusic();
         }
         else{
@@ -140,7 +140,7 @@ void DisplayResult::Add (QVector<QString> v) {
 
 
     QString TimeStr = "未知";
-    if(v.size () == 6){
+    if (v.size () == 6) {
         qint64 tot = v.at (5).toInt ();
         QTime total_time(0, (tot / 60000) % 60, (tot / 1000) % 60);
         TimeStr = total_time.toString("mm:ss");

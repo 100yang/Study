@@ -40,22 +40,22 @@
 #include <QFileInfo>
 #include <QBoxLayout>
 VideoPlay::VideoPlay(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::VideoPlay)
+  QWidget(parent),
+  ui(new Ui::VideoPlay)
 {
-    ui->setupUi(this);
-    //MainWindow自带layout，所以需要自定义layout并把它设置成中心layout
-        //否则将会出现不能设置layout错误
+  ui->setupUi(this);
+  //MainWindow自带layout，所以需要自定义layout并把它设置成中心layout
+  //否则将会出现不能设置layout错误
 //        QWidget *widget = new QWidget;
-      player = new QMediaPlayer;
-      playlist = new QMediaPlaylist(player);
-      playlist->addMedia(QUrl("http://example.com/myclip1.mp4"));
-      playlist->addMedia(QUrl("http://example.com/myclip2.mp4"));
+  player = new QMediaPlayer;
+  playlist = new QMediaPlaylist(player);
+  playlist->addMedia(QUrl("http://example.com/myclip1.mp4"));
+  playlist->addMedia(QUrl("http://example.com/myclip2.mp4"));
 
-      videoWidget = new QVideoWidget(ui->widget);
-      player->setVideoOutput(videoWidget);
-      playlist->setCurrentIndex(1);
-      player->play();
+  videoWidget = new QVideoWidget(ui->widget);
+  player->setVideoOutput(videoWidget);
+  playlist->setCurrentIndex(1);
+  player->play();
 //        player = new QMediaPlayer;
 ////        Playlist = new QMediaPlaylist();
 ////        player->setPlaylist(Playlist);
@@ -64,7 +64,7 @@ VideoPlay::VideoPlay(QWidget *parent) :
 //        ui->progressBar->setRange(0, player->duration() / 1000);
 
 
-        //信号槽
+  //信号槽
 //        QObject::connect(ui->openFileBtn,SIGNAL(clicked()),this,SLOT(openFile()));
 //        QObject::connect(ui->playBtn,SIGNAL(clicked()),this,SLOT(playVideo()));
 //        QObject::connect(ui->stopBtn,SIGNAL(clicked()),this,SLOT(stopVideo()));
@@ -74,36 +74,36 @@ VideoPlay::VideoPlay(QWidget *parent) :
 
 VideoPlay::~VideoPlay()
 {
-    delete ui;
+  delete ui;
 }
 void VideoPlay::openFile()
 {
-    QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
+  QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
 //    addToPlaylist(fileNames);
 }
 
 void VideoPlay::playVideo()
 {
-    m_playerState = QMediaPlayer::PlayingState;
-    player->play();
+  m_playerState = QMediaPlayer::PlayingState;
+  player->play();
 }
 
 void VideoPlay::stopVideo()
 {
-    m_playerState = QMediaPlayer::StoppedState;
-    player->stop();
+  m_playerState = QMediaPlayer::StoppedState;
+  player->stop();
 }
 
 void VideoPlay::fullScr()
 {
-    if(m_playerState == QMediaPlayer::PlayingState)
-    {
-        videoWidget->setFullScreen(true);
-    }
-    else
-    {
-        videoWidget->setFullScreen(false);
-    }
+  if (m_playerState == QMediaPlayer::PlayingState)
+  {
+    videoWidget->setFullScreen(true);
+  }
+  else
+  {
+    videoWidget->setFullScreen(false);
+  }
 
 }
 

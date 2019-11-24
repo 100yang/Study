@@ -67,6 +67,8 @@ signals:
     void AlreadyGetSongInfo();
     void AlreadyAddLikeMusic_Find();
     void AlreadyGetRecommendResult();
+    void AlreadyGetRankResult();
+    void AlreadyGetSingerResult ();
 private:
     Ui::FindMusicWidget *ui;
     QNetworkAccessManager Manager;

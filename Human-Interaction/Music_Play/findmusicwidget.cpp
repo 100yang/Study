@@ -33,13 +33,14 @@
 #include <QFileInfo>
 const QString GetNewSong = "http://localhost:3000/top/song?type=%1";
 const QString GetRecommend = "http://localhost:3000/personalized/newsong";
+const QString GetTopList = "http://localhost:3000/top/list?idx=%1";/*歌曲排行*/
+const QString GetTopSinger = "http://localhost:3000/toplist/artist";
 FindMusicWidget::FindMusicWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FindMusicWidget)
 {
 
     ui->setupUi(this);
-    GetSerachResult (ui->ALL, "0");
     connect(ui->NewSongWidget, &QTabWidget::currentChanged, [this]()mutable{
         auto NowWidgetIndex = ui->NewSongWidget->currentIndex ();
         if (NowWidgetIndex == 0) {
@@ -126,26 +127,77 @@ FindMusicWidget::FindMusicWidget(QWidget *parent) :
         SongInfo = ui->Japan->SongInfo;
         emit AlreadyAddLikeMusic_Find();
     });
+    connect (ui->NewSongRank, &DisplayResult::AlreadGetSongId, [this]()mutable{
+        SongName  = ui->NewSongRank->SongName;
+        SingerName = ui->NewSongRank->SingerName;
+        SongId = ui->NewSongRank->SongId;
+        emit AlreadyGetSongInfo();
+    });
+    connect (ui->HotSongRank, &DisplayResult::AlreadGetSongId, [this]()mutable{
+        SongName  = ui->HotSongRank->SongName;
+        SingerName = ui->HotSongRank->SingerName;
+        SongId = ui->HotSongRank->SongId;
+        emit AlreadyGetSongInfo();
+    });
+    connect (ui->MelonRank, &DisplayResult::AlreadGetSongId, [this]()mutable{
+        SongName  = ui->MelonRank->SongName;
+        SingerName = ui->MelonRank->SingerName;
+        SongId = ui->MelonRank->SongId;
+        emit AlreadyGetSongInfo();
+    });
+    connect (ui->BillboardRank, &DisplayResult::AlreadGetSongId, [this]()mutable{
+        SongName  = ui->BillboardRank->SongName;
+        SingerName = ui->BillboardRank->SingerName;
+        SongId = ui->BillboardRank->SongId;
+        emit AlreadyGetSongInfo();
+    });
+    connect (ui->OriconRank, &DisplayResult::AlreadGetSongId, [this]()mutable{
+        SongName  = ui->OriconRank->SongName;
+        SingerName = ui->OriconRank->SingerName;
+        SongId = ui->OriconRank->SongId;
+        emit AlreadyGetSongInfo();
+    });
+    connect (ui->NewSongRank, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
+        SongInfo = ui->NewSongRank->SongInfo;
+        emit AlreadyAddLikeMusic_Find();
+    });
+    connect (ui->OriconRank, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
+        SongInfo = ui->OriconRank->SongInfo;
+        emit AlreadyAddLikeMusic_Find();
+    });
+    connect (ui->BillboardRank, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
+        SongInfo = ui->BillboardRank->SongInfo;
+        emit AlreadyAddLikeMusic_Find();
+    });
+    connect (ui->HotSongRank, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
+        SongInfo = ui->HotSongRank->SongInfo;
+        emit AlreadyAddLikeMusic_Find();
+    });
+    connect (ui->MelonRank, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
+        SongInfo = ui->MelonRank->SongInfo;
+        emit AlreadyAddLikeMusic_Find();
+    });
+
 }
 
 FindMusicWidget::~FindMusicWidget()
 {
     delete ui;
 }
-void FindMusicWidget::init (){
+void FindMusicWidget::init () {
     SongInfo.clear ();
-   GetNewSongReply = nullptr;
-    GetRecommendReply= nullptr;
-    GetTVReply= nullptr;
-    GetRankReply= nullptr;
-   GetSingerReply= nullptr;
-   SerachResult.clear ();
+    GetNewSongReply = nullptr;
+    GetRecommendReply = nullptr;
+    GetTVReply = nullptr;
+    GetRankReply = nullptr;
+    GetSingerReply = nullptr;
+    SerachResult.clear ();
     SongId = "";
-    SongName ="";
-   SingerName="";
+    SongName = "";
+    SingerName = "";
 }
 void FindMusicWidget::GetSerachResult (DisplayResult *w, QString area) {
-    if(GetNewSongReply){
+    if (GetNewSongReply) {
         GetNewSongReply->deleteLater ();
     }
 
@@ -203,17 +255,63 @@ QPair<QString, QString> FindMusicWidget::GetSingerInfo(QJsonArray array) {
     auto result = qMakePair(SingerName, SingerImage);
     return result;
 }
-void FindMusicWidget::GetRankResult (DisplayResult *w, QString area){
-    if(GetRankReply){
+void FindMusicWidget::GetRankResult (DisplayResult *w, QString area) {
+    if (GetRankReply) {
         GetRankReply->deleteLater ();
     }
-    QUrl url = QUrl(GetNewSong.arg (area));
+    QUrl url = QUrl(GetTopList.arg (area));
     GetRankReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
     connect (GetRankReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
     if (GetRankReply->error () == QNetworkReply::NoError) {
         QByteArray Array = GetRankReply->readAll ();
+        QJsonParseError JsonError;
+        QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+        if (JsonError.error == QJsonParseError::NoError) {
+            QJsonObject Obj = json.object ();
+            QJsonObject Obj_1 = Obj["playlist"].toObject ();
+            QJsonArray JsonArray = Obj_1["tracks"].toArray ();
+            for (int i = 0; i < JsonArray.size (); ++i) {
+                QJsonObject jobj = JsonArray[i].toObject();
+                auto SongName = jobj["name"].toString ();
+                auto SongId = QString::number (jobj["id"].toInt ());
+                QJsonArray Artists = jobj["ar"].toArray ();
+                auto Singer = GetSingerInfo (Artists);
+                QJsonObject album = jobj["al"].toObject ();
+                auto albumName = album["name"].toString ();
+                auto SongInfo = SongName + "  " + Singer.first;
+                auto duration = QString::number (jobj["dt"].toInt ());
+//                qDebug() << "SongInfo == " << SongInfo;
+                //SingerInfo -- SongId,SingerImage
+                /*这样SongId会在第一个*/
+                QVector<QString> v;
+                v.clear ();
+                v.push_back (SongId);
+                v.push_back (Singer.second);
+                v.push_back (albumName);
+                v.push_back (SongName);
+                v.push_back (Singer.first);
+                v.push_back (duration);
+                w->Add (v);
+            }
+        }
+        else {qDebug() << "GetRankReply JSONERROR:" << JsonError.errorString ();}
+    }
+    else {qDebug() << "GetRankReply Error" << GetRankReply->errorString ();}
+    emit AlreadyGetRankResult();
+}
+void FindMusicWidget::GetSingerResult () {
+    if (GetSingerReply) {
+        GetSingerReply->deleteLater ();
+    }
+    QUrl url = QUrl(GetRecommend);
+    GetSingerReply = Manager.get (QNetworkRequest(url));
+    QEventLoop loop;
+    connect (GetSingerReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec ();
+    if (GetSingerReply->error () == QNetworkReply::NoError) {
+        QByteArray Array = GetSingerReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
         if (JsonError.error == QJsonParseError::NoError) {
@@ -243,19 +341,17 @@ void FindMusicWidget::GetRankResult (DisplayResult *w, QString area){
                 v.push_back (SongName);
                 v.push_back (Singer.first);
                 v.push_back (duration);
-                w->Add (v);
             }
         }
-        else {qDebug() << "GetRankReply JSONERROR:" << JsonError.errorString ();}
+        else {qDebug() << "GetSingerReply JSONERROR:" << JsonError.errorString ();}
     }
-    else {qDebug() << "GetRankReply Error" << GetRankReply->errorString ();}
-    emit AlreadyGetRecommendResult();
+    else {qDebug() << "GetSingerReply Error" << GetSingerReply->errorString ();}
+    emit AlreadyGetSingerResult();
 }
-void FindMusicWidget::GetSingerResult (){}
-void FindMusicWidget::GetSongTableResult (){}
-void FindMusicWidget::GetTVResult (){}
-void FindMusicWidget::GetRecommendResult (){
-    if(GetRecommendReply){
+void FindMusicWidget::GetSongTableResult () {}
+void FindMusicWidget::GetTVResult () {}
+void FindMusicWidget::GetRecommendResult () {
+    if (GetRecommendReply) {
         GetRecommendReply->deleteLater ();
     }
     QUrl url = QUrl(GetRecommend);

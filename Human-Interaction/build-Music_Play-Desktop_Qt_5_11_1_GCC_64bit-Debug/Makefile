@@ -5094,9 +5094,6 @@ findmvwidget.o: ../Music_Play/findmvwidget.cpp ../Music_Play/findmvwidget.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayout.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtMultimedia/QMediaPlayer \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtMultimedia/qmediaplayer.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtMultimedia/qmediaobject.h \
@@ -5129,6 +5126,7 @@ findmvwidget.o: ../Music_Play/findmvwidget.cpp ../Music_Play/findmvwidget.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qplaintextedit.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtextedit.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextdocument.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextoption.h \
 		../../../../Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextcursor.h \

@@ -53,12 +53,15 @@ MainWindow::MainWindow(QWidget *parent) :
 	likemusicwidget = new LikeMusicWidget(ui->SerachResultBase);
 	MvWidget = new FindmvWidget(ui->SerachResultBase);
 	MusicWidget = new FindMusicWidget(ui->SerachResultBase);
-	MvWidget->hide ();
+
+    MvWidget->hide ();
 	localmusicwidget->hide ();
 	likemusicwidget->hide ();
 	ui->ToPageWidget->hide ();
 	ui->stackedWidget->hide ();
 	MusicWidget->show ();
+
+
 	AddListen ();/*加入监听*/
 	/*QDialog的一个播放列表*/
 
@@ -379,6 +382,7 @@ void MainWindow::Init () {
 	GetLinkReply = nullptr;
 	LyricReply = nullptr;
 	CheckReply = nullptr;
+    ImageReply = nullptr;
 	Player = new QMediaPlayer;
 	PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;

@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 //    VideoPlay w;
 //    w.show ();
-//	MainWindow w;
+	MainWindow w;
 //    LocalMusicWidget w;
-    FindmvWidget w;
+//    FindmvWidget w;
 	w.show();
 	a.exec ();
 //    SongAndId.clear();

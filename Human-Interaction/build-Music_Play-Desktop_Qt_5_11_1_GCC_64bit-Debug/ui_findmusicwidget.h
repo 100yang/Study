@@ -31,7 +31,7 @@ public:
     QWidget *TVWidget;
     QWidget *RankWidget;
     QHBoxLayout *horizontalLayout_4;
-    QTabWidget *NewSongWidget_2;
+    QTabWidget *InRankWidget;
     DisplayResult *NewSongRank;
     DisplayResult *HotSongRank;
     DisplayResult *BillboardRank;
@@ -103,25 +103,25 @@ public:
         horizontalLayout_4->setSpacing(0);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        NewSongWidget_2 = new QTabWidget(RankWidget);
-        NewSongWidget_2->setObjectName(QStringLiteral("NewSongWidget_2"));
+        InRankWidget = new QTabWidget(RankWidget);
+        InRankWidget->setObjectName(QStringLiteral("InRankWidget"));
         NewSongRank = new DisplayResult();
         NewSongRank->setObjectName(QStringLiteral("NewSongRank"));
-        NewSongWidget_2->addTab(NewSongRank, QString());
+        InRankWidget->addTab(NewSongRank, QString());
         HotSongRank = new DisplayResult();
         HotSongRank->setObjectName(QStringLiteral("HotSongRank"));
-        NewSongWidget_2->addTab(HotSongRank, QString());
+        InRankWidget->addTab(HotSongRank, QString());
         BillboardRank = new DisplayResult();
         BillboardRank->setObjectName(QStringLiteral("BillboardRank"));
-        NewSongWidget_2->addTab(BillboardRank, QString());
+        InRankWidget->addTab(BillboardRank, QString());
         MelonRank = new DisplayResult();
         MelonRank->setObjectName(QStringLiteral("MelonRank"));
-        NewSongWidget_2->addTab(MelonRank, QString());
+        InRankWidget->addTab(MelonRank, QString());
         OriconRank = new DisplayResult();
         OriconRank->setObjectName(QStringLiteral("OriconRank"));
-        NewSongWidget_2->addTab(OriconRank, QString());
+        InRankWidget->addTab(OriconRank, QString());
 
-        horizontalLayout_4->addWidget(NewSongWidget_2);
+        horizontalLayout_4->addWidget(InRankWidget);
 
         BaseWidget->addTab(RankWidget, QString());
         SingerWidget = new QWidget();
@@ -195,7 +195,7 @@ public:
         retranslateUi(FindMusicWidget);
 
         BaseWidget->setCurrentIndex(3);
-        NewSongWidget_2->setCurrentIndex(4);
+        InRankWidget->setCurrentIndex(2);
         NewSongWidget->setCurrentIndex(0);
 
 
@@ -208,11 +208,11 @@ public:
         BaseWidget->setTabText(BaseWidget->indexOf(Recommend), QApplication::translate("FindMusicWidget", "\344\270\252\346\200\247\346\216\250\350\215\220", nullptr));
         BaseWidget->setTabText(BaseWidget->indexOf(MusicTable), QApplication::translate("FindMusicWidget", "\346\255\214\345\215\225", nullptr));
         BaseWidget->setTabText(BaseWidget->indexOf(TVWidget), QApplication::translate("FindMusicWidget", "\344\270\273\346\222\255\347\224\265\345\217\260", nullptr));
-        NewSongWidget_2->setTabText(NewSongWidget_2->indexOf(NewSongRank), QApplication::translate("FindMusicWidget", "\346\226\260\346\255\214\346\246\234", nullptr));
-        NewSongWidget_2->setTabText(NewSongWidget_2->indexOf(HotSongRank), QApplication::translate("FindMusicWidget", "\347\203\255\346\255\214\346\246\234", nullptr));
-        NewSongWidget_2->setTabText(NewSongWidget_2->indexOf(BillboardRank), QApplication::translate("FindMusicWidget", "Billboard\345\221\250\346\246\234", nullptr));
-        NewSongWidget_2->setTabText(NewSongWidget_2->indexOf(MelonRank), QApplication::translate("FindMusicWidget", "Melon\345\221\250\346\246\234", nullptr));
-        NewSongWidget_2->setTabText(NewSongWidget_2->indexOf(OriconRank), QApplication::translate("FindMusicWidget", "Oricon\345\221\250\346\246\234", nullptr));
+        InRankWidget->setTabText(InRankWidget->indexOf(NewSongRank), QApplication::translate("FindMusicWidget", "\346\226\260\346\255\214\346\246\234", nullptr));
+        InRankWidget->setTabText(InRankWidget->indexOf(HotSongRank), QApplication::translate("FindMusicWidget", "\347\203\255\346\255\214\346\246\234", nullptr));
+        InRankWidget->setTabText(InRankWidget->indexOf(BillboardRank), QApplication::translate("FindMusicWidget", "Billboard\345\221\250\346\246\234", nullptr));
+        InRankWidget->setTabText(InRankWidget->indexOf(MelonRank), QApplication::translate("FindMusicWidget", "Melon\345\221\250\346\246\234", nullptr));
+        InRankWidget->setTabText(InRankWidget->indexOf(OriconRank), QApplication::translate("FindMusicWidget", "Oricon\345\221\250\346\246\234", nullptr));
         BaseWidget->setTabText(BaseWidget->indexOf(RankWidget), QApplication::translate("FindMusicWidget", "\346\216\222\350\241\214\346\246\234", nullptr));
         BaseWidget->setTabText(BaseWidget->indexOf(SingerWidget), QApplication::translate("FindMusicWidget", "\346\255\214\346\211\213", nullptr));
         pushButton->setText(QApplication::translate("FindMusicWidget", "\346\226\260\346\255\214\344\270\212\346\236\266", nullptr));
