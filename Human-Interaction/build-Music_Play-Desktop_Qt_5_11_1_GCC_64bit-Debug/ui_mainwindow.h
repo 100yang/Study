@@ -35,7 +35,7 @@ public:
     QVBoxLayout *verticalLayout;
     QWidget *serach_widget;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label_5;
+    QLabel *IconLabel;
     QLabel *label_4;
     QSpacerItem *horizontalSpacer_4;
     QLineEdit *serach_edit;
@@ -68,9 +68,8 @@ public:
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_6;
     QGridLayout *gridLayout;
-    QLabel *SongName;
-    QLabel *SongImage;
     QLabel *SingerName;
+    QLabel *SongName;
     QSpacerItem *verticalSpacer_6;
     QFrame *line_6;
     QWidget *SerachResultBase;
@@ -148,15 +147,15 @@ public:
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(serach_widget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setMinimumSize(QSize(55, 0));
-        label_5->setFrameShape(QFrame::StyledPanel);
-        label_5->setPixmap(QPixmap(QString::fromUtf8("Images/Music disc.png")));
-        label_5->setScaledContents(true);
-        label_5->setMargin(0);
+        IconLabel = new QLabel(serach_widget);
+        IconLabel->setObjectName(QStringLiteral("IconLabel"));
+        IconLabel->setMinimumSize(QSize(55, 0));
+        IconLabel->setFrameShape(QFrame::StyledPanel);
+        IconLabel->setPixmap(QPixmap(QString::fromUtf8("Images/Music disc.png")));
+        IconLabel->setScaledContents(true);
+        IconLabel->setMargin(0);
 
-        horizontalLayout_3->addWidget(label_5);
+        horizontalLayout_3->addWidget(IconLabel);
 
         label_4 = new QLabel(serach_widget);
         label_4->setObjectName(QStringLiteral("label_4"));
@@ -372,21 +371,15 @@ public:
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(-1, 0, -1, -1);
-        SongName = new QLabel(widget_3);
-        SongName->setObjectName(QStringLiteral("SongName"));
-
-        gridLayout->addWidget(SongName, 0, 1, 1, 1);
-
-        SongImage = new QLabel(widget_3);
-        SongImage->setObjectName(QStringLiteral("SongImage"));
-        SongImage->setScaledContents(true);
-
-        gridLayout->addWidget(SongImage, 0, 0, 3, 1);
-
         SingerName = new QLabel(widget_3);
         SingerName->setObjectName(QStringLiteral("SingerName"));
 
-        gridLayout->addWidget(SingerName, 2, 1, 1, 1);
+        gridLayout->addWidget(SingerName, 1, 0, 1, 1);
+
+        SongName = new QLabel(widget_3);
+        SongName->setObjectName(QStringLiteral("SongName"));
+
+        gridLayout->addWidget(SongName, 0, 0, 1, 1);
 
 
         horizontalLayout_6->addLayout(gridLayout);
@@ -536,7 +529,13 @@ public:
 
         timeSlider = new QSlider(playWidget);
         timeSlider->setObjectName(QStringLiteral("timeSlider"));
-        timeSlider->setStyleSheet(QStringLiteral("color:rgb(239, 41, 41);"));
+        timeSlider->setStyleSheet(QLatin1String("QSlider::add-page:horizontal  {\n"
+"     background: white;\n"
+" }\n"
+" \n"
+" QSlider::sub-page:horizontal  {\n"
+"     background: red;\n"
+" }"));
         timeSlider->setOrientation(Qt::Horizontal);
 
         horizontalLayout_2->addWidget(timeSlider);
@@ -620,7 +619,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Music Player", nullptr));
-        label_5->setText(QString());
+        IconLabel->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "Music Play", nullptr));
         label_3->setText(QString());
         loginbtn->setText(QApplication::translate("MainWindow", "login", nullptr));
@@ -632,9 +631,8 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "\346\210\221\347\232\204\351\237\263\344\271\220", nullptr));
         likemusic->setText(QApplication::translate("MainWindow", "\346\210\221\345\226\234\346\254\242\347\232\204\351\237\263\344\271\220", nullptr));
         localmusic->setText(QApplication::translate("MainWindow", "     \346\234\254\345\234\260\351\237\263\344\271\220", nullptr));
-        SongName->setText(QApplication::translate("MainWindow", "SongName", nullptr));
-        SongImage->setText(QApplication::translate("MainWindow", "SongImage", nullptr));
         SingerName->setText(QApplication::translate("MainWindow", "SingerName", nullptr));
+        SongName->setText(QApplication::translate("MainWindow", "SongName", nullptr));
         prepagebtn->setText(QString());
         pagelabel->setText(QApplication::translate("MainWindow", "1", nullptr));
         nextpagebtn->setText(QString());

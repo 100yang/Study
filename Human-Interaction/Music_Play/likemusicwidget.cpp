@@ -102,8 +102,14 @@ void LikeMusicWidget::Add (QVector<QString> v) {
     item4->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setItem (Rowindex, 4, item4);
 
+    QString TimeStr = "未知";
+    if (v.size () == 6) {
+        qint64 tot = v.at (5).toInt ();
+        QTime total_time(0, (tot / 60000) % 60, (tot / 1000) % 60);
+        TimeStr = total_time.toString("mm:ss");
+    }
     QTableWidgetItem *item5 = new QTableWidgetItem;//时长
-    item5->setText ("未知");
+    item5->setText (TimeStr);
     item5->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setItem (Rowindex, 5, item5);
 }

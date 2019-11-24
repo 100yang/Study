@@ -33,7 +33,8 @@ SOURCES += \
     videoplay.cpp \
     likemusicwidget.cpp \
     localmusicwidget.cpp \
-    findmvwidget.cpp
+    findmvwidget.cpp \
+    findmusicwidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +45,8 @@ HEADERS += \
     videoplay.h \
     likemusicwidget.h \
     localmusicwidget.h \
-    findmvwidget.h
+    findmvwidget.h \
+    findmusicwidget.h
 
 FORMS += \
         mainwindow.ui \
@@ -53,7 +55,8 @@ FORMS += \
     playlistwidget.ui \
     likemusicwidget.ui \
     localmusicwidget.ui \
-    findmvwidget.ui
+    findmvwidget.ui \
+    findmusicwidget.ui
 
 DISTFILES += \
     Main.qml \

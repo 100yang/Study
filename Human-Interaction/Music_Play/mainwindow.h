@@ -5,6 +5,8 @@
 #include "displayresult.h"
 #include "localmusicwidget.h"
 #include "likemusicwidget.h"
+#include "findmvwidget.h"
+#include "findmusicwidget.h"
 #include <QMainWindow>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
@@ -46,7 +48,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     /* 初始化*/
-    Q_INVOKABLE void Init_Reply();
+    Q_INVOKABLE void Init();
     /**
      * 通过关键词搜索，得到歌曲的信息
      * @param keyword [description]
@@ -95,6 +97,7 @@ public:
      * [AddListen 加入监听]
      */
     Q_INVOKABLE void AddListen();
+    Q_INVOKABLE bool CheckMusic(QString SongId);
 
 signals :
     void AlreadyGetLink();
@@ -122,6 +125,7 @@ private:
     QNetworkReply *SerachReply;
     QNetworkReply *GetLinkReply;
     QNetworkReply *LyricReply;
+    QNetworkReply *CheckReply;
 
     QString SongUrl;
     QString Keyword;
@@ -130,10 +134,13 @@ private:
     /*歌词显示*/
     MyLyric *lrc;
     /*搜索结果显示*/
-    QWidget *PageWidget;
+
+//    QWidget *PageWidget;
     PlayListWidget *playlistwidget;
     LocalMusicWidget *localmusicwidget;
     LikeMusicWidget *likemusicwidget;
+    FindmvWidget *MvWidget;
+    FindMusicWidget *MusicWidget;
     /*歌曲和ID的映射*/
     QMap<QString, QString> SongAndId;
     /*歌词和时间*/

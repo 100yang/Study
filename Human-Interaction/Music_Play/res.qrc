@@ -52,5 +52,6 @@
         <file>Images/minsize.png</file>
         <file>Images/download.png</file>
         <file>Images/fulllove.png</file>
+        <file>Images/Music disc.png</file>
     </qresource>
 </RCC>

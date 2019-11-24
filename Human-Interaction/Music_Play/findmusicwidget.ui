@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FindMusicWidget</class>
+ <widget class="QWidget" name="FindMusicWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>718</width>
+    <height>354</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>718</width>
+    <height>354</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>718</width>
+    <height>354</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane{
+	border:none;
+}
+
+QTabBar::tab{
+	width:120px;
+}</string>
+     </property>
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>5</number>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="usesScrollButtons">
+      <bool>false</bool>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
+     </property>
+     <property name="movable">
+      <bool>false</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="Recommend">
+      <attribute name="title">
+       <string>个性推荐</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="MusicTable">
+      <attribute name="title">
+       <string>歌单</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="TVWidget">
+      <attribute name="title">
+       <string>主播电台</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="RankWidget">
+      <attribute name="title">
+       <string>排行榜</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SingerWidget">
+      <attribute name="title">
+       <string>歌手</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="NewMusicWidget">
+      <attribute name="title">
+       <string>最新音乐</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QWidget" name="widget" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>168</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>新歌上架</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>169</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="text">
+               <string> 新碟上架</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>168</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTabWidget" name="NewSongWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="DisplayResult" name="ALL">
+            <attribute name="title">
+             <string>全部</string>
+            </attribute>
+           </widget>
+           <widget class="DisplayResult" name="China">
+            <attribute name="title">
+             <string>华语</string>
+            </attribute>
+           </widget>
+           <widget class="DisplayResult" name="English">
+            <attribute name="title">
+             <string>欧美</string>
+            </attribute>
+           </widget>
+           <widget class="DisplayResult" name="Korea">
+            <attribute name="title">
+             <string>韩国</string>
+            </attribute>
+           </widget>
+           <widget class="DisplayResult" name="Japan">
+            <attribute name="title">
+             <string>日本</string>
+            </attribute>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DisplayResult</class>
+   <extends>QWidget</extends>
+   <header location="global">displayresult.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

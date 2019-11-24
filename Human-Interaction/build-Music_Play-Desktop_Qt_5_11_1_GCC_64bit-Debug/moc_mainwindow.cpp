@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[27];
-    char stringdata0[332];
+    char stringdata0[326];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,37 +38,37 @@ QT_MOC_LITERAL(3, 27, 15), // "AlreadyGetLyric"
 QT_MOC_LITERAL(4, 43, 17), // "AlreadyGetKeyword"
 QT_MOC_LITERAL(5, 61, 13), // "AlreadyToPlay"
 QT_MOC_LITERAL(6, 75, 20), // "AlreadyGetSuggestion"
-QT_MOC_LITERAL(7, 96, 10), // "Init_Reply"
-QT_MOC_LITERAL(8, 107, 19), // "GetSerachByKeywords"
-QT_MOC_LITERAL(9, 127, 7), // "keyword"
-QT_MOC_LITERAL(10, 135, 4), // "page"
-QT_MOC_LITERAL(11, 140, 15), // "GetLinkBySongId"
-QT_MOC_LITERAL(12, 156, 6), // "SongId"
-QT_MOC_LITERAL(13, 163, 16), // "GetLyricBySongId"
-QT_MOC_LITERAL(14, 180, 18), // "AddMusicInPlayList"
-QT_MOC_LITERAL(15, 199, 8), // "SongInfo"
-QT_MOC_LITERAL(16, 208, 13), // "GetSingerInfo"
-QT_MOC_LITERAL(17, 222, 22), // "QPair<QString,QString>"
-QT_MOC_LITERAL(18, 245, 5), // "array"
-QT_MOC_LITERAL(19, 251, 11), // "resolve_lrc"
-QT_MOC_LITERAL(20, 263, 2), // "ly"
-QT_MOC_LITERAL(21, 266, 10), // "UpdateTime"
-QT_MOC_LITERAL(22, 277, 4), // "time"
-QT_MOC_LITERAL(23, 282, 16), // "total_time_value"
-QT_MOC_LITERAL(24, 299, 9), // "ShowLyric"
-QT_MOC_LITERAL(25, 309, 12), // "GetHotSerach"
-QT_MOC_LITERAL(26, 322, 9) // "AddListen"
+QT_MOC_LITERAL(7, 96, 4), // "Init"
+QT_MOC_LITERAL(8, 101, 19), // "GetSerachByKeywords"
+QT_MOC_LITERAL(9, 121, 7), // "keyword"
+QT_MOC_LITERAL(10, 129, 4), // "page"
+QT_MOC_LITERAL(11, 134, 15), // "GetLinkBySongId"
+QT_MOC_LITERAL(12, 150, 6), // "SongId"
+QT_MOC_LITERAL(13, 157, 16), // "GetLyricBySongId"
+QT_MOC_LITERAL(14, 174, 18), // "AddMusicInPlayList"
+QT_MOC_LITERAL(15, 193, 8), // "SongInfo"
+QT_MOC_LITERAL(16, 202, 13), // "GetSingerInfo"
+QT_MOC_LITERAL(17, 216, 22), // "QPair<QString,QString>"
+QT_MOC_LITERAL(18, 239, 5), // "array"
+QT_MOC_LITERAL(19, 245, 11), // "resolve_lrc"
+QT_MOC_LITERAL(20, 257, 2), // "ly"
+QT_MOC_LITERAL(21, 260, 10), // "UpdateTime"
+QT_MOC_LITERAL(22, 271, 4), // "time"
+QT_MOC_LITERAL(23, 276, 16), // "total_time_value"
+QT_MOC_LITERAL(24, 293, 9), // "ShowLyric"
+QT_MOC_LITERAL(25, 303, 12), // "GetHotSerach"
+QT_MOC_LITERAL(26, 316, 9) // "AddListen"
 
     },
     "MainWindow\0AlreadyGetLink\0\0AlreadyGetLyric\0"
     "AlreadyGetKeyword\0AlreadyToPlay\0"
-    "AlreadyGetSuggestion\0Init_Reply\0"
-    "GetSerachByKeywords\0keyword\0page\0"
-    "GetLinkBySongId\0SongId\0GetLyricBySongId\0"
-    "AddMusicInPlayList\0SongInfo\0GetSingerInfo\0"
-    "QPair<QString,QString>\0array\0resolve_lrc\0"
-    "ly\0UpdateTime\0time\0total_time_value\0"
-    "ShowLyric\0GetHotSerach\0AddListen"
+    "AlreadyGetSuggestion\0Init\0GetSerachByKeywords\0"
+    "keyword\0page\0GetLinkBySongId\0SongId\0"
+    "GetLyricBySongId\0AddMusicInPlayList\0"
+    "SongInfo\0GetSingerInfo\0QPair<QString,QString>\0"
+    "array\0resolve_lrc\0ly\0UpdateTime\0time\0"
+    "total_time_value\0ShowLyric\0GetHotSerach\0"
+    "AddListen"
 };
 #undef QT_MOC_LITERAL
 
@@ -139,7 +139,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->AlreadyGetKeyword(); break;
         case 3: _t->AlreadyToPlay(); break;
         case 4: _t->AlreadyGetSuggestion(); break;
-        case 5: _t->Init_Reply(); break;
+        case 5: _t->Init(); break;
         case 6: _t->GetSerachByKeywords((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 7: _t->GetLinkBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 8: _t->GetLyricBySongId((*reinterpret_cast< QString(*)>(_a[1]))); break;
