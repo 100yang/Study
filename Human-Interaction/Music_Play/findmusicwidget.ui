@@ -45,7 +45,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTabWidget" name="tabWidget">
+    <widget class="QTabWidget" name="BaseWidget">
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
@@ -65,7 +65,7 @@ QTabBar::tab{
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>3</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -85,7 +85,7 @@ QTabBar::tab{
      <property name="tabBarAutoHide">
       <bool>true</bool>
      </property>
-     <widget class="QWidget" name="Recommend">
+     <widget class="DisplayResult" name="Recommend">
       <attribute name="title">
        <string>个性推荐</string>
       </attribute>
@@ -104,6 +104,55 @@ QTabBar::tab{
       <attribute name="title">
        <string>排行榜</string>
       </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTabWidget" name="InRankWidget">
+         <property name="currentIndex">
+          <number>2</number>
+         </property>
+         <widget class="DisplayResult" name="NewSongRank">
+          <attribute name="title">
+           <string>新歌榜</string>
+          </attribute>
+         </widget>
+         <widget class="DisplayResult" name="HotSongRank">
+          <attribute name="title">
+           <string>热歌榜</string>
+          </attribute>
+         </widget>
+         <widget class="DisplayResult" name="BillboardRank">
+          <attribute name="title">
+           <string>Billboard周榜</string>
+          </attribute>
+         </widget>
+         <widget class="DisplayResult" name="MelonRank">
+          <attribute name="title">
+           <string>Melon周榜</string>
+          </attribute>
+         </widget>
+         <widget class="DisplayResult" name="OriconRank">
+          <attribute name="title">
+           <string>Oricon周榜</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="SingerWidget">
       <attribute name="title">

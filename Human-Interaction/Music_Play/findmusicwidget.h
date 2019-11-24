@@ -44,12 +44,18 @@ class FindMusicWidget : public QWidget
 public:
     explicit FindMusicWidget(QWidget *parent = 0);
     ~FindMusicWidget();
+    void init();
     /**
      * @brief GetSerachResult
      * @param area
      * 具体的json文件请查看newsong.json
      */
-    void GetSerachResult(DisplayResult *w, QString area);
+    Q_INVOKABLE void GetSerachResult(DisplayResult *w, QString area);
+    Q_INVOKABLE void GetSingerResult();
+    Q_INVOKABLE void GetRankResult(DisplayResult *w, QString area);
+    Q_INVOKABLE void GetSongTableResult();
+    Q_INVOKABLE void GetTVResult();
+    Q_INVOKABLE void GetRecommendResult();
     QPair<QString, QString> GetSingerInfo(QJsonArray array);
     QVector<QString> SongInfo;
     QMap<QString, QVector<QString> > SerachResult;
@@ -60,8 +66,15 @@ signals:
     void AlreadyGetSerachResult ();
     void AlreadyGetSongInfo();
     void AlreadyAddLikeMusic_Find();
+    void AlreadyGetRecommendResult();
 private:
     Ui::FindMusicWidget *ui;
+    QNetworkAccessManager Manager;
+    QNetworkReply *GetNewSongReply;
+    QNetworkReply *GetRecommendReply;
+    QNetworkReply *GetTVReply;
+    QNetworkReply *GetRankReply;
+    QNetworkReply *GetSingerReply;
 };
 
 #endif // FINDMUSICWIDGET_H

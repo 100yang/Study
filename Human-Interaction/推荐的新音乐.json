@@ -1,0 +1,196 @@
+{
+    "code": 200,
+    "category": 5,
+    "result": [
+        {
+            "id": 1399533630,
+            "type": 4,
+            "name": "与火星的孩子对话",
+            "copywriter": null,
+            "picUrl": null,
+            "canDislike": true,
+            "trackNumberUpdateTime": null,
+            "song": {
+                "name": "与火星的孩子对话",
+                "id": 1399533630,
+                "position": 0,
+                "alias": [
+                    
+                ],
+                "status": 0,
+                "fee": 8,
+                "copyrightId": 636011,
+                "disc": "01",
+                "no": 0,
+                "artists": [
+                    {
+                        "name": "华晨宇",
+                        "id": 861777,
+                        "picId": 0,
+                        "img1v1Id": 0,
+                        "briefDesc": "",
+                        "picUrl": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "albumSize": 0,
+                        "alias": [
+                            
+                        ],
+                        "trans": "",
+                        "musicSize": 0,
+                        "topicPerson": 0
+                    }
+                ],
+                "album": {
+                    "name": "与火星的孩子对话",
+                    "id": 82784844,
+                    "type": "EP/Single",
+                    "size": 1,
+                    "picId": 109951164452907710,
+                    "blurPicUrl": "http://p1.music.126.net/AFmJAcW7jFamQBNF68iKgw==/109951164452907718.jpg",
+                    "companyId": 0,
+                    "pic": 109951164452907710,
+                    "picUrl": "http://p1.music.126.net/AFmJAcW7jFamQBNF68iKgw==/109951164452907718.jpg",
+                    "publishTime": 1572192000000,
+                    "description": "",
+                    "tags": "",
+                    "company": "天娱传媒",
+                    "briefDesc": "",
+                    "artist": {
+                        "name": "",
+                        "id": 0,
+                        "picId": 0,
+                        "img1v1Id": 0,
+                        "briefDesc": "",
+                        "picUrl": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "albumSize": 0,
+                        "alias": [
+                            
+                        ],
+                        "trans": "",
+                        "musicSize": 0,
+                        "topicPerson": 0
+                    },
+                    "songs": [
+                        
+                    ],
+                    "alias": [
+                        
+                    ],
+                    "status": 0,
+                    "copyrightId": 636011,
+                    "commentThreadId": "R_AL_3_82784844",
+                    "artists": [
+                        {
+                            "name": "华晨宇",
+                            "id": 861777,
+                            "picId": 0,
+                            "img1v1Id": 0,
+                            "briefDesc": "",
+                            "picUrl": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                            "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                            "albumSize": 0,
+                            "alias": [
+                                
+                            ],
+                            "trans": "",
+                            "musicSize": 0,
+                            "topicPerson": 0
+                        }
+                    ],
+                    "subType": "录音室版",
+                    "transName": null,
+                    "mark": 0,
+                    "picId_str": "109951164452907718"
+                },
+                "starred": false,
+                "popularity": 100,
+                "score": 100,
+                "starredNum": 0,
+                "duration": 309537,
+                "playedNum": 0,
+                "dayPlays": 0,
+                "hearTime": 0,
+                "ringtone": "",
+                "crbt": null,
+                "audition": null,
+                "copyFrom": "",
+                "commentThreadId": "R_SO_4_1399533630",
+                "rtUrl": null,
+                "ftype": 0,
+                "rtUrls": [
+                    
+                ],
+                "copyright": 0,
+                "transName": null,
+                "sign": null,
+                "mark": 0,
+                "bMusic": {
+                    "name": null,
+                    "id": 4092356868,
+                    "size": 4953645,
+                    "extension": "mp3",
+                    "sr": 48000,
+                    "dfsId": 0,
+                    "bitrate": 128000,
+                    "playTime": 309537,
+                    "volumeDelta": -12855
+                },
+                "mp3Url": null,
+                "rtype": 0,
+                "rurl": null,
+                "mvid": 10901479,
+                "hMusic": {
+                    "name": null,
+                    "id": 4092356866,
+                    "size": 12384045,
+                    "extension": "mp3",
+                    "sr": 48000,
+                    "dfsId": 0,
+                    "bitrate": 320000,
+                    "playTime": 309537,
+                    "volumeDelta": -17214
+                },
+                "mMusic": {
+                    "name": null,
+                    "id": 4092356867,
+                    "size": 7430445,
+                    "extension": "mp3",
+                    "sr": 48000,
+                    "dfsId": 0,
+                    "bitrate": 192000,
+                    "playTime": 309537,
+                    "volumeDelta": -14579
+                },
+                "lMusic": {
+                    "name": null,
+                    "id": 4092356868,
+                    "size": 4953645,
+                    "extension": "mp3",
+                    "sr": 48000,
+                    "dfsId": 0,
+                    "bitrate": 128000,
+                    "playTime": 309537,
+                    "volumeDelta": -12855
+                },
+                "exclusive": true,
+                "privilege": {
+                    "id": 1399533630,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 68,
+                    "preSell": false
+                }
+            },
+            "alg": "hot_server"
+        },
