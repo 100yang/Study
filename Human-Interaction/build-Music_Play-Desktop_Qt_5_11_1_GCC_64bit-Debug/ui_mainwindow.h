@@ -35,6 +35,7 @@ public:
     QVBoxLayout *verticalLayout;
     QWidget *serach_widget;
     QHBoxLayout *horizontalLayout_3;
+    QLabel *label_5;
     QLabel *label_4;
     QSpacerItem *horizontalSpacer_4;
     QLineEdit *serach_edit;
@@ -78,7 +79,7 @@ public:
     DisplayResult *page0;
     DisplayResult *page1;
     DisplayResult *page2;
-    QWidget *widget;
+    QWidget *ToPageWidget;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *prepagebtn;
     QSpacerItem *horizontalSpacer;
@@ -140,14 +141,29 @@ public:
         sizePolicy1.setHeightForWidth(serach_widget->sizePolicy().hasHeightForWidth());
         serach_widget->setSizePolicy(sizePolicy1);
         serach_widget->setMinimumSize(QSize(0, 60));
+        serach_widget->setAutoFillBackground(true);
         serach_widget->setStyleSheet(QStringLiteral(""));
         horizontalLayout_3 = new QHBoxLayout(serach_widget);
-        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setSpacing(4);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        label_5 = new QLabel(serach_widget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setMinimumSize(QSize(55, 0));
+        label_5->setFrameShape(QFrame::StyledPanel);
+        label_5->setPixmap(QPixmap(QString::fromUtf8("Images/Music disc.png")));
+        label_5->setScaledContents(true);
+        label_5->setMargin(0);
+
+        horizontalLayout_3->addWidget(label_5);
+
         label_4 = new QLabel(serach_widget);
         label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setStyleSheet(QStringLiteral("font: 75 italic 24pt \"DejaVu Sans\";"));
+        label_4->setTextFormat(Qt::AutoText);
+        label_4->setScaledContents(true);
+        label_4->setMargin(5);
 
         horizontalLayout_3->addWidget(label_4);
 
@@ -171,8 +187,9 @@ public:
 
         label_3 = new QLabel(serach_widget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setPixmap(QPixmap(QString::fromUtf8(":/Images/serach.png")));
+        label_3->setPixmap(QPixmap(QString::fromUtf8("Images/serach.png")));
         label_3->setScaledContents(true);
+        label_3->setMargin(8);
 
         horizontalLayout_3->addWidget(label_3);
 
@@ -421,14 +438,14 @@ public:
 
         verticalLayout_4->addWidget(stackedWidget);
 
-        widget = new QWidget(SerachResultBase);
-        widget->setObjectName(QStringLiteral("widget"));
-        horizontalLayout_4 = new QHBoxLayout(widget);
+        ToPageWidget = new QWidget(SerachResultBase);
+        ToPageWidget->setObjectName(QStringLiteral("ToPageWidget"));
+        horizontalLayout_4 = new QHBoxLayout(ToPageWidget);
         horizontalLayout_4->setSpacing(0);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        prepagebtn = new QPushButton(widget);
+        prepagebtn = new QPushButton(ToPageWidget);
         prepagebtn->setObjectName(QStringLiteral("prepagebtn"));
         QIcon icon5;
         icon5.addFile(QStringLiteral(":/Images/prepage.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -440,7 +457,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer);
 
-        pagelabel = new QLabel(widget);
+        pagelabel = new QLabel(ToPageWidget);
         pagelabel->setObjectName(QStringLiteral("pagelabel"));
         pagelabel->setFrameShape(QFrame::StyledPanel);
 
@@ -450,7 +467,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_12);
 
-        nextpagebtn = new QPushButton(widget);
+        nextpagebtn = new QPushButton(ToPageWidget);
         nextpagebtn->setObjectName(QStringLiteral("nextpagebtn"));
         QIcon icon6;
         icon6.addFile(QStringLiteral(":/Images/nextpage.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -459,7 +476,7 @@ public:
         horizontalLayout_4->addWidget(nextpagebtn);
 
 
-        verticalLayout_4->addWidget(widget);
+        verticalLayout_4->addWidget(ToPageWidget);
 
 
         horizontalLayout->addWidget(SerachResultBase);
@@ -603,6 +620,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Music Player", nullptr));
+        label_5->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "Music Play", nullptr));
         label_3->setText(QString());
         loginbtn->setText(QApplication::translate("MainWindow", "login", nullptr));

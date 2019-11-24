@@ -15,6 +15,16 @@ public:
     explicit LikeMusicWidget(QWidget *parent = 0);
     ~LikeMusicWidget();
     void Add(QVector<QString> v);
+    QString SongId;
+    QString SongName;
+    QString SingerName;
+public slots:
+    void AddInList();
+    void RemoveSong();
+protected :
+    void contextMenuEvent (QContextMenuEvent *event);
+signals:
+    void AlreadyGetSongId();
 private:
     Ui::LikeMusicWidget *ui;
 };

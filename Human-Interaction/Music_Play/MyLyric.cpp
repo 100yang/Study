@@ -12,7 +12,7 @@ MyLyric::MyLyric(QWidget *parent) :
 	//FramelessWindowHint为无边界的窗口
 	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
-    setText(tr("你没有用我"));
+	setText(tr("你没有用我"));
 	// 固定显示区域大小
 	setMaximumSize(800, 60);
 	setMinimumSize(800, 60);
@@ -87,8 +87,8 @@ void MyLyric::paintEvent(QPaintEvent *)
 //左击操作
 void MyLyric::mousePressEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton)
-        offset = event->globalPos() - frameGeometry().topLeft();
+	if (event->button() == Qt::LeftButton)
+		offset = event->globalPos() - frameGeometry().topLeft();
 }
 
 
@@ -100,7 +100,7 @@ void MyLyric::mouseMoveEvent(QMouseEvent *event)
 	if (event->buttons() & Qt::LeftButton) {
 		setCursor(Qt::PointingHandCursor);
 		//实现移动操作
-        move(event->globalPos()-offset);
+		move(event->globalPos() - offset);
 	}
 }
 

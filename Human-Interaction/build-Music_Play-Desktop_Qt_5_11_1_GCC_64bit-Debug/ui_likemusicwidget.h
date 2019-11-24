@@ -10,13 +10,10 @@
 #define UI_LIKEMUSICWIDGET_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -27,23 +24,36 @@ class Ui_LikeMusicWidget
 {
 public:
     QVBoxLayout *verticalLayout;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label;
     QTableWidget *tableWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *prepagebtn;
-    QSpacerItem *horizontalSpacer;
-    QLabel *pagelabel;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *nextpagebtn;
 
     void setupUi(QWidget *LikeMusicWidget)
     {
         if (LikeMusicWidget->objectName().isEmpty())
             LikeMusicWidget->setObjectName(QStringLiteral("LikeMusicWidget"));
-        LikeMusicWidget->resize(681, 379);
+        LikeMusicWidget->resize(718, 354);
+        LikeMusicWidget->setMinimumSize(QSize(718, 354));
+        LikeMusicWidget->setMaximumSize(QSize(718, 354));
+        LikeMusicWidget->setAutoFillBackground(true);
         verticalLayout = new QVBoxLayout(LikeMusicWidget);
-        verticalLayout->setSpacing(5);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        widget = new QWidget(LikeMusicWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label = new QLabel(widget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setStyleSheet(QStringLiteral("font: 75 18pt \"DejaVu Sans Mono\";"));
+        label->setScaledContents(true);
+
+        horizontalLayout_2->addWidget(label);
+
+
+        verticalLayout->addWidget(widget);
+
         tableWidget = new QTableWidget(LikeMusicWidget);
         if (tableWidget->columnCount() < 6)
             tableWidget->setColumnCount(6);
@@ -61,45 +71,10 @@ public:
         tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
         tableWidget->setShowGrid(false);
-        tableWidget->horizontalHeader()->setDefaultSectionSize(113);
+        tableWidget->horizontalHeader()->setDefaultSectionSize(119);
         tableWidget->verticalHeader()->setVisible(false);
 
         verticalLayout->addWidget(tableWidget);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        prepagebtn = new QPushButton(LikeMusicWidget);
-        prepagebtn->setObjectName(QStringLiteral("prepagebtn"));
-        QIcon icon;
-        icon.addFile(QStringLiteral("Images/prepage.png"), QSize(), QIcon::Normal, QIcon::Off);
-        prepagebtn->setIcon(icon);
-
-        horizontalLayout->addWidget(prepagebtn);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
-        pagelabel = new QLabel(LikeMusicWidget);
-        pagelabel->setObjectName(QStringLiteral("pagelabel"));
-        pagelabel->setFrameShape(QFrame::StyledPanel);
-
-        horizontalLayout->addWidget(pagelabel);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_2);
-
-        nextpagebtn = new QPushButton(LikeMusicWidget);
-        nextpagebtn->setObjectName(QStringLiteral("nextpagebtn"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral("Images/nextpage.png"), QSize(), QIcon::Normal, QIcon::Off);
-        nextpagebtn->setIcon(icon1);
-
-        horizontalLayout->addWidget(nextpagebtn);
-
-
-        verticalLayout->addLayout(horizontalLayout);
 
 
         retranslateUi(LikeMusicWidget);
@@ -110,6 +85,7 @@ public:
     void retranslateUi(QWidget *LikeMusicWidget)
     {
         LikeMusicWidget->setWindowTitle(QApplication::translate("LikeMusicWidget", "Form", nullptr));
+        label->setText(QApplication::translate("LikeMusicWidget", "\346\210\221\345\226\234\346\254\242\347\232\204\351\237\263\344\271\220", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(1);
         ___qtablewidgetitem->setText(QApplication::translate("LikeMusicWidget", "\346\223\215\344\275\234", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(2);
@@ -120,9 +96,6 @@ public:
         ___qtablewidgetitem3->setText(QApplication::translate("LikeMusicWidget", "\344\270\223\350\276\221", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(5);
         ___qtablewidgetitem4->setText(QApplication::translate("LikeMusicWidget", "\346\227\266\351\225\277", nullptr));
-        prepagebtn->setText(QString());
-        pagelabel->setText(QApplication::translate("LikeMusicWidget", "1", nullptr));
-        nextpagebtn->setText(QString());
     } // retranslateUi
 
 };

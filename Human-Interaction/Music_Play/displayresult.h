@@ -44,8 +44,16 @@ public:
     QString SongId;
     QString SongName;
     QString SingerName;
+    QVector<QString> SongInfo;
+public slots:
+    void AddInPlayList();
+    void AddInLikeMusic();
+protected :
+    void contextMenuEvent (QContextMenuEvent *event);
 signals:
     void AlreadGetSongId();
+    void AlreadyAddLikeMusic();
+    void RemoveLikeMusic();
 private:
     Ui::DisplayResult *ui;
 

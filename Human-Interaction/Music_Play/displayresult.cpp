@@ -27,10 +27,11 @@
 #include <QDialog>
 #include <QPushButton>
 #include <QIcon>
-const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
-extern QString SongIdByDisplay = "";
-extern QString SongNameByDisplay = "";
-extern QString SingerNameByDisplay = "";
+#include <QMenu>
+#include <QAction>
+#include <QMessageBox>
+#include <QCursor>
+//const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 DisplayResult::DisplayResult(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayResult)
@@ -72,9 +73,13 @@ DisplayResult::~DisplayResult()
  * @param v [需要存储的列表集]
  */
 void DisplayResult::Add (QVector<QString> v) {
+//    auto Replace = v;
+//    for(int i = 0; i < Replace.size (); ++i){
+//        qDebug()<<"不可嫩为空  "<<Replace.at (i);
+//    }
     auto Rowindex = ui->tableWidget->rowCount ();
     ui->tableWidget->insertRow (Rowindex);
-    QTableWidgetItem *item0 = new QTableWidgetItem;
+    QTableWidgetItem *item0 = new QTableWidgetItem;//歌曲ID
     item0->setText (v.at (0));
     item0->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setVerticalHeaderItem (Rowindex, item0);
@@ -87,9 +92,7 @@ void DisplayResult::Add (QVector<QString> v) {
     QWidget *w = new QWidget;
     QPushButton *likebtn = new QPushButton;
     QPushButton *Downloadbtn = new QPushButton;
-    QIcon icon;
-    icon.addFile (":/Images/lovemusic.png");
-    likebtn->setIcon (icon);
+    likebtn->setIcon (QIcon(":/Images/lovemusic.png"));
     QIcon icon1;
     icon1.addFile (":/Images/download.png");
     Downloadbtn->setIcon (icon1);
@@ -98,22 +101,78 @@ void DisplayResult::Add (QVector<QString> v) {
     layout->addWidget (Downloadbtn);
     layout->setMargin (0);
     ui->tableWidget->setCellWidget (Rowindex, 1, w);
-
-    QTableWidgetItem *item2 = new QTableWidgetItem;
+    connect (likebtn, &QPushButton::clicked, [this, likebtn]()mutable{
+        if (ClickNum % 2 == 0) {
+            qDebug() << "添加到我喜欢";
+            likebtn->setIcon (QIcon(":/Images/fulllove.png"));
+            SongInfo.clear ();
+            qDebug() << "添加到我喜欢";
+            qDebug() << "添加到我喜欢";
+            auto index = ui->tableWidget->currentRow ();
+            auto row = ui->tableWidget->verticalHeaderItem (index);
+            SongInfo.push_back (row->text ());//id
+            SongInfo.push_back (ui->tableWidget->item(index, 2)->text ()); //song
+            SongInfo.push_back (ui->tableWidget->item(index, 3)->text ()); //singer
+            SongInfo.push_back (ui->tableWidget->item(index, 4)->text ()); //ablum
+            emit AlreadyAddLikeMusic();
+        }
+        else{
+            likebtn->setIcon (QIcon(":/Images/lovemusic.png"));
+            emit RemoveLikeMusic ();
+        }
+        ClickNum = (ClickNum + 1 ) % 2;
+    });
+    connect (Downloadbtn, &QPushButton::clicked, [this]()mutable{
+        QMessageBox mesg;
+        mesg.warning (this, "警告", "此功能还没实现");
+    });
+    QTableWidgetItem *item2 = new QTableWidgetItem;//歌曲名称
     item2->setText ( v.at (3));
     item2->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setItem (Rowindex, 2, item2);
-    QTableWidgetItem *item3 = new QTableWidgetItem;
+
+    QTableWidgetItem *item3 = new QTableWidgetItem;//歌手
     item3->setText (v.at (4));
     item3->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setItem (Rowindex, 3, item3);
-    QTableWidgetItem *item4 = new QTableWidgetItem;
+
+    QTableWidgetItem *item4 = new QTableWidgetItem;//专辑
     item4->setText (v.at (2));
     item4->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setItem (Rowindex, 4, item4);
-    QTableWidgetItem *item5 = new QTableWidgetItem;
+
+    QTableWidgetItem *item5 = new QTableWidgetItem;//时长
     item5->setText ("未知");
     item5->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     ui->tableWidget->setItem (Rowindex, 5, item5);
 }
-
+void DisplayResult::contextMenuEvent (QContextMenuEvent *event) {
+    QMenu *menu = new QMenu(ui->tableWidget);
+    QAction *addPlayList = menu->addAction("添加到播放队列");
+    connect (addPlayList, &QAction::triggered, this, &DisplayResult::AddInPlayList);
+    QAction *addLikeMusic = menu->addAction("添加到我喜欢");
+    connect (addLikeMusic, &QAction::triggered, this, &DisplayResult::AddInLikeMusic);
+    menu->exec (QCursor::pos ());//在鼠标当前位置显示
+}
+void DisplayResult::AddInPlayList () {
+    auto index = ui->tableWidget->currentRow ();
+    auto row = ui->tableWidget->verticalHeaderItem (index);
+    SongId = row->text ();
+    SongName = ui->tableWidget->item (index, 2)->text ();
+    SingerName =  ui->tableWidget->item (index, 3)->text ();
+    emit AlreadGetSongId();
+}
+void DisplayResult::AddInLikeMusic () {
+    auto index = ui->tableWidget->currentRow ();
+    auto row = ui->tableWidget->verticalHeaderItem (index);
+    SongId = row->text ();
+    SongName = ui->tableWidget->item (index, 2)->text ();
+    SingerName =  ui->tableWidget->item (index, 3)->text ();
+    auto ablum = ui->tableWidget->item (index, 4)->text ();
+    SongInfo.clear ();
+    SongInfo.push_back (SongId);
+    SongInfo.push_back (SongName);
+    SongInfo.push_back (SingerName);
+    SongInfo.push_back (ablum);
+    emit AlreadyAddLikeMusic();
+}

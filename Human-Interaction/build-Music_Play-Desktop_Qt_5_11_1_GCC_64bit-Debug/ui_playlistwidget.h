@@ -13,7 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QListWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -21,7 +20,6 @@ class Ui_PlayListWidget
 {
 public:
     QHBoxLayout *horizontalLayout;
-    QListWidget *listWidget;
 
     void setupUi(QDialog *PlayListWidget)
     {
@@ -32,11 +30,6 @@ public:
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        listWidget = new QListWidget(PlayListWidget);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-
-        horizontalLayout->addWidget(listWidget);
-
 
         retranslateUi(PlayListWidget);
 

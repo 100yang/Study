@@ -116,7 +116,7 @@ private:
     int ListButtonClickNum ;
     int ReplyNum;
     QPoint offset;
-    QListWidget *ListWidget;
+//    QListWidget *ListWidget;
     /*网络部分*/
     QNetworkAccessManager Manager;
     QNetworkReply *SerachReply;

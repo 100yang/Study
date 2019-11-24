@@ -7,28 +7,25 @@
     <x>0</x>
     <y>0</y>
     <width>718</width>
-    <height>315</height>
+    <height>354</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>718</width>
-    <height>315</height>
+    <height>354</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>718</width>
-    <height>315</height>
+    <height>354</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>0</number>
-   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -41,6 +38,42 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">font: 75 16pt &quot;DejaVu Serif&quot;;</string>
+        </property>
+        <property name="text">
+         <string>本地音乐</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="open">
+        <property name="text">
+         <string>选择目录</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item>
     <widget class="QTableWidget" name="tableWidget">
      <property name="showGrid">
@@ -69,12 +102,12 @@
      </column>
      <column>
       <property name="text">
-       <string>专辑</string>
+       <string>时长</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>时长</string>
+       <string>大小</string>
       </property>
      </column>
     </widget>

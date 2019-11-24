@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "videoplay.h"
+#include "localmusicwidget.h"
 #include <QApplication>
 #include <QObject>
 #include <stdlib.h>
@@ -11,8 +11,9 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 //    VideoPlay w;
 //    w.show ();
-    MainWindow w;
-    w.show();
+	MainWindow w;
+//    LocalMusicWidget w;
+	w.show();
 	a.exec ();
 //    SongAndId.clear();
 //	pro->close ();

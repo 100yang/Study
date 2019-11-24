@@ -5,12 +5,12 @@
 #include <QListWidget>
 class ShowPlayList : public QListWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ShowPlayList(QWidget *parent = nullptr);
-    ~ShowPlayList();
+	explicit ShowPlayList(QWidget *parent = nullptr);
+	~ShowPlayList();
 protected:
-    void contextMenuEvent(QContextMenuEvent *event);
+	void contextMenuEvent(QContextMenuEvent *event);
 signals:
 
 public slots:
