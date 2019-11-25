@@ -35,47 +35,30 @@ const QString GetNewSong = "http://localhost:3000/top/song?type=%1";
 const QString GetRecommend = "http://localhost:3000/personalized/newsong";
 const QString GetTopList = "http://localhost:3000/top/list?idx=%1";/*歌曲排行*/
 const QString GetTopSinger = "http://localhost:3000/toplist/artist";
+const QString GetSongTable = "http://localhost:3000/personalized?limit=9";
 FindMusicWidget::FindMusicWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FindMusicWidget)
 {
 
     ui->setupUi(this);
-    connect(ui->NewSongWidget, &QTabWidget::currentChanged, [this]()mutable{
-        auto NowWidgetIndex = ui->NewSongWidget->currentIndex ();
-        if (NowWidgetIndex == 0) {
-            GetSerachResult (ui->ALL, "0");
-        }
-        else if (NowWidgetIndex == 1) {
-            GetSerachResult (ui->China, "7");
-        }
-        else if (NowWidgetIndex == 2) {
-            GetSerachResult (ui->English, "96");
-        }
-        else if (NowWidgetIndex == 3) {
-            GetSerachResult (ui->Korea, "16");
-        }
-        else{
-            GetSerachResult (ui->Japan, "8");
-        }
-    });
-    connect(ui->InRankWidget, &QTabWidget::currentChanged, [this]()mutable{
-        auto NowWidgetIndex = ui->InRankWidget->currentIndex ();
-        if (NowWidgetIndex == 0) {
-            GetRankResult (ui->NewSongRank, "0");
-        }
-        else if (NowWidgetIndex == 1) {
-            GetRankResult (ui->HotSongRank, "1");
-        }
-        else if (NowWidgetIndex == 2) {
-            GetRankResult (ui->BillboardRank, "6");
-        }
-        else if (NowWidgetIndex == 3) {
-            GetRankResult (ui->MelonRank, "11");
-        }
-        else{
-            GetRankResult (ui->OriconRank, "10");
-        }
+    GetRecommendResult ();
+    GetSerachResult (ui->ALL, "0");
+    GetSerachResult (ui->China, "7");
+    GetSerachResult (ui->English, "96");
+    GetSerachResult (ui->Korea, "16");
+    GetSerachResult (ui->Japan, "8");
+    GetRankResult (ui->NewSongRank, "0");
+    GetRankResult (ui->HotSongRank, "1");
+    GetRankResult (ui->BillboardRank, "6");
+    GetRankResult (ui->MelonRank, "11");
+    GetRankResult (ui->OriconRank, "10");
+    GetSongTableResult ();
+    connect (ui->Recommend, &DisplayResult::AlreadGetSongId, [this]()mutable{
+        SongName  = ui->Recommend->SongName;
+        SingerName = ui->Recommend->SingerName;
+        SongId = ui->Recommend->SongId;
+        emit AlreadyGetSongInfo();
     });
     connect (ui->ALL, &DisplayResult::AlreadGetSongId, [this]()mutable{
         SongName  = ui->ALL->SongName;
@@ -161,6 +144,10 @@ FindMusicWidget::FindMusicWidget(QWidget *parent) :
         SongInfo = ui->NewSongRank->SongInfo;
         emit AlreadyAddLikeMusic_Find();
     });
+    connect (ui->Recommend, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
+        SongInfo = ui->Recommend->SongInfo;
+        emit AlreadyAddLikeMusic_Find();
+    });
     connect (ui->OriconRank, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
         SongInfo = ui->OriconRank->SongInfo;
         emit AlreadyAddLikeMusic_Find();
@@ -191,6 +178,8 @@ void FindMusicWidget::init () {
     GetTVReply = nullptr;
     GetRankReply = nullptr;
     GetSingerReply = nullptr;
+    GetSongTableReply = nullptr;
+    GetImageReply = nullptr;
     SerachResult.clear ();
     SongId = "";
     SongName = "";
@@ -259,6 +248,7 @@ void FindMusicWidget::GetRankResult (DisplayResult *w, QString area) {
     if (GetRankReply) {
         GetRankReply->deleteLater ();
     }
+    qDebug() << "sss";
     QUrl url = QUrl(GetTopList.arg (area));
     GetRankReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
@@ -348,7 +338,63 @@ void FindMusicWidget::GetSingerResult () {
     else {qDebug() << "GetSingerReply Error" << GetSingerReply->errorString ();}
     emit AlreadyGetSingerResult();
 }
-void FindMusicWidget::GetSongTableResult () {}
+void FindMusicWidget::GetSongTableResult () {
+    if (GetSongTableReply) {
+        GetSongTableReply->deleteLater ();
+    }
+    QUrl url = QUrl(GetSongTable);
+    GetSongTableReply = Manager.get (QNetworkRequest(url));
+    QEventLoop loop;
+    connect (GetSongTableReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec ();
+    if (GetSongTableReply->error () == QNetworkReply::NoError) {
+        QByteArray Array = GetSongTableReply->readAll ();
+        QJsonParseError JsonError;
+        QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+        if (JsonError.error == QJsonParseError::NoError) {
+            QJsonObject Obj = json.object ();
+            QJsonArray JsonArray = Obj["result"].toArray ();
+            for (int i = 0; i < JsonArray.size (); ++i) {
+                QJsonObject jobj = JsonArray[i].toObject();
+                QString TextName = jobj["name"].toString ();
+                QString ImageUrl = jobj["picUrl"].toString ();
+                switch (i) {
+                case 0:
+                    AddTableInLabel (ui->label, ui->label_2, ImageUrl, TextName);
+                    break;
+                case 1:
+                    AddTableInLabel (ui->label_4, ui->label_3, ImageUrl, TextName);
+                    break;
+                case 2:
+                    AddTableInLabel (ui->label_6, ui->label_5, ImageUrl, TextName);
+                    break;
+                case 3:
+                    AddTableInLabel (ui->label_8, ui->label_7, ImageUrl, TextName);
+                    break;
+                case 4:
+                    AddTableInLabel (ui->label_10, ui->label_9, ImageUrl, TextName);
+                    break;
+                case 5:
+                    AddTableInLabel (ui->label_12, ui->label_11, ImageUrl, TextName);
+                    break;
+                case 6:
+                    AddTableInLabel (ui->label_14, ui->label_13, ImageUrl, TextName);
+                    break;
+                case 7:
+                    AddTableInLabel (ui->label_16, ui->label_15, ImageUrl, TextName);
+                    break;
+                case 8:
+                    AddTableInLabel (ui->label_18, ui->label_17, ImageUrl, TextName);
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+        else {qDebug() << "GetSongTableReply JSONERROR:" << JsonError.errorString ();}
+    }
+    else {qDebug() << "GetSongTableReply Error" << GetSongTableReply->errorString ();}
+}
 void FindMusicWidget::GetTVResult () {}
 void FindMusicWidget::GetRecommendResult () {
     if (GetRecommendReply) {
@@ -398,4 +444,21 @@ void FindMusicWidget::GetRecommendResult () {
     }
     else {qDebug() << "GetRecommendReply Error" << GetRecommendReply->errorString ();}
     emit AlreadyGetRecommendResult();
+}
+void FindMusicWidget::AddTableInLabel (QLabel *imagelabel, QLabel *textlabel, QString ImageUrl, QString analysis) {
+//    QUrl url = QUrl(ImageUrl);
+//    if(GetImageReply){
+//        GetImageReply->deleteLater ();
+//    }
+//    GetImageReply = Manager.get (QNetworkRequest(url));
+//    QEventLoop loop;
+//    connect (GetImageReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+//    loop.exec ();
+//    if (GetImageReply->error () == QNetworkReply::NoError) {
+//        QByteArray array = GetImageReply->readAll ();
+//        QPixmap p;
+//        p.loadFromData (array);
+//        imagelabel->setPixmap (p);
+//    }
+    textlabel->setText (analysis);
 }

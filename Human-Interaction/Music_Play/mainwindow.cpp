@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 	AddListen ();/*加入监听*/
-	/*QDialog的一个播放列表*/
+
 
 
 

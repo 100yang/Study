@@ -1,6 +1,6 @@
 #ifndef DISPLAYRESULT_H
 #define DISPLAYRESULT_H
-
+#include "dialog.h"
 #include <QWidget>
 #include <QVector>
 #include <QString>
@@ -41,9 +41,11 @@ public:
     explicit DisplayResult(QWidget *parent = 0);
     ~DisplayResult();
     void Add(QVector<QString> v);
+    void GetLinkBySongId (QString SongId);
     QString SongId;
     QString SongName;
     QString SingerName;
+    QString SongUrl;
     QVector<QString> SongInfo;
 public slots:
     void AddInPlayList();
@@ -56,8 +58,11 @@ signals:
     void RemoveLikeMusic();
 private:
     Ui::DisplayResult *ui;
-
+    QNetworkAccessManager Manager;
+    QNetworkReply *DownloadMusicReply;
     int ClickNum;
+//    QFile *DownloadFile;
+    Dialog *DownloadFile;
 };
 
 #endif // DISPLAYRESULT_H

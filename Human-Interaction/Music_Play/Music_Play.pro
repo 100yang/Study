@@ -34,7 +34,8 @@ SOURCES += \
     likemusicwidget.cpp \
     localmusicwidget.cpp \
     findmvwidget.cpp \
-    findmusicwidget.cpp
+    findmusicwidget.cpp \
+    dialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -46,7 +47,8 @@ HEADERS += \
     likemusicwidget.h \
     localmusicwidget.h \
     findmvwidget.h \
-    findmusicwidget.h
+    findmusicwidget.h \
+    dialog.h
 
 FORMS += \
         mainwindow.ui \

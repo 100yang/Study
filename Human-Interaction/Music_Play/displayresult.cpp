@@ -1,5 +1,6 @@
 #include "displayresult.h"
 #include "ui_displayresult.h"
+#include "dialog.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QPlainTextEdit>
@@ -31,7 +32,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QCursor>
-//const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
+const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 DisplayResult::DisplayResult(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayResult)
@@ -39,6 +40,8 @@ DisplayResult::DisplayResult(QWidget *parent) :
     SongId = "";
     SongName = "";
     SingerName = "";
+    SongUrl = "";
+    DownloadMusicReply = nullptr;
     ui->setupUi(this);
 
     ClickNum = 0;
@@ -120,8 +123,18 @@ void DisplayResult::Add (QVector<QString> v) {
         ClickNum = (ClickNum + 1 ) % 2;
     });
     connect (Downloadbtn, &QPushButton::clicked, [this]()mutable{
-        QMessageBox mesg;
-        mesg.warning (this, "警告", "此功能还没实现");
+        auto index = ui->tableWidget->currentRow ();
+        auto row = ui->tableWidget->verticalHeaderItem (index);
+        QString Id = row->text ();
+        GetLinkBySongId(Id);
+        SongName = ui->tableWidget->item (index, 2)->text ();
+        SingerName =  ui->tableWidget->item (index, 3)->text ();
+        DownloadFile = new Dialog(this);
+        DownloadFile->Url = SongUrl;
+        DownloadFile->SongName = SongName;
+        DownloadFile->SingerName = SingerName;
+//        QMessageBox mesg;
+//        mesg.warning (this, "警告", "此功能还没实现");
     });
     QTableWidgetItem *item2 = new QTableWidgetItem;//歌曲名称
     item2->setText ( v.at (3));
@@ -179,4 +192,33 @@ void DisplayResult::AddInLikeMusic () {
     SongInfo.push_back (SingerName);
     SongInfo.push_back (ablum);
     emit AlreadyAddLikeMusic();
+}
+void DisplayResult::GetLinkBySongId (QString SongId) {
+    /*删除原来的响应*/
+    if (DownloadMusicReply) {DownloadMusicReply->deleteLater ();}
+    QUrl url = QUrl(ApiOfGetUrlById.arg (SongId));
+    DownloadMusicReply = Manager.get (QNetworkRequest(url));
+    QEventLoop loop;
+    connect (DownloadMusicReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec ();
+    if (DownloadMusicReply->error () == QNetworkReply::NoError) {
+        QByteArray Array = DownloadMusicReply->readAll ();
+        QJsonParseError JsonError;
+        QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+        if (JsonError.error == QJsonParseError::NoError) {
+            QJsonObject Obj = json.object ();
+            QJsonArray Array_1 = Obj["data"].toArray ();
+            for (int i = 0; i < Array_1.size (); ++i) {
+                QJsonObject jobj = Array_1[i].toObject ();
+                SongUrl = jobj["url"].toString ();
+//                SongAndId.insert (SongUrl, SongId);
+//                qDebug() << "DownloadMusicReply  歌曲的链接为:" << SongUrl;
+//                qDebug() << "DownloadMusicReply 歌曲的ID：" << SongId;
+                break;
+            }
+        }
+        else {qDebug() << "DownloadMusicReply JSONERROR:" << JsonError.errorString ();}
+    }
+    else {qDebug() << "DownloadMusicReply Error" << DownloadMusicReply->errorString ();}
+//    emit AlreadyGetLink ();
 }

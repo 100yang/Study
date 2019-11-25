@@ -56,6 +56,7 @@ public:
     Q_INVOKABLE void GetSongTableResult();
     Q_INVOKABLE void GetTVResult();
     Q_INVOKABLE void GetRecommendResult();
+    Q_INVOKABLE void AddTableInLabel(QLabel *imagelabel,QLabel *textlabel,QString ImageUrl,QString analysis);
     QPair<QString, QString> GetSingerInfo(QJsonArray array);
     QVector<QString> SongInfo;
     QMap<QString, QVector<QString> > SerachResult;
@@ -77,6 +78,8 @@ private:
     QNetworkReply *GetTVReply;
     QNetworkReply *GetRankReply;
     QNetworkReply *GetSingerReply;
+    QNetworkReply *GetSongTableReply;
+     QNetworkReply *GetImageReply;
 };
 
 #endif // FINDMUSICWIDGET_H
