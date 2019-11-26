@@ -429,7 +429,7 @@ public:
 
         retranslateUi(FindMusicWidget);
 
-        BaseWidget->setCurrentIndex(1);
+        BaseWidget->setCurrentIndex(0);
         InRankWidget->setCurrentIndex(2);
         NewSongWidget->setCurrentIndex(0);
 

@@ -126,7 +126,7 @@ private:
     QNetworkReply *GetLinkReply;
     QNetworkReply *LyricReply;
     QNetworkReply *CheckReply;
-     QNetworkReply *ImageReply;
+    QNetworkReply *ImageReply;
     QString SongUrl;
     QString Keyword;
     QString LyricString;

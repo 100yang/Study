@@ -248,7 +248,7 @@ void FindMusicWidget::GetRankResult (DisplayResult *w, QString area) {
     if (GetRankReply) {
         GetRankReply->deleteLater ();
     }
-    qDebug() << "sss";
+//    qDebug() << "sss";
     QUrl url = QUrl(GetTopList.arg (area));
     GetRankReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;

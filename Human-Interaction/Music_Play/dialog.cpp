@@ -62,7 +62,9 @@ Dialog::~Dialog()
 }
 void Dialog::httpDownload(QString Url, QString SongName, QString SingerName){
     QUrl url(Url);
-    file=new QFile(SingerName + " - " + SongName);
+    QString FilePath = "/home/onezero/Music/"+SingerName + " - " + SongName + ".mp3";
+    qDebug()<<"FilePath"<<FilePath;
+    file=new QFile(FilePath);
     qDebug()<<fileInfo;
     file->open(QIODevice::WriteOnly);//只读方式打开文件
     accessManager=new QNetworkAccessManager(this);

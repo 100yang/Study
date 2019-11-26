@@ -54,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	MvWidget = new FindmvWidget(ui->SerachResultBase);
 	MusicWidget = new FindMusicWidget(ui->SerachResultBase);
 
-    MvWidget->hide ();
+	MvWidget->hide ();
 	localmusicwidget->hide ();
 	likemusicwidget->hide ();
 	ui->ToPageWidget->hide ();
@@ -77,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		Keyword = ui->serach_edit->text ();
 		emit AlreadyGetKeyword ();
 		/*最好是按两次搜索*/
-		qDebug() << "AlreadyGetKeyword";
+//		qDebug() << "AlreadyGetKeyword";
 	});
 	connect (this, &MainWindow::AlreadyGetKeyword, [this]()mutable{
 		if (Keyword != "") {
@@ -108,7 +108,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		AddMusicInPlayList (SongInfo, ui->page2->SongId);
 	});
 	connect (this, &MainWindow::AlreadyGetLink, [this]()mutable{
-		qDebug() << "加入播放队列的歌曲的链接：" << SongUrl;
+        qDebug() << "加入播放队列的歌曲的链接：" << SongUrl;
 		PlayerList->addMedia (QUrl(SongUrl));
 	});
 	connect(this, &MainWindow::AlreadyGetLyric, [this]()mutable{
@@ -167,9 +167,6 @@ MainWindow::MainWindow(QWidget *parent) :
 		auto v = MusicWidget->SongInfo;
 		likemusicwidget->Add (v);
 	});
-	connect(Player, &QMediaPlayer::mediaStatusChanged, [this]()mutable{
-//        if(Player->state ())
-	});
 	/*添加歌曲到播放队列/移除歌曲*/
 	connect(likemusicwidget, &LikeMusicWidget::AlreadyGetSongId, [this]()mutable{
 		auto SongInfo  = likemusicwidget->SongName + "  " + likemusicwidget->SingerName;
@@ -198,12 +195,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	});
 	connect(MusicWidget, &FindMusicWidget::AlreadyGetSongInfo, [this]()mutable{
 		auto SongInfo  = MusicWidget->SongName + "  " + MusicWidget->SingerName;
-//        auto Val = MusicWidget->SerachResult;
-//        QMap<QString,QVector<QString> >::const_iterator it = Val.constBegin ();
-//        while(it != Val.constEnd ()){
-//            SerachResultInfo.insert (it.key (),it.value ());
-//            ++it;
-//        }
 		AddMusicInPlayList (SongInfo, MusicWidget->SongId);
 	});
 
@@ -367,7 +358,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 MainWindow::~MainWindow()
 {
-	SongAndId.clear ();
+    SongAndId.clear ();
 	SongInfoList.clear ();
 	SongLyric.clear ();
 	SerachResultInfo.clear ();
@@ -382,7 +373,7 @@ void MainWindow::Init () {
 	GetLinkReply = nullptr;
 	LyricReply = nullptr;
 	CheckReply = nullptr;
-    ImageReply = nullptr;
+	ImageReply = nullptr;
 	Player = new QMediaPlayer;
 	PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;
@@ -397,6 +388,7 @@ void MainWindow::Init () {
 	playlistwidget = new PlayListWidget(this);
 }
 void MainWindow::StyleOption () {
+	ui->label_3->setPixmap (QPixmap(":/Images/serach.png"));
 	ui->IconLabel->setPixmap (QPixmap(":/Images/Music disc.png"));
 	setWindowTitle ("Music Player");
 	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -689,7 +681,7 @@ void MainWindow::UpdateTime(qint64 time, qint64 total_time_value) {
 }
 void MainWindow::Test (QString SongId) {
 	auto it = SongInfoList.value (SongId);
-	qDebug() << "当前歌曲的ID" << SongId;
+    qDebug() << "当前歌曲的ID" << SongId;
 	for (int i = 0; i < it.size (); ++i) {
 		qDebug() << it.at (i);
 	}

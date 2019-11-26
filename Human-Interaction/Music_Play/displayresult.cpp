@@ -43,7 +43,7 @@ DisplayResult::DisplayResult(QWidget *parent) :
     SongUrl = "";
     DownloadMusicReply = nullptr;
     ui->setupUi(this);
-
+    DownloadFile = new Dialog(this);
     ClickNum = 0;
     /*整行选择*/
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -123,16 +123,17 @@ void DisplayResult::Add (QVector<QString> v) {
         ClickNum = (ClickNum + 1 ) % 2;
     });
     connect (Downloadbtn, &QPushButton::clicked, [this]()mutable{
+        qDebug()<<"下载文件";
         auto index = ui->tableWidget->currentRow ();
         auto row = ui->tableWidget->verticalHeaderItem (index);
         QString Id = row->text ();
         GetLinkBySongId(Id);
         SongName = ui->tableWidget->item (index, 2)->text ();
         SingerName =  ui->tableWidget->item (index, 3)->text ();
-        DownloadFile = new Dialog(this);
         DownloadFile->Url = SongUrl;
         DownloadFile->SongName = SongName;
         DownloadFile->SingerName = SingerName;
+        DownloadFile->show ();
 //        QMessageBox mesg;
 //        mesg.warning (this, "警告", "此功能还没实现");
     });
