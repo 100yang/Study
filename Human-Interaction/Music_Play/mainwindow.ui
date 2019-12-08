@@ -264,7 +264,7 @@
        <bool>true</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">clor:rgb(0, 0, 0);</string>
+       <string notr="true"/>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>

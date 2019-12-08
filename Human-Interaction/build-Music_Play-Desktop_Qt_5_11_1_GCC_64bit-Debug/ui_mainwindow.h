@@ -224,7 +224,7 @@ public:
         line_5 = new QFrame(centralWidget);
         line_5->setObjectName(QStringLiteral("line_5"));
         line_5->setAutoFillBackground(true);
-        line_5->setStyleSheet(QStringLiteral("clor:rgb(0, 0, 0);"));
+        line_5->setStyleSheet(QStringLiteral(""));
         line_5->setFrameShape(QFrame::HLine);
         line_5->setFrameShadow(QFrame::Sunken);
 

@@ -43,7 +43,6 @@ public:
 	~LocalMusicWidget();
 	void Add (QVector<QString> v);
 	QString readableFilesize( quint64 filesize);
-//	qint64 GetAudioTime(QString FilePath);
 	QString FilePath;
 protected :
 	void contextMenuEvent (QContextMenuEvent *event);

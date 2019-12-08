@@ -32,11 +32,17 @@
 #include <QPushButton>
 #include <QCursor>
 #include <QMessageBox>
+const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 LikeMusicWidget::LikeMusicWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LikeMusicWidget)
 {
     SongId = "";
+    SongUrl = "";
+    SingerName = "";
+    SongName = "";
+//    DownloadMusicReply = nullptr;
+//    DownloadFile = new Dialog(this);
     ui->setupUi(this);
     /*整行选择*/
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -83,8 +89,17 @@ void LikeMusicWidget::Add (QVector<QString> v) {
         RemoveSong ();
     });
     connect (Downloadbtn, &QPushButton::clicked, [this]()mutable{
-        QMessageBox mesg;
-        mesg.warning (this, "警告", "此功能还没实现");
+//        auto index = ui->tableWidget->currentRow ();
+//        auto row = ui->tableWidget->verticalHeaderItem (index);
+//        QString Id = row->text ();
+//        GetLinkBySongId(Id);
+//        SongName = ui->tableWidget->item (index, 2)->text ();
+//        SingerName =  ui->tableWidget->item (index, 3)->text ();
+//        DownloadFile->Url = SongUrl;
+//        DownloadFile->SongName = SongName;
+//        DownloadFile->SingerName = SingerName;
+//        DownloadFile->show ();
+        QMessageBox::warning (this, "警告", "还未实现");
     });
 
     QTableWidgetItem *item2 = new QTableWidgetItem;//歌曲名称

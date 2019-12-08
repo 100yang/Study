@@ -31,38 +31,10 @@ public:
     DisplayResult *Recommend;
     QWidget *MusicTable;
     QGridLayout *gridLayout_2;
-    QWidget *widget_8;
-    QVBoxLayout *verticalLayout_9;
-    QLabel *label_14;
-    QLabel *label_13;
-    QWidget *widget_9;
-    QVBoxLayout *verticalLayout_10;
-    QLabel *label_16;
-    QLabel *label_15;
     QWidget *widget_6;
     QVBoxLayout *verticalLayout_7;
-    QLabel *label_10;
-    QLabel *label_9;
-    QWidget *widget_4;
-    QVBoxLayout *verticalLayout_4;
-    QLabel *label_6;
-    QLabel *label_5;
-    QWidget *widget_5;
-    QVBoxLayout *verticalLayout_6;
-    QLabel *label_12;
-    QLabel *label_11;
-    QWidget *widget_10;
-    QVBoxLayout *verticalLayout_5;
-    QLabel *label_18;
-    QLabel *label_17;
-    QWidget *widget_3;
-    QVBoxLayout *verticalLayout_3;
-    QLabel *label_4;
     QLabel *label_3;
-    QWidget *widget_7;
-    QVBoxLayout *verticalLayout_8;
-    QLabel *label_8;
-    QLabel *label_7;
+    QLabel *label_4;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
@@ -135,173 +107,26 @@ public:
         MusicTable->setObjectName(QStringLiteral("MusicTable"));
         gridLayout_2 = new QGridLayout(MusicTable);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        widget_8 = new QWidget(MusicTable);
-        widget_8->setObjectName(QStringLiteral("widget_8"));
-        verticalLayout_9 = new QVBoxLayout(widget_8);
-        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
-        label_14 = new QLabel(widget_8);
-        label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setScaledContents(true);
-
-        verticalLayout_9->addWidget(label_14);
-
-        label_13 = new QLabel(widget_8);
-        label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setMinimumSize(QSize(0, 15));
-        label_13->setMaximumSize(QSize(16777215, 15));
-        label_13->setScaledContents(true);
-
-        verticalLayout_9->addWidget(label_13);
-
-
-        gridLayout_2->addWidget(widget_8, 2, 0, 1, 1);
-
-        widget_9 = new QWidget(MusicTable);
-        widget_9->setObjectName(QStringLiteral("widget_9"));
-        verticalLayout_10 = new QVBoxLayout(widget_9);
-        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
-        label_16 = new QLabel(widget_9);
-        label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setScaledContents(true);
-
-        verticalLayout_10->addWidget(label_16);
-
-        label_15 = new QLabel(widget_9);
-        label_15->setObjectName(QStringLiteral("label_15"));
-        label_15->setMinimumSize(QSize(0, 15));
-        label_15->setMaximumSize(QSize(16777215, 15));
-        label_15->setScaledContents(true);
-
-        verticalLayout_10->addWidget(label_15);
-
-
-        gridLayout_2->addWidget(widget_9, 2, 1, 1, 1);
-
         widget_6 = new QWidget(MusicTable);
         widget_6->setObjectName(QStringLiteral("widget_6"));
         verticalLayout_7 = new QVBoxLayout(widget_6);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
-        label_10 = new QLabel(widget_6);
-        label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setScaledContents(true);
-
-        verticalLayout_7->addWidget(label_10);
-
-        label_9 = new QLabel(widget_6);
-        label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setMinimumSize(QSize(0, 15));
-        label_9->setMaximumSize(QSize(16777215, 15));
-        label_9->setScaledContents(true);
-
-        verticalLayout_7->addWidget(label_9);
-
-
-        gridLayout_2->addWidget(widget_6, 1, 1, 1, 1);
-
-        widget_4 = new QWidget(MusicTable);
-        widget_4->setObjectName(QStringLiteral("widget_4"));
-        verticalLayout_4 = new QVBoxLayout(widget_4);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        label_6 = new QLabel(widget_4);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setScaledContents(true);
-
-        verticalLayout_4->addWidget(label_6);
-
-        label_5 = new QLabel(widget_4);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setMinimumSize(QSize(0, 15));
-        label_5->setMaximumSize(QSize(16777215, 15));
-        label_5->setScaledContents(true);
-
-        verticalLayout_4->addWidget(label_5);
-
-
-        gridLayout_2->addWidget(widget_4, 0, 2, 1, 1);
-
-        widget_5 = new QWidget(MusicTable);
-        widget_5->setObjectName(QStringLiteral("widget_5"));
-        verticalLayout_6 = new QVBoxLayout(widget_5);
-        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        label_12 = new QLabel(widget_5);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setScaledContents(true);
-
-        verticalLayout_6->addWidget(label_12);
-
-        label_11 = new QLabel(widget_5);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setMinimumSize(QSize(0, 15));
-        label_11->setMaximumSize(QSize(16777215, 15));
-        label_11->setScaledContents(true);
-
-        verticalLayout_6->addWidget(label_11);
-
-
-        gridLayout_2->addWidget(widget_5, 1, 0, 1, 1);
-
-        widget_10 = new QWidget(MusicTable);
-        widget_10->setObjectName(QStringLiteral("widget_10"));
-        verticalLayout_5 = new QVBoxLayout(widget_10);
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        label_18 = new QLabel(widget_10);
-        label_18->setObjectName(QStringLiteral("label_18"));
-        label_18->setScaledContents(true);
-
-        verticalLayout_5->addWidget(label_18);
-
-        label_17 = new QLabel(widget_10);
-        label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setMinimumSize(QSize(0, 15));
-        label_17->setMaximumSize(QSize(16777215, 15));
-        label_17->setScaledContents(true);
-
-        verticalLayout_5->addWidget(label_17);
-
-
-        gridLayout_2->addWidget(widget_10, 2, 2, 1, 1);
-
-        widget_3 = new QWidget(MusicTable);
-        widget_3->setObjectName(QStringLiteral("widget_3"));
-        verticalLayout_3 = new QVBoxLayout(widget_3);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        label_4 = new QLabel(widget_3);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setScaledContents(true);
-
-        verticalLayout_3->addWidget(label_4);
-
-        label_3 = new QLabel(widget_3);
+        label_3 = new QLabel(widget_6);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setMinimumSize(QSize(0, 15));
-        label_3->setMaximumSize(QSize(16777215, 15));
         label_3->setScaledContents(true);
 
-        verticalLayout_3->addWidget(label_3);
+        verticalLayout_7->addWidget(label_3);
+
+        label_4 = new QLabel(widget_6);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setMinimumSize(QSize(0, 15));
+        label_4->setMaximumSize(QSize(16777215, 15));
+        label_4->setScaledContents(true);
+
+        verticalLayout_7->addWidget(label_4);
 
 
-        gridLayout_2->addWidget(widget_3, 0, 1, 1, 1);
-
-        widget_7 = new QWidget(MusicTable);
-        widget_7->setObjectName(QStringLiteral("widget_7"));
-        verticalLayout_8 = new QVBoxLayout(widget_7);
-        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
-        label_8 = new QLabel(widget_7);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setScaledContents(true);
-
-        verticalLayout_8->addWidget(label_8);
-
-        label_7 = new QLabel(widget_7);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setMinimumSize(QSize(0, 15));
-        label_7->setMaximumSize(QSize(16777215, 15));
-        label_7->setScaledContents(true);
-
-        verticalLayout_8->addWidget(label_7);
-
-
-        gridLayout_2->addWidget(widget_7, 1, 2, 1, 1);
+        gridLayout_2->addWidget(widget_6, 0, 1, 1, 1);
 
         widget_2 = new QWidget(MusicTable);
         widget_2->setObjectName(QStringLiteral("widget_2"));
@@ -429,9 +254,9 @@ public:
 
         retranslateUi(FindMusicWidget);
 
-        BaseWidget->setCurrentIndex(0);
-        InRankWidget->setCurrentIndex(2);
-        NewSongWidget->setCurrentIndex(0);
+        BaseWidget->setCurrentIndex(5);
+        InRankWidget->setCurrentIndex(4);
+        NewSongWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(FindMusicWidget);
@@ -441,22 +266,8 @@ public:
     {
         FindMusicWidget->setWindowTitle(QApplication::translate("FindMusicWidget", "Form", nullptr));
         BaseWidget->setTabText(BaseWidget->indexOf(Recommend), QApplication::translate("FindMusicWidget", "\344\270\252\346\200\247\346\216\250\350\215\220", nullptr));
-        label_14->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_13->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_16->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_15->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_10->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_9->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_6->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_5->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_12->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_11->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_18->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_17->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_4->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
         label_3->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_8->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
-        label_7->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
+        label_4->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
         label->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
         label_2->setText(QApplication::translate("FindMusicWidget", "TextLabel", nullptr));
         BaseWidget->setTabText(BaseWidget->indexOf(MusicTable), QApplication::translate("FindMusicWidget", "\346\255\214\345\215\225", nullptr));

@@ -59,7 +59,7 @@ LocalMusicWidget::LocalMusicWidget(QWidget *parent) :
 			v.push_back (filename);
 			auto Val = fileinfo.baseName ().split (" - ");
 			foreach (QString var, Val) {
-				qDebug() << "  " << var;
+//				qDebug() << "  " << var;
 				v.push_back (var);
 			}
 			v.push_back ("未知");

@@ -35,7 +35,7 @@ const QString GetNewSong = "http://localhost:3000/top/song?type=%1";
 const QString GetRecommend = "http://localhost:3000/personalized/newsong";
 const QString GetTopList = "http://localhost:3000/top/list?idx=%1";/*歌曲排行*/
 const QString GetTopSinger = "http://localhost:3000/toplist/artist";
-const QString GetSongTable = "http://localhost:3000/personalized?limit=9";
+const QString GetSongTable = "http://localhost:3000/personalized?limit=2";
 FindMusicWidget::FindMusicWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FindMusicWidget)
@@ -363,28 +363,7 @@ void FindMusicWidget::GetSongTableResult () {
                     AddTableInLabel (ui->label, ui->label_2, ImageUrl, TextName);
                     break;
                 case 1:
-                    AddTableInLabel (ui->label_4, ui->label_3, ImageUrl, TextName);
-                    break;
-                case 2:
-                    AddTableInLabel (ui->label_6, ui->label_5, ImageUrl, TextName);
-                    break;
-                case 3:
-                    AddTableInLabel (ui->label_8, ui->label_7, ImageUrl, TextName);
-                    break;
-                case 4:
-                    AddTableInLabel (ui->label_10, ui->label_9, ImageUrl, TextName);
-                    break;
-                case 5:
-                    AddTableInLabel (ui->label_12, ui->label_11, ImageUrl, TextName);
-                    break;
-                case 6:
-                    AddTableInLabel (ui->label_14, ui->label_13, ImageUrl, TextName);
-                    break;
-                case 7:
-                    AddTableInLabel (ui->label_16, ui->label_15, ImageUrl, TextName);
-                    break;
-                case 8:
-                    AddTableInLabel (ui->label_18, ui->label_17, ImageUrl, TextName);
+                    AddTableInLabel (ui->label_3, ui->label_4, ImageUrl, TextName);
                     break;
                 default:
                     break;
@@ -446,19 +425,20 @@ void FindMusicWidget::GetRecommendResult () {
     emit AlreadyGetRecommendResult();
 }
 void FindMusicWidget::AddTableInLabel (QLabel *imagelabel, QLabel *textlabel, QString ImageUrl, QString analysis) {
-//    QUrl url = QUrl(ImageUrl);
-//    if(GetImageReply){
-//        GetImageReply->deleteLater ();
-//    }
-//    GetImageReply = Manager.get (QNetworkRequest(url));
-//    QEventLoop loop;
-//    connect (GetImageReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-//    loop.exec ();
-//    if (GetImageReply->error () == QNetworkReply::NoError) {
-//        QByteArray array = GetImageReply->readAll ();
-//        QPixmap p;
-//        p.loadFromData (array);
-//        imagelabel->setPixmap (p);
-//    }
+    QUrl url = QUrl(ImageUrl);
+//    QNetworkAccessManager manager;
+    GetImageReply = Manager.get (QNetworkRequest(url));
+    QEventLoop loop;
+    connect (GetImageReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec ();
+    if (GetImageReply->error () == QNetworkReply::NoError) {
+        QByteArray array = GetImageReply->readAll ();
+        QPixmap p;
+        p.loadFromData (array);
+        imagelabel->setPixmap (p);
+    }
+    else {
+        qDebug() << "GetImageReply ERROR" << GetImageReply->errorString ();
+    }
     textlabel->setText (analysis);
 }

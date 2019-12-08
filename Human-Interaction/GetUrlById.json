@@ -1,22 +1,23 @@
 {
-	"data":[{
-		"id":1397105439,
-		"url":"http://m7.music.126.net/20191101170628/b99f1577e96ec16a0191fef70bfe709b/ymusic/5559/0e53/565e/b3253e39b599313b087aa4c14dd6c297.flac",
-		"br":1122000,
-		"size":25140416,
-		"md5":"b3253e39b599313b087aa4c14dd6c297",
-		"code":200,
-		"expi":1200,
-		"type":"flac",
-		"gain":0,
-		"fee":0,
-		"uf":null,
-		"payed":0,
-		"flag":256,
-		"canExtend":false,
-		"freeTrialInfo":null,
-		"level":null,
-		"encodeType":null
-	}],
-	"code":200
+    "data": [
+    {
+        "id": 1397105439,
+        "url": "http://m7.music.126.net/20191101170628/b99f1577e96ec16a0191fef70bfe709b/ymusic/5559/0e53/565e/b3253e39b599313b087aa4c14dd6c297.flac",
+        "br": 1122000,
+        "size": 25140416,
+        "md5": "b3253e39b599313b087aa4c14dd6c297",
+        "code": 200,
+        "expi": 1200,
+        "type": "flac",
+        "gain": 0,
+        "fee": 0,
+        "uf": null,
+        "payed": 0,
+        "flag": 256,
+        "canExtend": false,
+        "freeTrialInfo": null,
+        "level": null,
+        "encodeType": null
+    }],
+    "code": 200
 }

@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	MvWidget = new FindmvWidget(ui->SerachResultBase);
 	MusicWidget = new FindMusicWidget(ui->SerachResultBase);
 
+//    /qDebug()<<"HAHAHA;";
 	MvWidget->hide ();
 	localmusicwidget->hide ();
 	likemusicwidget->hide ();
@@ -61,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->stackedWidget->hide ();
 	MusicWidget->show ();
 
-
+//    qDebug()<<"sss";
 	AddListen ();/*加入监听*/
 
 
@@ -108,12 +109,12 @@ MainWindow::MainWindow(QWidget *parent) :
 		AddMusicInPlayList (SongInfo, ui->page2->SongId);
 	});
 	connect (this, &MainWindow::AlreadyGetLink, [this]()mutable{
-        qDebug() << "加入播放队列的歌曲的链接：" << SongUrl;
+//        qDebug() << "加入播放队列的歌曲的链接：" << SongUrl;
 		PlayerList->addMedia (QUrl(SongUrl));
 	});
 	connect(this, &MainWindow::AlreadyGetLyric, [this]()mutable{
 		SongLyric.insert (SongUrl, LyricString);
-		qDebug() << "  歌曲链接：" << SongUrl;
+//		qDebug() << "  歌曲链接：" << SongUrl;
 	});
 
 	/*几大界面的显示*/
@@ -154,18 +155,26 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(ui->page0, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
 		auto v = ui->page0->SongInfo;
 		likemusicwidget->Add (v);
+//        likemusicwidget->info = v;
+//		likemusicwidget->AddInLikeList ();
 	});
 	connect(ui->page1, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
 		auto v = ui->page1->SongInfo;
 		likemusicwidget->Add (v);
+//        likemusicwidget->info = v;
+//		likemusicwidget->AddInLikeList ();
 	});
 	connect(ui->page2, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
 		auto v = ui->page2->SongInfo;
 		likemusicwidget->Add (v);
+//        likemusicwidget->info = v;
+//		likemusicwidget->AddInLikeList ();
 	});
 	connect(MusicWidget, &FindMusicWidget::AlreadyAddLikeMusic_Find, [this]()mutable{
 		auto v = MusicWidget->SongInfo;
 		likemusicwidget->Add (v);
+//        likemusicwidget->info = v;
+//		likemusicwidget->AddInLikeList ();
 	});
 	/*添加歌曲到播放队列/移除歌曲*/
 	connect(likemusicwidget, &LikeMusicWidget::AlreadyGetSongId, [this]()mutable{
@@ -223,8 +232,8 @@ MainWindow::MainWindow(QWidget *parent) :
 		if (NowIndex == ui->stackedWidget->count () - 1) {
 			ui->nextpagebtn->setDisabled (true);
 		}
-		qDebug() << "总页面" << ui->stackedWidget->count ();
-		qDebug() << "当前的页面为:" << NowIndex + 1;
+//		qDebug() << "总页面" << ui->stackedWidget->count ();
+//		qDebug() << "当前的页面为:" << NowIndex + 1;
 		ui->pagelabel->setText (QString::number (NowIndex + 1));
 	});
 	connect(ui->prepagebtn, &QPushButton::clicked, [this]()mutable{
@@ -234,8 +243,8 @@ MainWindow::MainWindow(QWidget *parent) :
 		if (NowIndex == 0) {
 			ui->prepagebtn->setDisabled (true);
 		}
-		qDebug() << "总页面" << ui->stackedWidget->count ();
-		qDebug() << "当前的页面为:" << NowIndex + 1;
+//		qDebug() << "总页面" << ui->stackedWidget->count ();
+//		qDebug() << "当前的页面为:" << NowIndex + 1;
 		ui->pagelabel->setText (QString::number (NowIndex + 1));
 	});
 	connect(ui->listButton, &QPushButton::clicked, [this]()mutable{
@@ -358,7 +367,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 MainWindow::~MainWindow()
 {
-    SongAndId.clear ();
+	SongAndId.clear ();
 	SongInfoList.clear ();
 	SongLyric.clear ();
 	SerachResultInfo.clear ();
@@ -394,12 +403,12 @@ void MainWindow::StyleOption () {
 	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 }
 void MainWindow::ShowLyric () {
-	qDebug() << "进行歌词的匹配与显示";
+//	qDebug() << "进行歌词的匹配与显示";
 	auto val = Player->currentMedia ().canonicalUrl ();
 	auto NowUrlStr = val.toString ();
-	qDebug() << "当前播放歌曲的链接" << NowUrlStr;
+//	qDebug() << "当前播放歌曲的链接" << NowUrlStr;
 	auto LyricStr = SongLyric.value (NowUrlStr);
-	qDebug() << "当前播放的歌词:" << LyricStr;
+//	qDebug() << "当前播放的歌词:" << LyricStr;
 	resolve_lrc (LyricStr);
 	auto SongId = SongAndId.value (NowUrlStr);
 	if (SongId != "") {
@@ -439,8 +448,8 @@ void MainWindow::GetLinkBySongId (QString SongId) {
 				QJsonObject jobj = Array_1[i].toObject ();
 				SongUrl = jobj["url"].toString ();
 				SongAndId.insert (SongUrl, SongId);
-				qDebug() << "GetLinkReply  歌曲的链接为:" << SongUrl;
-				qDebug() << "GeylinkReply 歌曲的ID：" << SongId;
+//				qDebug() << "GetLinkReply  歌曲的链接为:" << SongUrl;
+//				qDebug() << "GeylinkReply 歌曲的ID：" << SongId;
 				break;
 			}
 		}
@@ -681,7 +690,7 @@ void MainWindow::UpdateTime(qint64 time, qint64 total_time_value) {
 }
 void MainWindow::Test (QString SongId) {
 	auto it = SongInfoList.value (SongId);
-    qDebug() << "当前歌曲的ID" << SongId;
+	qDebug() << "当前歌曲的ID" << SongId;
 	for (int i = 0; i < it.size (); ++i) {
 		qDebug() << it.at (i);
 	}
@@ -709,7 +718,7 @@ bool MainWindow::CheckMusic (QString SongId) {
 	QEventLoop loop;
 	connect (CheckReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
 	loop.exec ();
-	bool check = true;
+	bool check = false;
 	if (CheckReply->error () == QNetworkReply::NoError) {
 		QByteArray Array = CheckReply->readAll ();
 		QJsonParseError JsonError;

@@ -61,7 +61,6 @@ private:
     QNetworkAccessManager Manager;
     QNetworkReply *DownloadMusicReply;
     int ClickNum;
-//    QFile *DownloadFile;
     Dialog *DownloadFile;
 };
 

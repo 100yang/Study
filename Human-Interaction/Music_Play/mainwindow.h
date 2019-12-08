@@ -134,8 +134,6 @@ private:
     /*歌词显示*/
     MyLyric *lrc;
     /*搜索结果显示*/
-
-//    QWidget *PageWidget;
     PlayListWidget *playlistwidget;
     LocalMusicWidget *localmusicwidget;
     LikeMusicWidget *likemusicwidget;

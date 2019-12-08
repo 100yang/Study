@@ -52,7 +52,7 @@ DisplayResult::DisplayResult(QWidget *parent) :
         auto index = ui->tableWidget->currentRow ();
         auto row = ui->tableWidget->verticalHeaderItem (index);
         SongId = row->text ();
-        qDebug() << "我被点了" << SongId;
+//        qDebug() << "我被点了" << SongId;
         SongName = ui->tableWidget->item (index, 2)->text ();
         SingerName =  ui->tableWidget->item (index, 3)->text ();
         emit AlreadGetSongId();
@@ -102,11 +102,11 @@ void DisplayResult::Add (QVector<QString> v) {
     ui->tableWidget->setCellWidget (Rowindex, 1, w);
     connect (likebtn, &QPushButton::clicked, [this, likebtn]()mutable{
         if (ClickNum % 2 == 0) {
-            qDebug() << "添加到我喜欢";
+//            qDebug() << "添加到我喜欢";
             likebtn->setIcon (QIcon(":/Images/fulllove.png"));
             SongInfo.clear ();
-            qDebug() << "添加到我喜欢";
-            qDebug() << "添加到我喜欢";
+//            qDebug() << "添加到我喜欢";
+//            qDebug() << "添加到我喜欢";
             auto index = ui->tableWidget->currentRow ();
             auto row = ui->tableWidget->verticalHeaderItem (index);
             SongInfo.push_back (row->text ());//id
@@ -123,7 +123,7 @@ void DisplayResult::Add (QVector<QString> v) {
         ClickNum = (ClickNum + 1 ) % 2;
     });
     connect (Downloadbtn, &QPushButton::clicked, [this]()mutable{
-        qDebug()<<"下载文件";
+//        qDebug()<<"???";
         auto index = ui->tableWidget->currentRow ();
         auto row = ui->tableWidget->verticalHeaderItem (index);
         QString Id = row->text ();
@@ -134,8 +134,6 @@ void DisplayResult::Add (QVector<QString> v) {
         DownloadFile->SongName = SongName;
         DownloadFile->SingerName = SingerName;
         DownloadFile->show ();
-//        QMessageBox mesg;
-//        mesg.warning (this, "警告", "此功能还没实现");
     });
     QTableWidgetItem *item2 = new QTableWidgetItem;//歌曲名称
     item2->setText ( v.at (3));
@@ -212,14 +210,10 @@ void DisplayResult::GetLinkBySongId (QString SongId) {
             for (int i = 0; i < Array_1.size (); ++i) {
                 QJsonObject jobj = Array_1[i].toObject ();
                 SongUrl = jobj["url"].toString ();
-//                SongAndId.insert (SongUrl, SongId);
-//                qDebug() << "DownloadMusicReply  歌曲的链接为:" << SongUrl;
-//                qDebug() << "DownloadMusicReply 歌曲的ID：" << SongId;
                 break;
             }
         }
         else {qDebug() << "DownloadMusicReply JSONERROR:" << JsonError.errorString ();}
     }
     else {qDebug() << "DownloadMusicReply Error" << DownloadMusicReply->errorString ();}
-//    emit AlreadyGetLink ();
 }

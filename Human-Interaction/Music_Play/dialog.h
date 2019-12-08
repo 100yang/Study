@@ -63,7 +63,7 @@ public:
 protected slots:
     void httpDownload(QString SongId, QString SongName, QString SingerName);
     void replyFinished(QNetworkReply*reply);
-    void onDownloadProgress(qint64 bytesSent,qint64 bytesTotal);
+    void onDownloadProgress(qint64 bytesSent, qint64 bytesTotal);
     void onReadyRead();//
     void stop();//暂停，重新下载
 

@@ -30,7 +30,6 @@ SOURCES += \
     showplaylist.cpp \
     playlistwidget.cpp \
     displayresult.cpp \
-    videoplay.cpp \
     likemusicwidget.cpp \
     localmusicwidget.cpp \
     findmvwidget.cpp \
@@ -43,7 +42,6 @@ HEADERS += \
     showplaylist.h \
     playlistwidget.h \
     displayresult.h \
-    videoplay.h \
     likemusicwidget.h \
     localmusicwidget.h \
     findmvwidget.h \
@@ -53,7 +51,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     displayresult.ui \
-    videoplay.ui \
     playlistwidget.ui \
     likemusicwidget.ui \
     localmusicwidget.ui \

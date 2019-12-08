@@ -1,135 +1,1501 @@
-{	"code":200,
-	"result":
-	{
-		"songCount":49,
-		"songs":[
-			{
-				"album":
-				{
-					"alia":["新天龙八部端游主题曲"],
-					"artist":
-					{
-						"albumSize":0,
-						"alias":[],
-						"id":0,
-						"img1v1":0,
-						"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-						"name":"",
-						"picId":0,
-						"picUrl":null,
-						"trans":null
-					},
-					"copyrightId":22036,
-					"id":82435664,
-					"mark":0,
-					"name":"雨幕",
-					"picId":109951164428933840,
-					"publishTime":1570896000000,
-					"size":1,
-					"status":1
-				},
-				"alias":["新天龙八部端游主题曲"],
-				"artists":[{
-					"albumSize":0,
-					"alias":[],
-					"id":5771,
-					"img1v1":0,
-					"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-					"name":"许嵩",
-					"picId":0,
-					"picUrl":null,
-					"trans":null
-				}],
-				"copyrightId":22036,
-				"duration":240398,
-				"fee":0,
-				"ftype":0,
-				"id":1397105439,
-				"mark":0,
-				"mvid":0,
-				"name":"雨幕",
-				"rUrl":null,
-				"rtype":0,
-				"status":0
-			},
-			{
-				"album":
-				{
-					"artist":
-					{
-						"albumSize":0,
-						"alias":[],
-						"id":0,
-						"img1v1":0,
-						"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-						"name":"",
-						"picId":0,
-						"picUrl":null,
-						"trans":null
-					},
-					"copyrightId":699010,
-					"id":82400217,
-					"mark":0,
-					"name":"情字难",
-					"picId":109951164426920800,
-					"publishTime":1570982400000,
-					"size":0,
-					"status":1
-				},
-					"alias":[],
-					"artists":[
-						{
-							"albumSize":0,"alias":[],"id":12292874,"img1v1":0,
-					"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-					"name":"刘雨Key","picId":0,"picUrl":null,"trans":null}
-				]
-					,"copyrightId":699010,
-					"duration":248685,"fee":8,"ftype":0,"id":1396897991,"mark":0,"mvid":0,
-					"name":"雨幕 (纯净版)","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],
-					"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-					"name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":1416322,"id":82628257,"mark":0,
-	"name":"许我一笔墨","picId":109951164442730940,"publishTime":1571760000000,"size":0,"status":1},
-	"alias":[],"artists":[{"albumSize":0,"alias":[],"id":31638608,"img1v1":0,
-	"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-	"name":"颜小七","picId":0,"picUrl":null,"trans":null},{"albumSize":0,"alias":[],"id":12309166,
-	"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-	"name":"7姨","picId":0,"picUrl":null,"trans":null}],"copyrightId":1416322,"duration":125480,
-	"fee":8,"ftype":0,"id":1398507661,"mark":0,"mvid":0,"name":"雨幕 (抖音版)","rUrl":null,
-	"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,
-	"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
-	"name":"",
-"picId":0,
-"picUrl":null,
-"trans":null},
-"copyrightId":0,
-"id":82307926,"mark":0,
-"name":"雨幕",
-"picId":109951164449225040,
-"publishTime":1570910253224,
-"size":1,"status":0},
-"alias":[],
-"artists":[
-	{
-	"albumSize":0,
-"alias":[],
-"id":12853557,
-"img1v1":0,
-"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"赵炘屿","picId":0,"picUrl":null,"trans":null}],
-"copyrightId":0,"duration":239999,"fee":0,
-"ftype":0,"id":1396651024,"mark":0,"mvid":0,
-"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},
-{"album":{"artist":{"albumSize":0,"alias":[],"id":0,
-"img1v1":0,
-"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,
-"id":82357874,"mark":0,"name":"雨幕（女声版）",
-"picId":109951164426112430,
-"publishTime":1570976064673,
-"size":1,
-"status":0
-},
-"alias":[],
-"artists":[
-	{"albumSize":0,
-	"alias":[],
-"id":12568219,
-"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"李金艳","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":91559,"fee":0,"ftype":0,"id":1396801936,"mark":0,"mvid":0,"name":"雨幕-女生版（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82743334,"mark":0,"name":"雨幕（御姐版）","picId":109951164452939700,"publishTime":1572179180385,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":28066477,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"澪恩Seiwen","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":238191,"fee":0,"ftype":0,"id":1399557450,"mark":0,"mvid":0,"name":"雨幕（御姐版）（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82305289,"mark":0,"name":"雨幕","picId":109951164424951420,"publishTime":1570940612616,"size":2,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":30648197,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"天皇巨星KING","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":246088,"fee":0,"ftype":0,"id":1396788056,"mark":0,"mvid":0,"name":"雨幕（全网最好听翻唱，不好听找我）（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":34673652,"mark":0,"name":"雨幕","picId":17658156742337786,"publishTime":1462067312033,"size":1,"status":1},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":1199076,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"灵空GTech","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":247275,"fee":0,"ftype":0,"id":411356494,"mark":0,"mvid":0,"name":"雨幕","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82305289,"mark":0,"name":"雨幕","picId":109951164424951420,"publishTime":1570940612616,"size":3,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":30648197,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"天皇巨星KING","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":244443,"fee":0,"ftype":0,"id":1396731465,"mark":0,"mvid":0,"name":"许嵩-雨幕（纯音乐）（天皇巨星KING remix）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":74496381,"mark":0,"name":"嵩哥你是我的梦","picId":109951163810850740,"publishTime":1550073600000,"size":5,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":12039109,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"fred.小翰","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":157930,"fee":0,"ftype":0,"id":1397549242,"mark":0,"mvid":10897723,"name":"雨幕【改编版】（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82308354,"mark":0,"name":"雨幕","picId":109951164429199100,"publishTime":1571135362555,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":32071783,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"逸殊","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240000,"fee":0,"ftype":0,"id":1397655500,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":74484167,"mark":0,"name":"烨烨笙歌","picId":109951163680682450,"publishTime":1542806852445,"size":16,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":13796980,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"张烨","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":241056,"fee":0,"ftype":0,"id":1399920266,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82881711,"mark":0,"name":"雨幕","picId":109951164459587360,"publishTime":1572510898195,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":14924395,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"林志伟","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240000,"fee":0,"ftype":0,"id":1400243452,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":81617293,"mark":0,"name":"雨幕（Cover许嵩）","picId":109951164425582720,"publishTime":1570959452068,"size":2,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33230805,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"先巴才让","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240561,"fee":0,"ftype":0,"id":1396955763,"mark":0,"mvid":0,"name":"雨幕（伴奏）（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82358127,"mark":0,"name":"雨幕（Cover：许嵩）","picId":109951164427518850,"publishTime":1571051689660,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33364291,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"夏步D","picId":0,"picUrl":null,"trans":null},{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"艾可AiKO","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":243759,"fee":0,"ftype":0,"id":1396973549,"mark":0,"mvid":0,"name":"雨幕 艾可翻唱（Cover：许嵩）可能是全网最难听的版本了（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82496391,"mark":0,"name":"流行古风笛子（竹笛）翻奏","picId":109951164440770660,"publishTime":1571648738354,"size":5,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33433008,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"fdnx009","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240770,"fee":0,"ftype":0,"id":1398676123,"mark":0,"mvid":0,"name":"雨幕 洞箫（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":684010,"id":28596,"mark":0,"name":"X档案","picId":109951163368827900,"publishTime":867686400000,"size":12,"status":1},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":9275,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"苏慧伦","picId":0,"picUrl":null,"trans":null}],"copyrightId":684010,"duration":276867,"fee":8,"ftype":0,"id":288212,"mark":1125899906842624,"mvid":0,"name":"雨幕","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82358621,"mark":0,"name":"雨幕","picId":109951164425292690,"publishTime":1570936911519,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":32534890,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"曹呈祥","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240398,"fee":0,"ftype":0,"id":1396711039,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82171055,"mark":0,"name":"雨幕","picId":109951164425814910,"publishTime":1570967728444,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":12383157,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"x-sea","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240398,"fee":0,"ftype":0,"id":1396777821,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":81617293,"mark":0,"name":"雨幕（Cover许嵩）","picId":109951164425582720,"publishTime":1570959452068,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33230805,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"先巴才让","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240326,"fee":0,"ftype":0,"id":1396767406,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":74881844,"mark":0,"name":"VAE","picId":109951163727779470,"publishTime":1544867242378,"size":2,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":31004413,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"韩佩恒","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240000,"fee":0,"ftype":0,"id":1397019064,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82301326,"mark":0,"name":"雨幕（片段）","picId":109951164424958180,"publishTime":1570940454789,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":13701029,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"寒橙","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":44434,"fee":0,"ftype":0,"id":1396700458,"mark":0,"mvid":0,"name":"雨幕（片段）（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82496391,"mark":0,"name":"流行古风笛子（竹笛）翻奏","picId":109951164440770660,"publishTime":1571648738354,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33433008,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"fdnx009","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":244715,"fee":0,"ftype":0,"id":1398300694,"mark":0,"mvid":0,"name":"雨幕 笛子（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82798635,"mark":0,"name":"雨幕","picId":109951164454563280,"publishTime":1572258691294,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":30292849,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"思念","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":220056,"fee":0,"ftype":0,"id":1399706367,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82305454,"mark":0,"name":"雨幕","picId":109951164425717650,"publishTime":1570964159831,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33126580,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"珑赫TLH","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240500,"fee":0,"ftype":0,"id":1396777336,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":79262022,"mark":0,"name":"cover up","picId":109951164092676020,"publishTime":1558528901801,"size":5,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":12434390,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"吴钧平","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240456,"fee":0,"ftype":0,"id":1397159416,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":81186051,"mark":0,"name":"沉梦翻唱","picId":109951164342285730,"publishTime":1567526400000,"size":6,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33129867,"img1v1":0,"img1v1Url":"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"沉梦shadow","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":240360,"fee":0,"ftype":0,"id":1399319036,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":82159807,"mark":0,"name":"信仰","picId":109951164437405150,"publishTime":1571498261076,"size":1,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":27868614,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"常乐音","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":238213,"fee":0,"ftype":0,"id":1397981071,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":677019,"id":82785217,"mark":0,"name":"世间美好与你环环相扣","picId":109951164453030340,"publishTime":1572105600000,"size":11,"status":1},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":33412734,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"小可","picId":0,"picUrl":null,"trans":null}],"copyrightId":677019,"duration":194420,"fee":8,"ftype":0,"id":1399549958,"mark":0,"mvid":0,"name":"雨幕(DJ)","rUrl":null,"rtype":0,"status":0},{"album":{"artist":{"albumSize":0,"alias":[],"id":0,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"","picId":0,"picUrl":null,"trans":null},"copyrightId":0,"id":81001050,"mark":0,"name":"痴痴笑","picId":109951164303865570,"publishTime":1566131016427,"size":2,"status":0},"alias":[],"artists":[{"albumSize":0,"alias":[],"id":1053046,"img1v1":0,"img1v1Url":"https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg","name":"覃俊铭","picId":0,"picUrl":null,"trans":null}],"copyrightId":0,"duration":206158,"fee":0,"ftype":0,"id":1398352906,"mark":0,"mvid":0,"name":"雨幕（Cover：许嵩）","rUrl":null,"rtype":0,"status":0}]}}
+{
+    "code": 200,
+    "result":
+    {
+        "songCount": 49,
+        "songs": [
+        {
+            "album":
+            {
+                "alia": ["新天龙八部端游主题曲"],
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 22036,
+                "id": 82435664,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164428933840,
+                "publishTime": 1570896000000,
+                "size": 1,
+                "status": 1
+            },
+            "alias": ["新天龙八部端游主题曲"],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 5771,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "许嵩",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 22036,
+            "duration": 240398,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1397105439,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 699010,
+                "id": 82400217,
+                "mark": 0,
+                "name": "情字难",
+                "picId": 109951164426920800,
+                "publishTime": 1570982400000,
+                "size": 0,
+                "status": 1
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12292874,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "刘雨Key",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 699010,
+            "duration": 248685,
+            "fee": 8,
+            "ftype": 0,
+            "id": 1396897991,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕 (纯净版)",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 1416322,
+                "id": 82628257,
+                "mark": 0,
+                "name": "许我一笔墨",
+                "picId": 109951164442730940,
+                "publishTime": 1571760000000,
+                "size": 0,
+                "status": 1
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 31638608,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "颜小七",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            },
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12309166,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "7姨",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 1416322,
+            "duration": 125480,
+            "fee": 8,
+            "ftype": 0,
+            "id": 1398507661,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕 (抖音版)",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82307926,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164449225040,
+                "publishTime": 1570910253224,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12853557,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "赵炘屿",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 239999,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396651024,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82357874,
+                "mark": 0,
+                "name": "雨幕（女声版）",
+                "picId": 109951164426112430,
+                "publishTime": 1570976064673,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12568219,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "李金艳",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 91559,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396801936,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕-女生版（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82743334,
+                "mark": 0,
+                "name": "雨幕（御姐版）",
+                "picId": 109951164452939700,
+                "publishTime": 1572179180385,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 28066477,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "澪恩Seiwen",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 238191,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1399557450,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（御姐版）（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82305289,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164424951420,
+                "publishTime": 1570940612616,
+                "size": 2,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 30648197,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "天皇巨星KING",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 246088,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396788056,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（全网最好听翻唱，不好听找我）（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 34673652,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 17658156742337786,
+                "publishTime": 1462067312033,
+                "size": 1,
+                "status": 1
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 1199076,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "灵空GTech",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 247275,
+            "fee": 0,
+            "ftype": 0,
+            "id": 411356494,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82305289,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164424951420,
+                "publishTime": 1570940612616,
+                "size": 3,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 30648197,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "天皇巨星KING",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 244443,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396731465,
+            "mark": 0,
+            "mvid": 0,
+            "name": "许嵩-雨幕（纯音乐）（天皇巨星KING remix）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 74496381,
+                "mark": 0,
+                "name": "嵩哥你是我的梦",
+                "picId": 109951163810850740,
+                "publishTime": 1550073600000,
+                "size": 5,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12039109,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "fred.小翰",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 157930,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1397549242,
+            "mark": 0,
+            "mvid": 10897723,
+            "name": "雨幕【改编版】（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82308354,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164429199100,
+                "publishTime": 1571135362555,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 32071783,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "逸殊",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240000,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1397655500,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 74484167,
+                "mark": 0,
+                "name": "烨烨笙歌",
+                "picId": 109951163680682450,
+                "publishTime": 1542806852445,
+                "size": 16,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 13796980,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "张烨",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 241056,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1399920266,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82881711,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164459587360,
+                "publishTime": 1572510898195,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 14924395,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "林志伟",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240000,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1400243452,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 81617293,
+                "mark": 0,
+                "name": "雨幕（Cover许嵩）",
+                "picId": 109951164425582720,
+                "publishTime": 1570959452068,
+                "size": 2,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33230805,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "先巴才让",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240561,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396955763,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（伴奏）（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82358127,
+                "mark": 0,
+                "name": "雨幕（Cover：许嵩）",
+                "picId": 109951164427518850,
+                "publishTime": 1571051689660,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33364291,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "夏步D",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            },
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 0,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "艾可AiKO",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 243759,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396973549,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕 艾可翻唱（Cover：许嵩）可能是全网最难听的版本了（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82496391,
+                "mark": 0,
+                "name": "流行古风笛子（竹笛）翻奏",
+                "picId": 109951164440770660,
+                "publishTime": 1571648738354,
+                "size": 5,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33433008,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "fdnx009",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240770,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1398676123,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕 洞箫（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 684010,
+                "id": 28596,
+                "mark": 0,
+                "name": "X档案",
+                "picId": 109951163368827900,
+                "publishTime": 867686400000,
+                "size": 12,
+                "status": 1
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 9275,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "苏慧伦",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 684010,
+            "duration": 276867,
+            "fee": 8,
+            "ftype": 0,
+            "id": 288212,
+            "mark": 1125899906842624,
+            "mvid": 0,
+            "name": "雨幕",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82358621,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164425292690,
+                "publishTime": 1570936911519,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 32534890,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "曹呈祥",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240398,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396711039,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82171055,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164425814910,
+                "publishTime": 1570967728444,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12383157,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "x-sea",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240398,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396777821,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 81617293,
+                "mark": 0,
+                "name": "雨幕（Cover许嵩）",
+                "picId": 109951164425582720,
+                "publishTime": 1570959452068,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33230805,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "先巴才让",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240326,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396767406,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 74881844,
+                "mark": 0,
+                "name": "VAE",
+                "picId": 109951163727779470,
+                "publishTime": 1544867242378,
+                "size": 2,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 31004413,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "韩佩恒",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240000,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1397019064,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82301326,
+                "mark": 0,
+                "name": "雨幕（片段）",
+                "picId": 109951164424958180,
+                "publishTime": 1570940454789,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 13701029,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "寒橙",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 44434,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396700458,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（片段）（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82496391,
+                "mark": 0,
+                "name": "流行古风笛子（竹笛）翻奏",
+                "picId": 109951164440770660,
+                "publishTime": 1571648738354,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33433008,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "fdnx009",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 244715,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1398300694,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕 笛子（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82798635,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164454563280,
+                "publishTime": 1572258691294,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 30292849,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "思念",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 220056,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1399706367,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82305454,
+                "mark": 0,
+                "name": "雨幕",
+                "picId": 109951164425717650,
+                "publishTime": 1570964159831,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33126580,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "珑赫TLH",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240500,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1396777336,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 79262022,
+                "mark": 0,
+                "name": "cover up",
+                "picId": 109951164092676020,
+                "publishTime": 1558528901801,
+                "size": 5,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 12434390,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "吴钧平",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240456,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1397159416,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 81186051,
+                "mark": 0,
+                "name": "沉梦翻唱",
+                "picId": 109951164342285730,
+                "publishTime": 1567526400000,
+                "size": 6,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33129867,
+                "img1v1": 0,
+                "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "沉梦shadow",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 240360,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1399319036,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 82159807,
+                "mark": 0,
+                "name": "信仰",
+                "picId": 109951164437405150,
+                "publishTime": 1571498261076,
+                "size": 1,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 27868614,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "常乐音",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 238213,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1397981071,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 677019,
+                "id": 82785217,
+                "mark": 0,
+                "name": "世间美好与你环环相扣",
+                "picId": 109951164453030340,
+                "publishTime": 1572105600000,
+                "size": 11,
+                "status": 1
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 33412734,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "小可",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 677019,
+            "duration": 194420,
+            "fee": 8,
+            "ftype": 0,
+            "id": 1399549958,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕(DJ)",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        },
+        {
+            "album":
+            {
+                "artist":
+                {
+                    "albumSize": 0,
+                    "alias": [],
+                    "id": 0,
+                    "img1v1": 0,
+                    "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "name": "",
+                    "picId": 0,
+                    "picUrl": null,
+                    "trans": null
+                },
+                "copyrightId": 0,
+                "id": 81001050,
+                "mark": 0,
+                "name": "痴痴笑",
+                "picId": 109951164303865570,
+                "publishTime": 1566131016427,
+                "size": 2,
+                "status": 0
+            },
+            "alias": [],
+            "artists": [
+            {
+                "albumSize": 0,
+                "alias": [],
+                "id": 1053046,
+                "img1v1": 0,
+                "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "name": "覃俊铭",
+                "picId": 0,
+                "picUrl": null,
+                "trans": null
+            }],
+            "copyrightId": 0,
+            "duration": 206158,
+            "fee": 0,
+            "ftype": 0,
+            "id": 1398352906,
+            "mark": 0,
+            "mvid": 0,
+            "name": "雨幕（Cover：许嵩）",
+            "rUrl": null,
+            "rtype": 0,
+            "status": 0
+        }]
+    }
+}
