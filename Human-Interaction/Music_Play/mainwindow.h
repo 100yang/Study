@@ -49,6 +49,7 @@ public:
     ~MainWindow();
     /* 初始化*/
     Q_INVOKABLE void Init();
+    Q_INVOKABLE void Login(QString Phone,QString Passwd);
     /**
      * 通过关键词搜索，得到歌曲的信息
      * @param keyword [description]
@@ -105,6 +106,7 @@ signals :
     void AlreadyGetKeyword ();
     void AlreadyToPlay();
     void AlreadyGetSuggestion();
+    void AlreadyGetHotSerach();
 protected :
     bool eventFilter ( QObject *watched, QEvent *ev );
     // watched:代表被监控的组件  ev:代表要转发的事件
@@ -119,7 +121,7 @@ private:
     int ListButtonClickNum ;
     int ReplyNum;
     QPoint offset;
-//    QListWidget *ListWidget;
+    QListWidget *HotList;
     /*网络部分*/
     QNetworkAccessManager Manager;
     QNetworkReply *SerachReply;
@@ -127,6 +129,7 @@ private:
     QNetworkReply *LyricReply;
     QNetworkReply *CheckReply;
     QNetworkReply *ImageReply;
+    QNetworkReply *HotReply;
     QString SongUrl;
     QString Keyword;
     QString LyricString;

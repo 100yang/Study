@@ -41,6 +41,7 @@ const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 const QString ApiOfGetLyricById = "http://localhost:3000/lyric?id=%1";
 const QString ApiOfCheckMusic = "http://localhost:3000/check/music?id=%1";
 const QString APiOfGetHotSerach = "http://localhost:3000/search/hot";
+const QString APiOfLogin = "http://localhost:3000/login/cellphone?phone=%1&password=%2";
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
@@ -64,18 +65,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
 //    qDebug()<<"sss";
 	AddListen ();/*加入监听*/
-
-
-
-
 	StyleOption ();
-
-
-
-
 	/*输入关键词进行搜索 并显示得到的搜索*/
+//    connect (ui->serach_edit,&QLineEdit::textEdited,[this]()mutable{
+//        HotList->show ();
+//    });
+    connect(HotList,&QListWidget::clicked,[this]()mutable{
+        Keyword = HotList->currentItem ()->text ();
+        emit AlreadyGetKeyword ();
+    });
 	connect (ui->serach_edit, &QLineEdit::editingFinished, [this]()mutable{
-		Keyword = ui->serach_edit->text ();
+        Keyword = ui->serach_edit->text ();
 		emit AlreadyGetKeyword ();
 		/*最好是按两次搜索*/
 //		qDebug() << "AlreadyGetKeyword";
@@ -155,26 +155,18 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(ui->page0, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
 		auto v = ui->page0->SongInfo;
 		likemusicwidget->Add (v);
-//        likemusicwidget->info = v;
-//		likemusicwidget->AddInLikeList ();
 	});
 	connect(ui->page1, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
 		auto v = ui->page1->SongInfo;
 		likemusicwidget->Add (v);
-//        likemusicwidget->info = v;
-//		likemusicwidget->AddInLikeList ();
 	});
 	connect(ui->page2, &DisplayResult::AlreadyAddLikeMusic, [this]()mutable{
 		auto v = ui->page2->SongInfo;
 		likemusicwidget->Add (v);
-//        likemusicwidget->info = v;
-//		likemusicwidget->AddInLikeList ();
 	});
 	connect(MusicWidget, &FindMusicWidget::AlreadyAddLikeMusic_Find, [this]()mutable{
 		auto v = MusicWidget->SongInfo;
 		likemusicwidget->Add (v);
-//        likemusicwidget->info = v;
-//		likemusicwidget->AddInLikeList ();
 	});
 	/*添加歌曲到播放队列/移除歌曲*/
 	connect(likemusicwidget, &LikeMusicWidget::AlreadyGetSongId, [this]()mutable{
@@ -383,6 +375,7 @@ void MainWindow::Init () {
 	LyricReply = nullptr;
 	CheckReply = nullptr;
 	ImageReply = nullptr;
+    HotReply = nullptr;
 	Player = new QMediaPlayer;
 	PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;
@@ -393,14 +386,18 @@ void MainWindow::Init () {
 	LyricString = "";
 	SongUrl = "";
 	Keyword = "";
+    HotList = new QListWidget(this);
 	lrc = new MyLyric(this);
 	playlistwidget = new PlayListWidget(this);
+}
+void MainWindow::Login(QString Phone,QString Passwd){
+
 }
 void MainWindow::StyleOption () {
 	ui->label_3->setPixmap (QPixmap(":/Images/serach.png"));
 	ui->IconLabel->setPixmap (QPixmap(":/Images/Music disc.png"));
 	setWindowTitle ("Music Player");
-	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 }
 void MainWindow::ShowLyric () {
 //	qDebug() << "进行歌词的匹配与显示";
@@ -459,7 +456,34 @@ void MainWindow::GetLinkBySongId (QString SongId) {
 	emit AlreadyGetLink ();
 }
 void MainWindow::GetHotSerach () {
-
+    if(HotReply){HotReply->deleteLater ();}
+    QUrl url = QUrl(APiOfGetHotSerach);
+    QEventLoop loop;
+    connect (HotReply,&QNetworkReply::finished,&loop,&QEventLoop::quit);
+    loop.exec ();
+    if(HotReply->error () == QNetworkReply::NoError){
+        QByteArray array = HotReply->readAll ();
+        QJsonParseError jsonError;
+        QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
+        if (jsonError.error != QJsonParseError::NoError) {qDebug() << "ERROR" << jsonError.errorString ();}
+        if(json.isObject ()){
+             QJsonObject obj = json.object ();
+             QJsonObject result  = obj["result"].toObject ();
+             QJsonArray Array = result["hots"].toArray ();
+             for(int i = 0; i < Array.size (); ++i){
+                 QJsonObject jobj = Array[i].toObject();
+                 /*得到热词*/
+                 QString Hot_keyword = jobj["first"].toString ();
+                 QListWidgetItem *item = new QListWidgetItem;
+                 item->setText (Hot_keyword);
+                 HotList->addItem (item);
+             }
+        }
+    }
+    else {
+        qDebug()<<"ERROR HotReply  " <<HotReply->errorString ();
+    }
+    emit AlreadyGetHotSerach();
 }
 void MainWindow::GetSerachByKeywords (QString keyword, int page) {
 //	if (SerachResultInfo.isEmpty () == false) {
