@@ -4,27 +4,26 @@
 #include <QLabel>
 class QTimer;
 
-class MyLyric : public QLabel
-{
+class MyLyric : public QLabel {
     Q_OBJECT
-public:
+  public:
     explicit MyLyric(QWidget *parent = 0);
     void start_lrc_mask(qint64 intervaltime);
     void stop_lrc_mask();
-protected:
+  protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *ev);
     void mouseMoveEvent(QMouseEvent *ev);
 //    void contextMenuEvent(QContextMenuEvent *ev);
 
-signals:
+  signals:
 
-public slots:
+  public slots:
 
-private slots:
+  private slots:
     void timeout();
 
-private:
+  private:
     QLinearGradient linear_gradient;
     QLinearGradient mask_linear_gradient;
     QFont font;

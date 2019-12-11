@@ -35,8 +35,7 @@
 const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 LikeMusicWidget::LikeMusicWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::LikeMusicWidget)
-{
+    ui(new Ui::LikeMusicWidget) {
     SongId = "";
     SongUrl = "";
     SingerName = "";
@@ -50,8 +49,7 @@ LikeMusicWidget::LikeMusicWidget(QWidget *parent) :
 
 }
 
-LikeMusicWidget::~LikeMusicWidget()
-{
+LikeMusicWidget::~LikeMusicWidget() {
     delete ui;
 }
 void LikeMusicWidget::Add (QVector<QString> v) {
@@ -118,11 +116,13 @@ void LikeMusicWidget::Add (QVector<QString> v) {
     ui->tableWidget->setItem (Rowindex, 4, item4);
 
     QString TimeStr = "未知";
+
     if (v.size () == 6) {
         qint64 tot = v.at (5).toInt ();
         QTime total_time(0, (tot / 60000) % 60, (tot / 1000) % 60);
         TimeStr = total_time.toString("mm:ss");
     }
+
     QTableWidgetItem *item5 = new QTableWidgetItem;//时长
     item5->setText (TimeStr);
     item5->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);

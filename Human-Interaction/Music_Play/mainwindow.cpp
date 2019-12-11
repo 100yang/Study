@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->ToPageWidget->hide ();
 	ui->stackedWidget->hide ();
 	MusicWidget->show ();
-
+	HotList->hide ();
 //    qDebug()<<"sss";
 	AddListen ();/*加入监听*/
 	StyleOption ();
@@ -70,12 +70,13 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect (ui->serach_edit,&QLineEdit::textEdited,[this]()mutable{
 //        HotList->show ();
 //    });
-    connect(HotList,&QListWidget::clicked,[this]()mutable{
-        Keyword = HotList->currentItem ()->text ();
-        emit AlreadyGetKeyword ();
-    });
+	connect(HotList, &QListWidget::clicked, [this]()mutable{
+		Keyword = HotList->currentItem ()->text ();
+		emit AlreadyGetKeyword ();
+	});
+
 	connect (ui->serach_edit, &QLineEdit::editingFinished, [this]()mutable{
-        Keyword = ui->serach_edit->text ();
+		Keyword = ui->serach_edit->text ();
 		emit AlreadyGetKeyword ();
 		/*最好是按两次搜索*/
 //		qDebug() << "AlreadyGetKeyword";
@@ -375,7 +376,7 @@ void MainWindow::Init () {
 	LyricReply = nullptr;
 	CheckReply = nullptr;
 	ImageReply = nullptr;
-    HotReply = nullptr;
+	HotReply = nullptr;
 	Player = new QMediaPlayer;
 	PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;
@@ -386,18 +387,18 @@ void MainWindow::Init () {
 	LyricString = "";
 	SongUrl = "";
 	Keyword = "";
-    HotList = new QListWidget(this);
+	HotList = new QListWidget(this);
 	lrc = new MyLyric(this);
 	playlistwidget = new PlayListWidget(this);
 }
-void MainWindow::Login(QString Phone,QString Passwd){
+void MainWindow::Login(QString Phone, QString Passwd) {
 
 }
 void MainWindow::StyleOption () {
 	ui->label_3->setPixmap (QPixmap(":/Images/serach.png"));
 	ui->IconLabel->setPixmap (QPixmap(":/Images/Music disc.png"));
 	setWindowTitle ("Music Player");
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 }
 void MainWindow::ShowLyric () {
 //	qDebug() << "进行歌词的匹配与显示";
@@ -456,39 +457,36 @@ void MainWindow::GetLinkBySongId (QString SongId) {
 	emit AlreadyGetLink ();
 }
 void MainWindow::GetHotSerach () {
-    if(HotReply){HotReply->deleteLater ();}
-    QUrl url = QUrl(APiOfGetHotSerach);
-    QEventLoop loop;
-    connect (HotReply,&QNetworkReply::finished,&loop,&QEventLoop::quit);
-    loop.exec ();
-    if(HotReply->error () == QNetworkReply::NoError){
-        QByteArray array = HotReply->readAll ();
-        QJsonParseError jsonError;
-        QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
-        if (jsonError.error != QJsonParseError::NoError) {qDebug() << "ERROR" << jsonError.errorString ();}
-        if(json.isObject ()){
-             QJsonObject obj = json.object ();
-             QJsonObject result  = obj["result"].toObject ();
-             QJsonArray Array = result["hots"].toArray ();
-             for(int i = 0; i < Array.size (); ++i){
-                 QJsonObject jobj = Array[i].toObject();
-                 /*得到热词*/
-                 QString Hot_keyword = jobj["first"].toString ();
-                 QListWidgetItem *item = new QListWidgetItem;
-                 item->setText (Hot_keyword);
-                 HotList->addItem (item);
-             }
-        }
-    }
-    else {
-        qDebug()<<"ERROR HotReply  " <<HotReply->errorString ();
-    }
-    emit AlreadyGetHotSerach();
+	if (HotReply) {HotReply->deleteLater ();}
+	QUrl url = QUrl(APiOfGetHotSerach);
+	QEventLoop loop;
+	connect (HotReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+	loop.exec ();
+	if (HotReply->error () == QNetworkReply::NoError) {
+		QByteArray array = HotReply->readAll ();
+		QJsonParseError jsonError;
+		QJsonDocument json = QJsonDocument::fromJson (array, &jsonError);
+		if (jsonError.error != QJsonParseError::NoError) {qDebug() << "ERROR" << jsonError.errorString ();}
+		if (json.isObject ()) {
+			QJsonObject obj = json.object ();
+			QJsonObject result  = obj["result"].toObject ();
+			QJsonArray Array = result["hots"].toArray ();
+			for (int i = 0; i < Array.size (); ++i) {
+				QJsonObject jobj = Array[i].toObject();
+				/*得到热词*/
+				QString Hot_keyword = jobj["first"].toString ();
+				QListWidgetItem *item = new QListWidgetItem;
+				item->setText (Hot_keyword);
+				HotList->addItem (item);
+			}
+		}
+	}
+	else {
+		qDebug() << "ERROR HotReply  " << HotReply->errorString ();
+	}
+	emit AlreadyGetHotSerach();
 }
 void MainWindow::GetSerachByKeywords (QString keyword, int page) {
-//	if (SerachResultInfo.isEmpty () == false) {
-//		SerachResultInfo.clear ();/*每次清空搜索*/
-//	}
 	qDebug() << "    Replynum    " << ReplyNum;
 	if (ReplyNum % 2 == 1) {
 		ReplyNum  = ((ReplyNum + 1) % 2);

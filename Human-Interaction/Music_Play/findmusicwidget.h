@@ -37,11 +37,10 @@ namespace Ui {
 class FindMusicWidget;
 }
 
-class FindMusicWidget : public QWidget
-{
+class FindMusicWidget : public QWidget {
     Q_OBJECT
 
-public:
+  public:
     explicit FindMusicWidget(QWidget *parent = 0);
     ~FindMusicWidget();
     void init();
@@ -50,7 +49,7 @@ public:
      * @param area
      * 具体的json文件请查看newsong.json
      */
-    Q_INVOKABLE void GetSerachResult(DisplayResult *w, QString area);
+    Q_INVOKABLE void GetSerachResult(DisplayResult *w, QString area); 、
     Q_INVOKABLE void GetSingerResult();
     Q_INVOKABLE void GetRankResult(DisplayResult *w, QString area);
     Q_INVOKABLE void GetSongTableResult();
@@ -63,14 +62,14 @@ public:
     QString SongId;
     QString SongName;
     QString SingerName;
-signals:
+  signals:
     void AlreadyGetSerachResult ();
     void AlreadyGetSongInfo();
     void AlreadyAddLikeMusic_Find();
     void AlreadyGetRecommendResult();
     void AlreadyGetRankResult();
     void AlreadyGetSingerResult ();
-private:
+  private:
     Ui::FindMusicWidget *ui;
     QNetworkAccessManager Manager;
     QNetworkReply *GetNewSongReply;

@@ -31,8 +31,7 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QPushButton>
-ShowPlayList::ShowPlayList(QWidget *parent) : QListWidget(parent)
-{
+ShowPlayList::ShowPlayList(QWidget *parent) : QListWidget(parent) {
 
 }
 ShowPlayList::~ShowPlayList () {}

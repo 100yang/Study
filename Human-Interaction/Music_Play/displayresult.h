@@ -33,11 +33,10 @@ namespace Ui {
 class DisplayResult;
 }
 
-class DisplayResult : public QWidget
-{
+class DisplayResult : public QWidget {
     Q_OBJECT
 
-public:
+  public:
     explicit DisplayResult(QWidget *parent = 0);
     ~DisplayResult();
     void Add(QVector<QString> v);
@@ -47,16 +46,16 @@ public:
     QString SingerName;
     QString SongUrl;
     QVector<QString> SongInfo;
-public slots:
+  public slots:
     void AddInPlayList();
     void AddInLikeMusic();
-protected :
+  protected :
     void contextMenuEvent (QContextMenuEvent *event);
-signals:
+  signals:
     void AlreadGetSongId();
     void AlreadyAddLikeMusic();
     void RemoveLikeMusic();
-private:
+  private:
     Ui::DisplayResult *ui;
     QNetworkAccessManager Manager;
     QNetworkReply *DownloadMusicReply;

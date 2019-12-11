@@ -31,8 +31,7 @@
 #include <QCursor>
 LocalMusicWidget::LocalMusicWidget(QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::LocalMusicWidget)
-{
+	ui(new Ui::LocalMusicWidget) {
 //	filename = "";
 	ui->setupUi(this);
 	ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -48,8 +47,8 @@ LocalMusicWidget::LocalMusicWidget(QWidget *parent) :
 		if (filename.isEmpty ()) {
 			QMessageBox msg;
 			msg.warning (this, "警告", "打开文件失败");
-		}
-		else{
+
+		} else{
 			QFileInfo fileinfo(filename);
 //			qDebug() << "文件名称 == " << fileinfo.baseName ();
 //			qDebug() << "文件大小为： " << fileinfo.size() << "  " << readableFilesize (fileinfo.size ());
@@ -58,6 +57,7 @@ LocalMusicWidget::LocalMusicWidget(QWidget *parent) :
 			v.clear ();
 			v.push_back (filename);
 			auto Val = fileinfo.baseName ().split (" - ");
+
 			foreach (QString var, Val) {
 //				qDebug() << "  " << var;
 				v.push_back (var);
@@ -76,12 +76,10 @@ LocalMusicWidget::LocalMusicWidget(QWidget *parent) :
 	});
 }
 
-LocalMusicWidget::~LocalMusicWidget()
-{
+LocalMusicWidget::~LocalMusicWidget() {
 	delete ui;
 }
-QString LocalMusicWidget::readableFilesize( quint64 filesize)
-{
+QString LocalMusicWidget::readableFilesize( quint64 filesize) {
 	QStringList units;
 	units << "B" << "KB" << "MB" << "GB" << "TB" << "PB";
 	double mod  = 1024.0;
@@ -89,17 +87,19 @@ QString LocalMusicWidget::readableFilesize( quint64 filesize)
 	//qDebug() << size;
 	int i = 0;
 	long rest = 0;
-	while (size >= mod && i < units.count() - 1 )
-	{
+
+	while (size >= mod && i < units.count() - 1 ) {
 		rest = (long)size % (long)mod ;
 		size /= mod;
 		i++;
 	}
+
 	QString szResult = QString::number(qRound(size));
-	if ( rest > 0)
-	{
+
+	if ( rest > 0) {
 		szResult += QString(".") + QString::number(rest).left(2);
 	}
+
 	szResult += units[i];
 	return  szResult;
 }

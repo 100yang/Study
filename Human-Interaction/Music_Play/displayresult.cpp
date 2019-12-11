@@ -35,8 +35,7 @@
 const QString ApiOfGetUrlById = "http://localhost:3000/song/url?id=%1";
 DisplayResult::DisplayResult(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::DisplayResult)
-{
+    ui(new Ui::DisplayResult) {
     SongId = "";
     SongName = "";
     SingerName = "";
@@ -60,8 +59,7 @@ DisplayResult::DisplayResult(QWidget *parent) :
 
 }
 
-DisplayResult::~DisplayResult()
-{
+DisplayResult::~DisplayResult() {
     delete ui;
 }
 /*
@@ -115,8 +113,8 @@ void DisplayResult::Add (QVector<QString> v) {
             SongInfo.push_back (ui->tableWidget->item(index, 4)->text ()); //ablum
             SongInfo.push_back (ui->tableWidget->item(index, 5)->text ());
             emit AlreadyAddLikeMusic();
-        }
-        else{
+
+        } else{
             likebtn->setIcon (QIcon(":/Images/lovemusic.png"));
             emit RemoveLikeMusic ();
         }
@@ -152,11 +150,13 @@ void DisplayResult::Add (QVector<QString> v) {
 
 
     QString TimeStr = "未知";
+
     if (v.size () == 6) {
         qint64 tot = v.at (5).toInt ();
         QTime total_time(0, (tot / 60000) % 60, (tot / 1000) % 60);
         TimeStr = total_time.toString("mm:ss");
     }
+
     QTableWidgetItem *item5 = new QTableWidgetItem;//时长
     item5->setText (TimeStr);
     item5->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
@@ -195,25 +195,29 @@ void DisplayResult::AddInLikeMusic () {
 void DisplayResult::GetLinkBySongId (QString SongId) {
     /*删除原来的响应*/
     if (DownloadMusicReply) {DownloadMusicReply->deleteLater ();}
+
     QUrl url = QUrl(ApiOfGetUrlById.arg (SongId));
     DownloadMusicReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
     connect (DownloadMusicReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (DownloadMusicReply->error () == QNetworkReply::NoError) {
         QByteArray Array = DownloadMusicReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
         if (JsonError.error == QJsonParseError::NoError) {
             QJsonObject Obj = json.object ();
             QJsonArray Array_1 = Obj["data"].toArray ();
+
             for (int i = 0; i < Array_1.size (); ++i) {
                 QJsonObject jobj = Array_1[i].toObject ();
                 SongUrl = jobj["url"].toString ();
                 break;
             }
-        }
-        else {qDebug() << "DownloadMusicReply JSONERROR:" << JsonError.errorString ();}
-    }
-    else {qDebug() << "DownloadMusicReply Error" << DownloadMusicReply->errorString ();}
+
+        } else {qDebug() << "DownloadMusicReply JSONERROR:" << JsonError.errorString ();}
+
+    } else {qDebug() << "DownloadMusicReply Error" << DownloadMusicReply->errorString ();}
 }

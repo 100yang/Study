@@ -7,8 +7,7 @@
 
 
 MyLyric::MyLyric(QWidget *parent) :
-	QLabel(parent)
-{
+	QLabel(parent) {
 	//FramelessWindowHint为无边界的窗口
 	setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
@@ -46,8 +45,7 @@ MyLyric::MyLyric(QWidget *parent) :
 
 
 // 开启遮罩，需要指定当前歌词开始与结束之间的时间间隔
-void MyLyric::start_lrc_mask(qint64 intervaltime)
-{
+void MyLyric::start_lrc_mask(qint64 intervaltime) {
 	// 这里设置每隔30毫秒更新一次遮罩的宽度，因为如果更新太频繁
 	// 会增加CPU占用率，而如果时间间隔太大，则动画效果就不流畅了
 	qreal count = intervaltime / 30;
@@ -57,16 +55,14 @@ void MyLyric::start_lrc_mask(qint64 intervaltime)
 	timer->start(30);
 }
 
-void MyLyric::stop_lrc_mask()
-{
+void MyLyric::stop_lrc_mask() {
 	timer->stop();
 	lrc_mask_width = 0;
 	update();
 }
 
 
-void MyLyric::paintEvent(QPaintEvent *)
-{
+void MyLyric::paintEvent(QPaintEvent *) {
 	QPainter painter(this);
 	painter.setFont(font);
 
@@ -85,15 +81,13 @@ void MyLyric::paintEvent(QPaintEvent *)
 }
 
 //左击操作
-void MyLyric::mousePressEvent(QMouseEvent *event)
-{
+void MyLyric::mousePressEvent(QMouseEvent *event) {
 	if (event->button() == Qt::LeftButton)
 		offset = event->globalPos() - frameGeometry().topLeft();
 }
 
 
-void MyLyric::mouseMoveEvent(QMouseEvent *event)
-{
+void MyLyric::mouseMoveEvent(QMouseEvent *event) {
 	//移动鼠标到歌词上时，会显示手型
 	//event->buttons()返回鼠标点击的类型，分为左击，中击，右击
 	//这里用与操作表示是左击
@@ -113,8 +107,7 @@ void MyLyric::mouseMoveEvent(QMouseEvent *event)
 //}
 
 
-void MyLyric::timeout()
-{
+void MyLyric::timeout() {
 	//每隔一段固定的时间笼罩的长度就增加一点
 	lrc_mask_width += lrc_mask_width_interval;
 	update();//更新widget，但是并不立即重绘，而是安排一个Paint事件，当返回主循环时由系统来重绘

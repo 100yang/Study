@@ -3,17 +3,16 @@
 
 #include <QWidget>
 #include <QListWidget>
-class ShowPlayList : public QListWidget
-{
+class ShowPlayList : public QListWidget {
 	Q_OBJECT
-public:
+  public:
 	explicit ShowPlayList(QWidget *parent = nullptr);
 	~ShowPlayList();
-protected:
+  protected:
 	void contextMenuEvent(QContextMenuEvent *event);
-signals:
+  signals:
 
-public slots:
+  public slots:
 };
 
 #endif // SHOWPLAYLIST_H

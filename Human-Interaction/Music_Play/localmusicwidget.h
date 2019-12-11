@@ -34,23 +34,22 @@ namespace Ui {
 class LocalMusicWidget;
 }
 
-class LocalMusicWidget : public QWidget
-{
+class LocalMusicWidget : public QWidget {
 	Q_OBJECT
 
-public:
+  public:
 	explicit LocalMusicWidget(QWidget *parent = 0);
 	~LocalMusicWidget();
 	void Add (QVector<QString> v);
 	QString readableFilesize( quint64 filesize);
 	QString FilePath;
-protected :
+  protected :
 	void contextMenuEvent (QContextMenuEvent *event);
-signals :
+  signals :
 	void AlreadyGetFilePath();
-public slots:
+  public slots:
 	void AddInList();
-private:
+  private:
 	Ui::LocalMusicWidget *ui;
 };
 

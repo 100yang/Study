@@ -7,23 +7,22 @@ namespace Ui {
 class PlayListWidget;
 }
 
-class PlayListWidget : public QDialog
-{
+class PlayListWidget : public QDialog {
     Q_OBJECT
 
-public:
+  public:
     explicit PlayListWidget(QWidget *parent = 0);
     ~PlayListWidget();
     int NowIndex;
     QListWidget *ListWidget;
-protected :
+  protected :
     void contextMenuEvent (QContextMenuEvent *);
-public slots:
+  public slots:
     void RemoveList();
-signals :
+  signals :
     void AlreadyRemove();
     void NextPlayIndex();
-private:
+  private:
     Ui::PlayListWidget *ui;
 };
 

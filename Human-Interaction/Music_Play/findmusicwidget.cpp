@@ -38,8 +38,7 @@ const QString GetTopSinger = "http://localhost:3000/toplist/artist";
 const QString GetSongTable = "http://localhost:3000/personalized?limit=2";
 FindMusicWidget::FindMusicWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::FindMusicWidget)
-{
+    ui(new Ui::FindMusicWidget) {
 
     ui->setupUi(this);
     GetRecommendResult ();
@@ -167,8 +166,7 @@ FindMusicWidget::FindMusicWidget(QWidget *parent) :
 
 }
 
-FindMusicWidget::~FindMusicWidget()
-{
+FindMusicWidget::~FindMusicWidget() {
     delete ui;
 }
 void FindMusicWidget::init () {
@@ -195,13 +193,16 @@ void FindMusicWidget::GetSerachResult (DisplayResult *w, QString area) {
     QEventLoop loop;
     connect (GetNewSongReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (GetNewSongReply->error () == QNetworkReply::NoError) {
         QByteArray Array = GetNewSongReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
         if (JsonError.error == QJsonParseError::NoError) {
             QJsonObject Obj = json.object ();
             QJsonArray JsonArray = Obj["data"].toArray ();
+
             for (int i = 0; i < JsonArray.size (); ++i) {
                 QJsonObject jobj = JsonArray[i].toObject();
                 auto SongName = jobj["name"].toString ();
@@ -226,21 +227,25 @@ void FindMusicWidget::GetSerachResult (DisplayResult *w, QString area) {
 //                SerachResult.insert (SongInfo,v);
                 w->Add (v);
             }
-        }
-        else {qDebug() << "GetSerachReply JSONERROR:" << JsonError.errorString ();}
-    }
-    else {qDebug() << "GetSerachReply Error" << GetNewSongReply->errorString ();}
+
+        } else {qDebug() << "GetSerachReply JSONERROR:" << JsonError.errorString ();}
+
+    } else {qDebug() << "GetSerachReply Error" << GetNewSongReply->errorString ();}
+
     emit AlreadyGetSerachResult ();
 }
 QPair<QString, QString> FindMusicWidget::GetSingerInfo(QJsonArray array) {
     QString SingerName = "";
     QString SingerImage = "";
+
     for (int row = 0; row < array.size (); ++row) {
         QJsonObject jobj = array[row].toObject();
         SingerName = jobj["name"].toString ();
         SingerImage = jobj["picUrl"].toString ();
     }
+
     if (SingerImage == "") SingerImage = "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg";
+
     auto result = qMakePair(SingerName, SingerImage);
     return result;
 }
@@ -248,20 +253,24 @@ void FindMusicWidget::GetRankResult (DisplayResult *w, QString area) {
     if (GetRankReply) {
         GetRankReply->deleteLater ();
     }
+
 //    qDebug() << "sss";
     QUrl url = QUrl(GetTopList.arg (area));
     GetRankReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
     connect (GetRankReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (GetRankReply->error () == QNetworkReply::NoError) {
         QByteArray Array = GetRankReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
         if (JsonError.error == QJsonParseError::NoError) {
             QJsonObject Obj = json.object ();
             QJsonObject Obj_1 = Obj["playlist"].toObject ();
             QJsonArray JsonArray = Obj_1["tracks"].toArray ();
+
             for (int i = 0; i < JsonArray.size (); ++i) {
                 QJsonObject jobj = JsonArray[i].toObject();
                 auto SongName = jobj["name"].toString ();
@@ -285,28 +294,33 @@ void FindMusicWidget::GetRankResult (DisplayResult *w, QString area) {
                 v.push_back (duration);
                 w->Add (v);
             }
-        }
-        else {qDebug() << "GetRankReply JSONERROR:" << JsonError.errorString ();}
-    }
-    else {qDebug() << "GetRankReply Error" << GetRankReply->errorString ();}
+
+        } else {qDebug() << "GetRankReply JSONERROR:" << JsonError.errorString ();}
+
+    } else {qDebug() << "GetRankReply Error" << GetRankReply->errorString ();}
+
     emit AlreadyGetRankResult();
 }
 void FindMusicWidget::GetSingerResult () {
     if (GetSingerReply) {
         GetSingerReply->deleteLater ();
     }
+
     QUrl url = QUrl(GetRecommend);
     GetSingerReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
     connect (GetSingerReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (GetSingerReply->error () == QNetworkReply::NoError) {
         QByteArray Array = GetSingerReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
         if (JsonError.error == QJsonParseError::NoError) {
             QJsonObject Obj = json.object ();
             QJsonArray JsonArray = Obj["result"].toArray ();
+
             for (int i = 0; i < JsonArray.size (); ++i) {
                 QJsonObject jobj = JsonArray[i].toObject();
                 auto SongName = jobj["name"].toString ();
@@ -332,65 +346,77 @@ void FindMusicWidget::GetSingerResult () {
                 v.push_back (Singer.first);
                 v.push_back (duration);
             }
-        }
-        else {qDebug() << "GetSingerReply JSONERROR:" << JsonError.errorString ();}
-    }
-    else {qDebug() << "GetSingerReply Error" << GetSingerReply->errorString ();}
+
+        } else {qDebug() << "GetSingerReply JSONERROR:" << JsonError.errorString ();}
+
+    } else {qDebug() << "GetSingerReply Error" << GetSingerReply->errorString ();}
+
     emit AlreadyGetSingerResult();
 }
 void FindMusicWidget::GetSongTableResult () {
     if (GetSongTableReply) {
         GetSongTableReply->deleteLater ();
     }
+
     QUrl url = QUrl(GetSongTable);
     GetSongTableReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
     connect (GetSongTableReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (GetSongTableReply->error () == QNetworkReply::NoError) {
         QByteArray Array = GetSongTableReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
         if (JsonError.error == QJsonParseError::NoError) {
             QJsonObject Obj = json.object ();
             QJsonArray JsonArray = Obj["result"].toArray ();
+
             for (int i = 0; i < JsonArray.size (); ++i) {
                 QJsonObject jobj = JsonArray[i].toObject();
                 QString TextName = jobj["name"].toString ();
                 QString ImageUrl = jobj["picUrl"].toString ();
+
                 switch (i) {
                 case 0:
                     AddTableInLabel (ui->label, ui->label_2, ImageUrl, TextName);
                     break;
+
                 case 1:
                     AddTableInLabel (ui->label_3, ui->label_4, ImageUrl, TextName);
                     break;
+
                 default:
                     break;
                 }
             }
-        }
-        else {qDebug() << "GetSongTableReply JSONERROR:" << JsonError.errorString ();}
-    }
-    else {qDebug() << "GetSongTableReply Error" << GetSongTableReply->errorString ();}
+
+        } else {qDebug() << "GetSongTableReply JSONERROR:" << JsonError.errorString ();}
+
+    } else {qDebug() << "GetSongTableReply Error" << GetSongTableReply->errorString ();}
 }
 void FindMusicWidget::GetTVResult () {}
 void FindMusicWidget::GetRecommendResult () {
     if (GetRecommendReply) {
         GetRecommendReply->deleteLater ();
     }
+
     QUrl url = QUrl(GetRecommend);
     GetRecommendReply = Manager.get (QNetworkRequest(url));
     QEventLoop loop;
     connect (GetRecommendReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (GetRecommendReply->error () == QNetworkReply::NoError) {
         QByteArray Array = GetRecommendReply->readAll ();
         QJsonParseError JsonError;
         QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
         if (JsonError.error == QJsonParseError::NoError) {
             QJsonObject Obj = json.object ();
             QJsonArray JsonArray = Obj["result"].toArray ();
+
             for (int i = 0; i < JsonArray.size (); ++i) {
                 QJsonObject jobj = JsonArray[i].toObject();
                 auto SongName = jobj["name"].toString ();
@@ -418,10 +444,11 @@ void FindMusicWidget::GetRecommendResult () {
 //                SerachResult.insert (SongInfo,v);
                 ui->Recommend->Add (v);
             }
-        }
-        else {qDebug() << "GetRecommendReply JSONERROR:" << JsonError.errorString ();}
-    }
-    else {qDebug() << "GetRecommendReply Error" << GetRecommendReply->errorString ();}
+
+        } else {qDebug() << "GetRecommendReply JSONERROR:" << JsonError.errorString ();}
+
+    } else {qDebug() << "GetRecommendReply Error" << GetRecommendReply->errorString ();}
+
     emit AlreadyGetRecommendResult();
 }
 void FindMusicWidget::AddTableInLabel (QLabel *imagelabel, QLabel *textlabel, QString ImageUrl, QString analysis) {
@@ -431,14 +458,16 @@ void FindMusicWidget::AddTableInLabel (QLabel *imagelabel, QLabel *textlabel, QS
     QEventLoop loop;
     connect (GetImageReply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec ();
+
     if (GetImageReply->error () == QNetworkReply::NoError) {
         QByteArray array = GetImageReply->readAll ();
         QPixmap p;
         p.loadFromData (array);
         imagelabel->setPixmap (p);
-    }
-    else {
+
+    } else {
         qDebug() << "GetImageReply ERROR" << GetImageReply->errorString ();
     }
+
     textlabel->setText (analysis);
 }

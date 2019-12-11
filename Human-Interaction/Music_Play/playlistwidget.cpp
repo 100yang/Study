@@ -33,8 +33,7 @@
 #include <QCursor>
 PlayListWidget::PlayListWidget(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::PlayListWidget)
-{
+    ui(new Ui::PlayListWidget) {
     NowIndex = 0;
     setWindowTitle ("播放列表");
     ListWidget = new QListWidget(this);
@@ -42,8 +41,7 @@ PlayListWidget::PlayListWidget(QWidget *parent) :
     layout->addWidget (ListWidget);
 }
 
-PlayListWidget::~PlayListWidget()
-{
+PlayListWidget::~PlayListWidget() {
     delete ui;
 }
 void PlayListWidget::contextMenuEvent (QContextMenuEvent *) {

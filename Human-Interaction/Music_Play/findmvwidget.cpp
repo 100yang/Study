@@ -36,8 +36,7 @@
 #include <QHBoxLayout>
 FindmvWidget::FindmvWidget(QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::FindmvWidget)
-{
+	ui(new Ui::FindmvWidget) {
 	ui->setupUi(this);
 //    QMediaPlayer *play = new QMediaPlayer(this);
 //    QVideoWidget *videoWidget = new QVideoWidget(ui->widget);
@@ -49,7 +48,6 @@ FindmvWidget::FindmvWidget(QWidget *parent) :
 //    qDebug() << QCoreApplication::libraryPaths() ;
 }
 
-FindmvWidget::~FindmvWidget()
-{
+FindmvWidget::~FindmvWidget() {
 	delete ui;
 }

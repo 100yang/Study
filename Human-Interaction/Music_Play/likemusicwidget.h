@@ -39,11 +39,10 @@ namespace Ui {
 class LikeMusicWidget;
 }
 
-class LikeMusicWidget : public QWidget
-{
+class LikeMusicWidget : public QWidget {
     Q_OBJECT
 
-public:
+  public:
     explicit LikeMusicWidget(QWidget *parent = 0);
     ~LikeMusicWidget();
     void Add(QVector<QString> v);
@@ -53,14 +52,14 @@ public:
     QString SongUrl;
     QString SingerName;
     QVector<QString> info;
-public slots:
+  public slots:
     void AddInList();
     void RemoveSong();
-protected :
+  protected :
     void contextMenuEvent (QContextMenuEvent *event);
-signals:
+  signals:
     void AlreadyGetSongId();
-private:
+  private:
     Ui::LikeMusicWidget *ui;
 };
 

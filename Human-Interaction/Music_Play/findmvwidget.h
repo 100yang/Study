@@ -7,15 +7,14 @@ namespace Ui {
 class FindmvWidget;
 }
 
-class FindmvWidget : public QWidget
-{
+class FindmvWidget : public QWidget {
 	Q_OBJECT
 
-public:
+  public:
 	explicit FindmvWidget(QWidget *parent = 0);
 	~FindmvWidget();
 
-private:
+  private:
 	Ui::FindmvWidget *ui;
 };
 
