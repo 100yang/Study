@@ -40,27 +40,27 @@ class LikeMusicWidget;
 }
 
 class LikeMusicWidget : public QWidget {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit LikeMusicWidget(QWidget *parent = 0);
-    ~LikeMusicWidget();
-    void Add(QVector<QString> v);
-    void AddInLikeList();
-    QString SongId;
-    QString SongName;
-    QString SongUrl;
-    QString SingerName;
-    QVector<QString> info;
-  public slots:
-    void AddInList();
-    void RemoveSong();
-  protected :
-    void contextMenuEvent (QContextMenuEvent *event);
-  signals:
-    void AlreadyGetSongId();
-  private:
-    Ui::LikeMusicWidget *ui;
+ public:
+  explicit LikeMusicWidget(QWidget *parent = 0);
+  ~LikeMusicWidget();
+  void Add(QVector<QString> v);
+  void AddInLikeList();
+  QString SongId;
+  QString SongName;
+  QString SongUrl;
+  QString SingerName;
+  QVector<QString> info;
+ public slots:
+  void AddInList();
+  void RemoveSong();
+ protected :
+  void contextMenuEvent (QContextMenuEvent *event);
+ signals:
+  void AlreadyGetSongId();
+ private:
+  Ui::LikeMusicWidget *ui;
 };
 
 #endif // LIKEMUSICWIDGET_H

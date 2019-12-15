@@ -1,3 +1,9 @@
+/*
+* @Author: 100yang
+* @Date:   2019-12-10
+* @Last Modified by:   100yang
+* @Last Modified time: 2019-12-15
+*/
 #include "localmusicwidget.h"
 #include "ui_localmusicwidget.h"
 #include <QMediaPlayer>

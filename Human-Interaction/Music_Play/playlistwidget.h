@@ -8,22 +8,22 @@ class PlayListWidget;
 }
 
 class PlayListWidget : public QDialog {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit PlayListWidget(QWidget *parent = 0);
-    ~PlayListWidget();
-    int NowIndex;
-    QListWidget *ListWidget;
-  protected :
-    void contextMenuEvent (QContextMenuEvent *);
-  public slots:
-    void RemoveList();
-  signals :
-    void AlreadyRemove();
-    void NextPlayIndex();
-  private:
-    Ui::PlayListWidget *ui;
+ public:
+  explicit PlayListWidget(QWidget *parent = 0);
+  ~PlayListWidget();
+  int NowIndex;
+  QListWidget *ListWidget;
+ protected :
+  void contextMenuEvent (QContextMenuEvent *);
+ public slots:
+  void RemoveList();
+ signals :
+  void AlreadyRemove();
+  void NextPlayIndex();
+ private:
+  Ui::PlayListWidget *ui;
 };
 
 #endif // PLAYLISTWIDGET_H

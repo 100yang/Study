@@ -49,7 +49,7 @@ class FindMusicWidget : public QWidget {
      * @param area
      * 具体的json文件请查看newsong.json
      */
-    Q_INVOKABLE void GetSerachResult(DisplayResult *w, QString area); 、
+    Q_INVOKABLE void GetSerachResult(DisplayResult *w, QString area);
     Q_INVOKABLE void GetSingerResult();
     Q_INVOKABLE void GetRankResult(DisplayResult *w, QString area);
     Q_INVOKABLE void GetSongTableResult();

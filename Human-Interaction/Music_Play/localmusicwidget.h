@@ -41,6 +41,13 @@ class LocalMusicWidget : public QWidget {
 	explicit LocalMusicWidget(QWidget *parent = 0);
 	~LocalMusicWidget();
 	void Add (QVector<QString> v);
+	/**
+	 * @brief      { function_description }
+	 *
+	 * @param[in]  filesize  The filesize
+	 *
+	 * @return     The quarter string.
+	 */
 	QString readableFilesize( quint64 filesize);
 	QString FilePath;
   protected :
