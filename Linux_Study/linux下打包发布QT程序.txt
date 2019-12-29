@@ -1,0 +1,42 @@
+linux下打包发布QT程序
+1. 编译文件
+在Qt中使用release的方式编译出可执行文件，然后新建一个文件夹，将可执行文件拷贝进去备用。
+
+2.巧用脚本文件
+这里以Server可执行文件为例。
+在新建的文件夹下，新建两个脚本文件：
+
+新建文件
+pack.sh
+Server.sh 这个脚本文件名必须和要发布的程序名字相同，所以为 Server
+新建文件后，文件夹包含内容如下：
+文件夹内容
+添加脚本
+向pack.sh文件里添加以下内容：
+
+#!/bin/sh  
+exe="Server" #你需要发布的程序名称
+des="/home/mrzhong/server" #创建文件夹的位置
+deplist=$(ldd $exe | awk  '{if (match($3,"/")){ printf("%s "),$3 } }')  
+cp $deplist $des
+然后向Server.sh文件里添加以下内容(内容不需要更改)：
+
+#!/bin/sh  
+appname=`basename $0 | sed s,\.sh$,,`  
+dirname=`dirname $0`  
+tmp="${dirname#?}"  
+if [ "${dirname%$tmp}" != "/" ]; then  
+dirname=$PWD/$dirname  
+fi  
+LD_LIBRARY_PATH=$dirname  
+export LD_LIBRARY_PATH  
+$dirname/$appname "$@"
+执行脚本
+终端进入文件夹目录，运行：
+
+./pack.sh
+可执行文件依赖的链接库将会拷贝到所在的目录，
+在其他主机里面使用和可执行文件同名的脚本文件(这里为Server.sh)运行程序即可。
+
+打包发布
+最后将这个文件打包后拷贝到其他主机上即可运行。
