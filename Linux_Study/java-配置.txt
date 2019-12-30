@@ -9,11 +9,10 @@ export PATH=${JAVA_HOME}/bin:$PATH”
 2、Eclipse的安装
 将安装包解压到/Files下
 执行
-cd /usr/share/applications/
- sudo vim eclipse.desktop
+ sudo vim /usr/share/applications/eclipse.desktop
 加入
 “
-	[Desktop Entry]
+[Desktop Entry]
 
 Encoding=UTF-8
 
@@ -21,9 +20,9 @@ Name=Eclipse
 
 Comment=Eclipse
 
-Exec=/home/yang/Files/eclipse/eclipse
+Exec=${HOME}/Files/eclipse/eclipse
 
-Icon=/home/yang/Files/eclipse/icon.xpm
+Icon=${HOME}/Files/eclipse/icon.xpm
 
 Terminal=false
 
@@ -34,6 +33,6 @@ Type=Application
 Categories=Application;Development;
 
 ”
-sudo chmod u+x eclipse.desktop 
+sudo chmod u+x /usr/share/applications/eclipse.desktop
 
 
