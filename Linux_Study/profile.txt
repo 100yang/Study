@@ -1,13 +1,13 @@
 
 #set Java environment
-export JAVA_HOME=/home/onezero/Files/jdk-11.0.4
+export JAVA_HOME=${HOME}/Files/jdk-11.0.4
 export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:%{JAVA_HOME}/lib:%{JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
 #set QT environment
-export PATH="/home/onezero/Qt5.11.1/Tools/QtCreator/bin:$PATH"
-export PATH="/home/onezero/Qt5.11.1/5.11.1/gcc_64/bin:$PATH"
+export PATH="${HOME}/Qt5.11.1/Tools/QtCreator/bin:$PATH"
+export PATH="${HOME}/Qt5.11.1/5.11.1/gcc_64/bin:$PATH"
 # set Oracle SqlPlus environment
-export LD_LIBRARY_PATH="/home/onezero/Files/Oracle_InStant/instantclient10_1"
+export LD_LIBRARY_PATH="${HOME}/Files/Oracle_InStant/instantclient10_1"
 
 
