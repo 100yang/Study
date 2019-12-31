@@ -14,13 +14,19 @@ if [[ options -eq 'Y' ]]; then
 		echo "新建目录　${HOME}/Files"
 		`mkdir ${HOME}/Files`
 	fi
+	add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+	apt-get update
 	echo "开始安装 build-essential gcc g++ vim zip  unzip  shutter"
 	apt-get install build-essential gcc g++ vim zip  unzip  shutter
-	echo "开始安装 gnome-tweak-tool chrome-gnome-shell git"
-	apt-get install gnome-tweak-tool chrome-gnome-shell git
+	echo "开始安装 gnome-tweak-tool chrome-gnome-shell git make python3"
+	apt-get install gnome-tweak-tool chrome-gnome-shell git make python3
 	git config --global user.name "100yang"
 	git config --global user.email 1989152546@qq.com
-
+	apt-get install fcitx-bin      #安装fcitx-bin
+ 	apt-get update --fix-missing   #修复fcitx-bin安装失败的情况
+ 	apt-get install fcitx-bin      #重新安装fcitx-bin
+	apt-get install fcitx-table    #安装fcitx-table
+	apt-get install qbittorrent
 	echo "当前安装目录 ${HOME}/Files"
 	echo "文件下载目录均为 ${HOME}/Downloads"
 	cd ${HOME}/Files
@@ -86,10 +92,6 @@ Categories=Application;Development;
 	fi
 
 	# 安装搜狗输入法
-	apt-get install fcitx-bin      #安装fcitx-bin
- 	apt-get update --fix-missing   #修复fcitx-bin安装失败的情况
- 	apt-get install fcitx-bin      #重新安装fcitx-bin
-	apt-get install fcitx-table    #安装fcitx-table
 	wget -P ${HOME}/Downloads http://cdn2.ime.sogou.com/dl/index/1571302197/sogoupinyin_2.3.1.0112_amd64.deb?st=T1j5NkfyCr2xTQBwVFS6-A&e=1577772006&fn=sogoupinyin_2.3.1.0112_amd64.deb
 	if [[ -e  ${HOME}/Downloads/sogoupinyin_2.3.1.0112_amd64.deb ]]; then
 		echo "开始安装搜狗输入法"
@@ -124,8 +126,14 @@ Categories=Application;Development;
 	# 修改字体变成方框
 	echo " WINE_CMD="LC_ALL=zh_CN.UTF-8 deepin-wine" " >> /opt/deepinwine/tools/run.sh
 	
-
+	# 编译 node
 	git clone https://github.com/nodejs/node.git
+	chmod -R 755 node
+	cd node
+	./configure
+	make 
+	make install
+	# 安装google-access-helper
 	git clone https://github.com/haotian-wang/google-access-helper.git
 	# 安装sublime
 	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
