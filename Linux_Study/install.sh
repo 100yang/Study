@@ -2,7 +2,13 @@
 # @Author: onezero
 # @Date:   2019-10-26
 # @Last Modified by:   100yang
-# @Last Modified time: 2019-12-31
+# @Last Modified time: 2020-01-03
+# 本教本是自己用来安装一些软件的基于Ｕｂｕｎｔｕ
+# 
+# 
+# 
+# 
+# 
 clear
 echo "请用管理员权限执行本脚本 sudo bash install.sh"
 echo "请确认是否安装 (Y/N)"
@@ -48,6 +54,14 @@ if [[ options -eq 'Y' ]]; then
 	else 
 		echo "下载${HOME}/Downloads/bashrc.txt　失败"
 	fi
+	
+	echo "修改hosts"
+	echo "开始下载https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/hosts"
+	wget -P ${HOME}/Public https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/hosts
+	sed -i '1,12d' ${HOME}/Public/hosts #删去前12行
+	cat ${HOME}/Public/hosts >> /etc/hosts
+	echo "修改hosts完成"
+	
 	echo "下载安装eclipse "
 	#　安装eclipse
 	wget -P ${HOME}/Downloads https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2019-12/R/eclipse-java-2019-12-R-linux-gtk-x86_64.tar.gz&mirror_id=105
