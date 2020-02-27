@@ -130,6 +130,7 @@ class MainWindow : public QMainWindow {
 	QNetworkReply *CheckReply;
 	QNetworkReply *ImageReply;
 	QNetworkReply *HotReply;
+    QNetworkReply *LoginReply;
 	QString SongUrl;
 	QString Keyword;
 	QString LyricString;

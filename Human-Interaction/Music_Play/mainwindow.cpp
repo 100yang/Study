@@ -392,6 +392,7 @@ void MainWindow::Init () {
 	CheckReply = nullptr;
 	ImageReply = nullptr;
 	HotReply = nullptr;
+    LoginReply = nullptr;
 	Player = new QMediaPlayer;
 	PlayerList = new QMediaPlaylist;
 	RandomClickNum = 0;
@@ -407,7 +408,33 @@ void MainWindow::Init () {
 	playlistwidget = new PlayListWidget(this);
 }
 void MainWindow::Login(QString Phone, QString Passwd) {
+    if(LoginReply) {LoginReply->deleteLater();}
 
+    QUrl url = QUrl(APiOfLogin.arg(Phone).arg(Passwd));
+    LoginReply = Manager.get(QNetworkRequest(url));
+    QEventLoop loop;
+    connect(LoginReply,&QNetworkReply::finished,&loop,&QEventLoop::quit);
+    loop.exec();
+    if(LoginReply->error() == QNetworkReply::NoError){
+        QByteArray Array = LoginReply->readAll();
+        QJsonParseError JsonError;
+        QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+
+        if (JsonError.error == QJsonParseError::NoError) {
+            QJsonObject Obj = json.object ();
+            QJsonArray Array_1 = Obj["data"].toArray ();
+
+            for (int i = 0; i < Array_1.size (); ++i) {
+                QJsonObject jobj = Array_1[i].toObject ();
+                break;
+            }
+
+        } else {qDebug() << "Login JSONERROR:" << JsonError.errorString ();}
+
+    }
+    else{
+        qDebug()<<"LoginReplyERROR"<<LoginReply->errorString();
+    }
 }
 void MainWindow::StyleOption () {
 	ui->label_3->setPixmap (QPixmap(":/Images/serach.png"));
@@ -459,7 +486,7 @@ void MainWindow::GetLinkBySongId (QString SongId) {
 	if (GetLinkReply->error () == QNetworkReply::NoError) {
 		QByteArray Array = GetLinkReply->readAll ();
 		QJsonParseError JsonError;
-		QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
+        QJsonDocument json = QJsonDocument::fromJson (Array, &JsonError);
 
 		if (JsonError.error == QJsonParseError::NoError) {
 			QJsonObject Obj = json.object ();

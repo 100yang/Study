@@ -1,7 +1,7 @@
 {
     "encoding": "utf-8",
-    "working_dir": "$file_path",
-    "shell_cmd": "g++ \"$file_name\" -std=c++11 -o \"$file_base_name\"",
+    "working_dir": "${file_path}",
+    "shell_cmd": " g++ \"${file_name}\" -std=c++11 -o \"/home/onezero/Code/build-sh/${file_base_name}\"  ",
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
     "selector": "source.c++",
     "shell":true,
@@ -9,7 +9,7 @@
     [
         {    
         "name": "Run",
-        "shell_cmd": "g++ '$file' -std=c++11 -o '$file_base_name' && gnome-terminal -x bash -c \"'${file_path}/${file_base_name}';read -p '\nPress any key to continue...'\""
+        "shell_cmd": " g++ '${file}' -std=c++11 -o '/home/onezero/Code/build-sh/${file_base_name}' && gnome-terminal -x bash -c \"'/home/onezero/Code/build-sh/${file_base_name}'; read -p '\nPress any key to continue...'\""
         }
     ]
 
